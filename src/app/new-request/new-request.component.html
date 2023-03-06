@@ -1,0 +1,306 @@
+<div class="container">
+    
+    <div class="hdr">
+        <h3 class="hrText">Change Request Form</h3>
+        <!-- <i style="float: right;" class="fa fa-home "></i> -->
+        
+    </div>
+    <!-- <div  class="home" >
+        <i class="fa fa-home "></i>
+    </div> -->
+
+
+<form [formGroup]="addTicketFormGroup">
+
+    <div style="float: right;" class="m-2">
+        <label class="col-md-5 col-sm-12" for="ticketNumber">Ticket Number</label>
+        <input class="col-md-6" style="margin-left: 10px;" formControlName="ticketNumber">
+    </div>
+    <div class="accordion" id="accordionExample">
+
+        <div class="accordion-item ">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button hdr" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    General Information
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="generalInfo">
+                        <div class=" row justify-content-evenly">
+                            <div class="form-floating form-inline mb-3 col-md-3 ">
+                                <input class="form-control " id="empID" formControlName="empID">
+                                <label for="empID">Emp ID</label>
+                            </div>
+                            <div class="form-floating mb-3 col-md-3">
+                                <input type="date" class="form-control" id="createdOn" name="Created" formControlName="createdOn"
+                                    placeholder="Created On" value="02/03/2023">
+                                <label for="createdOn">Created On</label>
+                            </div>
+                        </div>
+                        <div class=" row justify-content-evenly">
+                            
+                            <!-- <div class=" mb-3 col-md-3">
+                                <select  class="form-select " formControlName="SME_Assigned" >
+                                    <option value="default">mahamad.rafi@jktech.com</option>
+                                    <option value="fromList" *ngFor="let sme of SME_list">{{sme}}</option>
+                                    
+                                  </select>
+                                  
+                            </div> -->
+                            <div class="form-floating mb-3 col-md-3 ">
+                                <input class="form-control " id="SME_Assigned" formControlName="SME_Assigned">
+                                <label for="SME_Assigned">SME Assigned</label>
+                            </div>
+
+                            <!-- <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example"> -->
+                            <!-- <div class="mb-3 col-md-3">
+                                <select class="form-control " formControlName="approverName" aria-label="Default select example">
+                                    <option  value="default">naveen.poovaiah@jktech.com</option>
+                                    <option *ngFor="let approver of approverList">{{approver}}</option>
+                                    
+                                  </select>
+                            </div> -->
+                            <div class="form-floating mb-3 col-md-3 ">
+                                <input class="form-control " id="approverName" formControlName="approverName">
+                                <label for="approverName">Approver Name</label>
+                            </div>
+                        </div>
+                          <!-- list = "SME_list"
+                        <datalist id="SME_list">
+                            <option *ngFor="let sme of SME_list">{{sme}}</option>
+                        </datalist> -->
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed hdr" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Change Request Details
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class=" row justify-content-evenly">
+                       
+                        <div class="mb-3 col-md-3">
+                            <label class="mb-2" for="type">Type</label>
+                            <select id="type" class="form-control" formControlName="type">
+                                <option hidden value="default">...</option>
+                                <option *ngFor="let type of typeList">{{type.listdtlcode}}</option>
+                                
+                              </select>
+                              
+                        </div>
+                        
+                        <div class="mb-3 col-md-3">
+                            <label class="mb-2" for="Priority">Priority</label>
+                            <select id="Priority" class="form-control " formControlName="priority">
+                                <!-- <option  hidden value="default">...</option> -->
+                                <option *ngFor="let priority of priorityList">{{priority.listdtlcode}}</option>
+                                
+                              </select>
+                        </div>
+                    </div>
+                    <div class=" row justify-content-evenly">
+                        <div class="mb-3 col-md-3">
+                            <label class="mb-2" for="Device">Select Device Type</label>
+                            <select id="Device" class="form-control " formControlName="selectDevice">
+                                <option hidden value="default">...</option>
+                                <option *ngFor="let DeviceType of deviceTypeList">{{DeviceType.listdtlcode}}</option>
+                                
+                              </select>
+                        </div>
+                        <div class="mb-3 col-md-3">
+                            <label class="mb-2" for="site">Site Name</label>
+                            <select id="site" class="form-control " formControlName="siteName">
+                                <option hidden value="default">...</option>
+                                <option *ngFor="let Site of siteNameList">{{Site}}</option>
+                                
+                              </select>
+                        </div>
+                    </div>
+                    <div class=" row justify-content-evenly">
+                        <div class="mb-3 col-md-3">
+                            <label class="mb-2" for="Devices">Devices</label>
+                            <select id="Devices" class="form-control " formControlName="devices">
+                                <option hidden value="default">...</option>
+                                <option *ngFor="let Device of deviceList">{{Device.listdtlcode}}</option>
+                                
+                              </select>
+                        </div>
+                        <div class="mb-3 col-md-3">
+                            <label class="mb-2" for="Location">Location</label>
+                            <select id="Location" class="form-control " formControlName="location">
+                                <option hidden value="default">...</option>
+                                <option *ngFor="let Location of locationList">{{Location}}</option>
+                                
+                              </select>
+                        </div>
+                    </div>
+                    <div class=" row justify-content-evenly">
+                        <div class="form-floating mb-3 col-md-3 ">
+                            <input type="time" class="form-control " id="implementTime"
+                                formControlName="implementTime" placeholder="implementTime">
+                            <label for="implementTime">Implement Time</label>
+                        </div>
+                        <div class="form-floating mb-3 col-md-3">
+                            <input type="date" class="form-control" id="scheduledDate"
+                                formControlName="scheduledDate" placeholder="scheduledDate">
+                            <label for="scheduledDate">Scheduled Date</label>
+                        </div>
+                    </div>
+                    <div class=" row justify-content-evenly">
+                        <div class="mb-3 col-md-3">
+                            <select class="form-control " formControlName="requestStatus" >
+                                <option value="default" >New Request</option>
+                                <option *ngFor="let RequestStatus of RequestStatusList">{{RequestStatus}}</option>
+                                
+                              </select>
+                        </div>
+                        <div class=" col-md-3">
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingPlanning">
+                <button class="accordion-button collapsed hdr" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapsePlanning" aria-expanded="false" aria-controls="collapsePlanning">
+                    Planning
+                </button>
+            </h2>
+            <div id="collapsePlanning" class="accordion-collapse collapse" aria-labelledby="headingPlanning"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+
+                    <div class="row mt-4 justify-content-center">
+                        <label class="col-md-2 align-self-center" for="businessJustification">Business
+                            Justification</label>
+                        <textarea class="col-md-8 " name="businessJustification" rows="3" cols="50"
+                            formControlName="businessJustification"></textarea>
+                    </div>
+                    <div class="row mt-4 justify-content-center">
+                        <label class="col-md-2 align-self-center" for="CMRdescre">CMR Description</label>
+                        <textarea class="col-md-8 " name="CMRdescre" rows="3" cols="50"
+                            formControlName="CMRdescre"></textarea>
+                    </div>
+                    <div class="row mt-4 justify-content-center">
+                        <label class="col-md-2 align-self-center" for="riskImpact">Risk/Impact</label>
+                        <textarea class="col-md-8 " name="riskImpact" rows="3" cols="50"
+                            formControlName="riskImpact"></textarea>
+                    </div>
+                    <div class="row mt-4 justify-content-center">
+                        <label class="col-md-2 align-self-center" for="actionPlan">Action Plan</label>
+                        <textarea class="col-md-8 " name="actionPlan" rows="3" cols="50"
+                            formControlName="actionPlan"></textarea>
+                    </div>
+                    <div class="row mt-4 justify-content-center">
+                        <label class="col-md-2 align-self-center" for="rollbackPlan">Roll-back Plan</label>
+                        <textarea class="col-md-8 " name="rollbackPlan" rows="3" cols="50"
+                            formControlName="rollbackPlan"></textarea>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed hdr" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Note
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="row justify-content-center">
+                        <label class="col-md-11" for="note">Please Mention Relevant Incident or Problem Number
+                            Triggering the
+                            Change</label>
+                        <textarea class="col-md-10 mt-2 " name="note" rows="3" cols="50"
+                            formControlName="note"></textarea>
+
+                    </div>
+                    
+
+                    <div class="form-check form-switch padLeft mt-2 mb-2 col-md-11">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Do you need to take a
+                            backup of the server / Network device configuration before the
+                            change?</label>
+
+                        <input style="float: right;" (click)="getCheckboxResponse1()" class="form-check-input "
+                            type="checkbox" id="flexSwitchCheckDefault">
+
+                    </div>
+                    <div *ngIf="backupDate" class="mt-2 padLeft">
+
+                        <div class="mb-2 ">
+                            <label for="">Please mention when the backup will be taken</label>
+                        </div>
+                        <div class="form-floating mb-3 col-md-3">
+
+                            <input type="date" class="form-control" id="backupDate" formControlName="backupDate"
+                                placeholder="backupDate">
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-check form-switch padLeft mt-2 col-md-11">
+
+                        <input style="float: right;" (click)="getCheckboxResponse2()" class="form-check-input"
+                            type="checkbox" id="flexSwitchCheckDefault1">
+                        <label class="form-check-label" for="flexSwitchCheckDefault1">Is there any downtime
+                            involved for end-users ?</label>
+                    </div>
+                    <div *ngIf="notifyEndUser" class="mt-2 padLeft">
+
+                        <div class="mb-2 ">
+                            <label for="">If yes, when will you send a notification to end-users?</label>
+                        </div>
+                        <div class="form-floating mb-3 col-md-3">
+
+                            <input type="date" class="form-control" id="notifyEndUser"
+                                formControlName="notifyEndUser" placeholder="notifyEndUser">
+                        </div>
+
+                    </div>
+                    <div style="float: right;" class="">
+                        <div class="cancelBtn ">
+                            <button type="button" class="btn btn-danger ">Cancel</button>
+                        </div>
+                        <div class="saveBtn ">
+                            <button type="button" class="btn btn-success" style="margin-left: 10px;">Save</button>
+                        </div>
+                        <div class="submitBtn">
+                            <!-- [disabled]="!addTicketFormGroup.valid" -->
+                            <button class="btn btn-primary" style="margin: 10px;"
+                                (click)="makePostTicketPayLoad()">Submit</button>
+                        </div>
+                    </div>
+                    <div>
+                       <br>
+                       <br>
+                       <br>
+                    </div>
+                    
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</form>
+</div>
