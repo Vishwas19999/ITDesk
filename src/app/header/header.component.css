@@ -43,4 +43,26 @@
 .image{
    margin-right: 1000px;
 }
+/* 
+ .icon{
+   font-size: 50px;
+   background-color: yellowgreen;
+}  */
+
+.profile{
+   margin-right:180px;
+    float: right;
+}
+
+.pro{
+    margin-right: 100px;
+     float: right;
+ }
+
+ .prf{
+    margin-right: 25px;
+    font-size: 15px;
+ }
+
+
 

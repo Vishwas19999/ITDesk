@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
+import { CardComponent } from './card/card.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DefaultComponent } from './default/default.component';
+
 import { EmployeeComponent } from './employee/employee.component';
 // import { MsalGuard } from '@azure/msal-angular';
 import { MaslGuard } from './masl.guard';
-import { NewRequestComponent } from './new-request/new-request.component';
+
 
 const routes: Routes = [
-  {path:'',component:EmployeeComponent},
-  {path:'employee',component:EmployeeComponent},
-  {path:'emp',component:EmployeeDetailsComponent, canActivate:[MaslGuard]},
-  // {path:'new_request' , component:NewRequestComponent},
-
+  // {path:'',component:EmployeeComponent},
+  // {path:'',redirectTo: 'DashboardComponent',pathMatch: 'full'},
+  {path:'def', component:DefaultComponent },
+  {path:'employee',component:EmployeeComponent, canActivate:[MaslGuard]},
+ 
+  {path:'card',component:CardComponent}
+ 
   
 ];
 

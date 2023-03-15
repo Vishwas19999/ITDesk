@@ -1,0 +1,402 @@
+{{log}}
+<!-- <div class="container">
+    <div class="col-12">
+        <h2 class="headerText">IT Desk</h2>
+    </div>
+
+    <div class="input-group " style="width: 100%;">
+        <input type="search" id="SearchBar" class="form-control rounded" placeholder="Search" aria-label="Search"
+            aria-describedby="search-addon" />
+        <button type="button" class="btn btn-outline-primary" (click)="searchResults()">search</button>
+    </div>
+
+     <div>
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th scope="col">Ticket ID</th>
+                    <th scope="col">Change Type</th>
+                    <th scope="col">Created by</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col">Device Type</th>
+                    <th scope="col">Created Date</th>
+                    <th scope="col">Approver Name</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Ticket Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Normal</td>
+                    <td>Sagar@jktech.com</td>
+                    <td>High</td>
+                    <td>Hardware</td>
+                    <td>1/30/2023</td>
+                    <td>Kishore.M@jktech.com</td>
+                    <td>CAB Rejected</td>
+                    <td>Closed</td>
+
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Normal</td>
+                    <td>Sagar@jktech.com</td>
+                    <td>High</td>
+                    <td>Software</td>
+                    <td>1/25/2023</td>
+                    <td>Kishore.M@jktech.com</td>
+                    <td>Manager Rejected</td>
+                    <td>Closed</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Urgent</td>
+                    <td>Shivamurthy@jktech.com</td>
+                    <td>Low</td>
+                    <td>Network</td>
+                    <td>2/02/2023</td>
+                    <td>Naveen.Poovaiah@jktech.com</td>
+                    <td>Approved</td>
+                    <td>Open</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div> 
+
+     <div class="card container mt-3 p-3 bg-light" tablecontainer>
+        <div>
+            
+        </div>  Tabular structure 
+        <div style="overflow-x:auto;">
+            <table class="table table-responsive table-hover">
+                <thead>
+                    <tr>                   
+                        <th scope="col">Ticket ID</th>
+                    <th scope="col">Change Type</th>
+                    <th scope="col">Created by</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col">Device Type</th>
+                    <th scope="col">Created Date</th>
+                    <th scope="col">Approver Name</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Ticket Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Normal</td>
+                        <td>Sagar@jktech.com</td>
+                        <td>High</td>
+                        <td>Hardware</td>
+                        <td>1/30/2023</td>
+                        <td>Kishore.M@jktech.com</td>
+                        <td>CAB Rejected</td>
+                        <td>Closed</td>
+    
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Normal</td>
+                        <td>Sagar@jktech.com</td>
+                        <td>High</td>
+                        <td>Software</td>
+                        <td>1/25/2023</td>
+                        <td>Kishore.M@jktech.com</td>
+                        <td>Manager Rejected</td>
+                        <td>Closed</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Urgent</td>
+                        <td>Shivamurthy@jktech.com</td>
+                        <td>Low</td>
+                        <td>Network</td>
+                        <td>2/02/2023</td>
+                        <td>Naveen.Poovaiah@jktech.com</td>
+                        <td>Approved</td>
+                        <td>Open</td>
+                    </tr>
+    
+                </tbody>
+            </table>
+        </div> 
+        
+    </div> 
+    <a routerLink="/add_ticket">Add Ticket</a>
+    <br>
+    <a routerLink="/new_request">New Request</a> <br>
+    <a routerLink="/dashboard">Dashboard</a>
+
+</div>-->
+
+
+
+<div *ngIf="log" class="container">
+    <!-- navbar -->
+    <!-- <nav class="navbar mb-2">
+        <div class="container-fluid justify-content-center">
+            <h3>IT Desk</h3>
+        </div>
+    </nav> -->
+    <!-- sidenavn -->
+
+    
+
+
+    <!-- search and filter -->
+
+    <div class="Searchbuttons mt-2">
+        <div class="row justify-content-end col-sm-12">
+            <div class="col-md-5"></div>
+            <div class="col-md-5">
+                <input class="search-form form-control" type="text" name="search" autocomplete="off"
+                    placeholder="Search Tickets" [(ngModel)]="searchValue">
+            </div>
+            <div class="col-md-1">
+                <button type="button" class="filter btn btn-lg " data-bs-toggle="modal" 
+                    data-bs-target="#ModalFilterForm">
+                    <i class="fa fa-filter" aria-hidden="true" data-bs-toggle="tooltip" title="Filter Courses"
+                        data-bs-placement="bottom"></i>
+                </button>
+            </div>
+            <button type="button" class="add-course btn btn-lg " routerLink="new_request">
+                <i class="fa fa-plus" aria-hidden="true" data-bs-toggle="tooltip" title="Add New Course"
+                  data-bs-placement="right"></i>
+              </button>
+        
+        </div>
+
+    </div>
+
+    <!-- filter modal -->
+
+    <!-- <div id="ModalFilterForm1" class="modal right fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input type="hidden" name="_token" value="">
+                        <div class="form-group">
+                            <div class="form-floating mb-1">
+                                <input type="text" class="form-control rounded-3" name="coursecode" id="courseCode"
+                                    value="">
+                                <label for="courseCode">Course Code</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-floating mb-1">
+                                <input type="text" class="form-control rounded-3" name="coursename" id="courseName"
+                                    value="">
+                                <label for="courseName">Name</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-floating mb-1">
+                                <input type="text" class="form-control rounded-3" name="desc" id="desc" value="">
+                                <label for="desc">Description</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-floating mb-1">
+                                <select class="form-select rounded-3" name="Mode" id="Mode">
+                                    <option value="default">...</option>
+                                    <option value="Online"> Online </option>
+                                    <option value="Face-To-Face">Face-To-Face</option>
+                                </select>
+                                <label for="Mode">Mode</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-floating mb-1">
+                                <select class="form-select rounded-3" name="Type" id="type">
+                                    <option value="default">...</option>
+                                    <option value="Audio">Audio</option>
+                                    <option value="Video">Video</option>
+                                    <option value="Video">Book</option>
+                                </select>
+                                <label for="type"> Type </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-floating mb-1">
+                                <input type="text" class="form-control rounded-3" name="session" id="session" value="">
+                                <label for="session">Sessions</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <div>
+                                <button type="reset" class="search btn btn-success btn-space" data-bs-dismiss="modal"
+                                    id="search">
+                                    Search
+                                </button>
+                                <button type="reset" class="cancel btn btn-secondary btn-space" data-bs-dismiss="modal">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+    <div id="ModalFilterForm" class="modal right fade col-sm-12" tabindex="-1">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Filter Tickets</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="searchFormGroup">
+                        <div class="form-group">
+                            <div class="form-floating mb-4">
+                                <select class="form-select rounded-3" formControlName="changeType" name="Mode"
+                                    id="Mode">
+                                    <option *ngFor="let type of typeList" value = {{type.listdtlcode}}>{{type.listdtlcode}}</option>
+                                </select>
+                                <label for="Mode">Change Type</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-floating mb-4">
+                                <select class="form-select rounded-3" formControlName="priority" name="Priority"
+                                    id="Priority">
+                                    <option  *ngFor="let priority of priorityList" value="{{priority.listdtlcode}}" >{{priority.listdtlcode}}</option>
+                                </select>
+                                <label for="Priority">Priority</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-floating mb-4">
+                                <select class="form-select rounded-3" formControlName="status" name="Status"
+                                    id="Status">
+                                    <option value="default">...</option>
+                                    <option value="new request"> new request </option>
+                                    <option value="draft">draft</option>
+                                </select>
+                                <label for="Status">Status</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-floating mb-4">
+                                <select class="form-select rounded-3" formControlName="deviceType" name="Device"
+                                    id="Device">
+                                    <option *ngFor="let DeviceType of deviceTypeList" value="{{DeviceType.listdtlcode}}">{{DeviceType.listdtlcode}}</option>
+                                </select>
+                                <label for="Device">Device Type</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Clear</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- cards -->
+
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+        <div class="col" *ngFor="let ticket of tickets | filter:searchValue">
+            <div>
+                {{enableDisbaleEdit(ticket.createdby,ticket.reqstatus)}}
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h5>
+                        <strong routerLink="edit_request" (click)="viewTicket(ticket.requestid)"> {{ticket.requestid}} </strong>
+                    </h5>
+            
+                    <div class="dropdown">
+                        <button class="more btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" >
+                            <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                        </button>
+                        <ul *ngIf="edit" class="dropdown-menu"
+                            style="padding: 2px 3px; min-width: 1px !important; float: inline-start">
+                            <li class="button">
+                                <button  class="btn dropdown-item dropbutton" (click)="sendTicketIdToService(ticket.requestid)" routerLink="edit_request">
+                                    <i class="fa fa-edit" aria-hidden="true" data-bs-toggle="tooltip" title="Edit"
+                                        data-bs-placement="bottom" ></i>
+                                </button>
+                            </li>
+
+                            <li class="button">
+                                <button class="btn dropdown-item dropbutton">
+                                    <i class="fa fa-trash-o" aria-hidden="true" data-bs-toggle="tooltip" title="Delete"
+                                        data-bs-placement="bottom"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <!-- <p class="card-text "> <strong>ChangeType: </strong> {{ticket.ChangeType}} </p> -->
+                    <div class="row">
+                        <strong class="col-md-5" for="">ChangeType:</strong> <span
+                            class="col-md-7">{{ticket.type}}</span>
+                    </div>
+                    <div class="row">
+                        <strong class="col-md-5" for="">CreatedBy:</strong> <span
+                            class="col-md-7">{{ticket.createdby}}</span>
+                    </div>
+                    <div class="row">
+                        <strong class="col-md-5" for="">Priority:</strong> <span
+                            class="col-md-7">{{ticket.priority}}</span>
+                    </div>
+                    <div class="row">
+                        <strong class="col-md-5" for="">DeviceType:</strong> <span
+                            class="col-md-7">{{ticket.devicetype}}</span>
+                    </div>
+                    <div class="row">
+                        <strong class="col-md-5" for="">CreatedDate:</strong> <span
+                            class="col-md-7">{{ticket.createddate}}</span>
+                    </div>
+                    <div class="row">
+                        <strong class="col-md-5" for="">ApproverName:</strong> <span
+                            class="col-md-7">{{ticket.approveremail}}</span>
+                    </div>
+                    <div class="row">
+                        <strong class="col-md-5" for="">Status:</strong> <span class="col-md-7">{{ticket.reqstatus}}</span>
+                    </div>
+                    <div class="row">
+                        <strong class="col-md-5" for="">TicketStatus:</strong> <span
+                            class="col-md-7">{{ticket.status}}</span>
+                    </div>
+
+                    <!-- <p class="card-text"> <strong>CreatedBy: </strong> {{ticket.CreatedBy}} </p>
+          <p class="card-text"> <strong>Priority: </strong> {{ticket.Priority}} </p>
+          <p class="card-text"> <strong>DeviceType: </strong5 {{ticket.DeviceType}} </p>
+          <p class="card-text"> <strong>CreatedDate: </strong> {{ticket.CreatedDate}} </p>
+          <p class="card-text"> <strong>ApproverName: </strong> {{ticket.ApproverName}} </p>
+          <p class="card-text"> <strong>Status: </strong> {{ticket.Status}} </p>
+          <p class="card-text"> <strong>TicketStatus: </strong> {{ticket.TicketStatus}} </p> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a routerLink="/add_ticket">Add Ticket</a>
+    <br>
+    <a routerLink="/new_request">New Request</a> <br>
+    <a routerLink="/dashboard">courses</a>
+
+</div>

@@ -22,8 +22,11 @@
               <div class="container-fluid">
                 
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" >
-                  <span class="navbar-toggler-icon"></span>
+                  <span class="navbar-toggler-icon" *ngIf="showMe"></span>
                 </button>
+
+
+              
 
                   <div class="image">
                     <img src="assets/image/image002.png" style="width: auto; height: 60px;"> 
@@ -35,15 +38,45 @@
                   
                   
 
-                  <div >
-                    <button class="btn btn-primary" (click)="login()" *ngIf="!isLoggedIn()">login</button>
-                    <button class="btn btn-primary" (click)="logout()" *ngIf="isLoggedIn()">logout</button>
+                  <div class="icon">
+                    <button class="btn btn-lg" (click)="login()" *ngIf="!isLoggedIn()" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-box-arrow-in-right"></i></button>
+                  
+                    <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                      *ngIf="isLoggedIn()">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                      </button>
+                      <ul class="dropdown-menu pull-right" style="right: 0; left: auto;">
+                        <!-- <li class="prf"><img src="assets/image/prfile pic.jpg" ></li> -->
+                        <li class="profile"><a class="dropdown-item" href="#"></a>Name:{{profile.name}}</li>
+                        <li class="pro"><a class="dropdown-item" href="#"></a>Email:{{profile.username}}</li>
+                        <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+                          <button class="btn btn-lg" (click)="logout()" (click)="toggleTag()"><i class="bi bi-box-arrow-left"></i></button>  
+                      </ul>
+                    </div>
+                    <!-- <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul> -->
+                    <!-- <button class="btn btn-lg" (click)="logout()" (click)="toggleTag()"><i class="bi bi-box-arrow-left"></i></button>  -->
+
+                    <!-- <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown button
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      </ul>
+                    </div> -->
                   </div>
                  
                  
                   <div class="offcanvas offcanvas-start shadow" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" aria-label="Close">
                     <div class="offcanvas-body">
-                          <ul class="navbar-nav">
+                          <ul class="navbar-nav"  data-bs-dismiss="container-fluid">
                               <li><a href="#"><i class="bi bi-calendar3"></i> <span class="item-text">Dashboard</span></a></li>
                               
                               <li><a routerLink="employee"><i class="bi bi-people"></i> <span class="item-text">Employee details</span></a></li>

@@ -3,12 +3,12 @@
     <div class="searchany">
         <input class="form-control" type="text" name="firstname" placeholder="search " [(ngModel)]="searchText">
 
-     <button type="button" class="right" data-bs-toggle="modal" data-bs-target="#exampleModal" > 
+     <button type="button" class="right btn btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" > 
        <i class="fa fa-plus " aria-hidden="true"  ></i>
      </button> 
 
      <button type="button"
-     class="filter"
+     class="filter btn btn-lg"
      title="Filter"
      data-bs-toggle="modal" data-bs-target="#ModalFilterForm"><i class="fa fa-filter" aria-hidden="true"></i>          
      </button>
@@ -63,9 +63,11 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+
             <form class="row g-3" [formGroup]="addEmployee" #employee="ngForm" (ngSubmit)="callAPI(employee)" >
+
                 <div class="col-md-6">
-                  <label for="inputEmail4" class="form-label">Email ID</label>
+                  <label for="inputEmail" class="form-label">Email ID</label>
                   <input type="email" class="form-control" id="inputEmail4" formControlName="empemailid">
                 </div>
                 <div class="col-md-6">
@@ -76,20 +78,21 @@
                   <label for="inputname" class="form-label">Employee Name</label>
                   <input type="empname" class="form-control" id="full name" formControlName="empname">
                 </div>
-                 <!-- <div class="col-md-6">
-                  <label for="inputAddress2" class="form-label">Level</label>
+
+                 <div class="col-md-6">
+                  <label for="inputlevel" class="form-label">Level</label>
                  
-                  <select id="level" class="form-select">
+                  <select id="emplevel" class="form-select" (ngModelChange)="getdata($event)"  formControlName="emplevel">
                     <option selected>Choose...</option>
-                    <option>Consultant</option>
-                    <option>Network team</option>
+                    <option *ngFor="let employee of emplevel" value="{{employee.listdtlcode}}">{{employee.listdtlcode}}</option>
                   </select>
-                </div>  -->
+                </div> 
+
                 <div class="col-md-6">
                   <label for="inputDevice" class="form-label">Device</label>
-                  <select  id="deviceId"  class="form-select" formControlName="device">
+                  <select  id="deviceId"  class="form-select" formControlName="device" (ngModelChange)="getidbydevice($event)" >
                     <option selected>Choose...</option>
-                    <option *ngFor="let employee of typeList" >{{employee.listdtlcode}}</option>
+                    <option *ngFor="let employee of typeList" value="{{employee.listdtlcode}}">{{employee.listdtlcode}}</option>
                   </select>
                 </div> 
                  <!-- <div class="col-md-6">
@@ -101,8 +104,13 @@
                 </div>  -->
                 <div class="col-md-6">
                   <label for="inputZip" class="form-label">MgrEmpID</label>
-                  <input type="mgrempid" class="form-control" id="inputZip" formControlName="mgrempid">
+                  <!-- <input type="mgrempid" class="form-control" id="inputZip" formControlName="mgrempid"> -->
+                  <select  id="deviceId"  class="form-select" formControlName="mgrempid" (ngModelChange)="getnamebyid($event)">
+                    <option selected>Choose...</option>
+                    <option *ngFor="let employee of mid" value="{{employee.empid}}">{{employee.empid}}</option>
+                  </select>
                 </div>
+
                 <div class="col-md-6">
                     <label for="inputZip" class="form-label">Manager Full Name</label>
                     <input type="mgrname" class="form-control" id="inputZip" formControlName="mgrname">
@@ -111,7 +119,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="callAPI(employee)">Submit </button>
+          <button type="button" class="btn btn-primary" (click)="callAPI(employee)" [disabled]="!employee.valid">Submit </button>
         </div>
       </div>
     </div>
@@ -140,16 +148,16 @@
                   <label for="inputname" class="form-label">Employee Name</label>
                   <input type="empname" class="form-control" id="full name" formControlName="empname">
                 </div>
-                <!-- <div class="col-6">
-                  <label for="inputAddress2" class="form-label">Level</label>
-                 
-                  <select id="level" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>Consultant</option>
-                    <option>Network team</option>
-                  </select>
-                </div>
                 <div class="col-md-6">
+                    <label for="inputlevel" class="form-label">Level</label>
+                   
+                    <select id="level" class="form-select" formControlName="emplevel" >
+                      <option selected>Choose...</option>
+                      <option *ngFor="let employee of emplevel">{{employee.listdtlcode}}</option>
+                      
+                    </select>
+                  </div> 
+                <!-- <div class="col-md-6">
                   <label for="inputCity" class="form-label">Device</label>
                   <select id="device" class="form-select">
                     <option selected>Choose...</option>
@@ -164,7 +172,7 @@
                     <option selected>Choose...</option>
                     <option>...</option>
                   </select>
-                </div>  -->
+                </div>   -->
 
                 <div class="col-md-6">
                   <label for="inputZip" class="form-label">MgrEmpID</label>
@@ -225,7 +233,7 @@
         </div>
         <div class="modal-body">
             <form class="row g-3" [formGroup]="filterRecords" #emp="ngForm">
-                <div class="col-md-6">
+                  <div class="col-md-6">
                     <label for="inputPassword4" class="form-label">Emp ID</label>
                     <input type="empid" class="form-control" id="inputPassword4" formControlName="empid">
                   </div>
@@ -236,16 +244,15 @@
                   </div>
 
 
-                  <!-- <div class="col-md-6">
-                    <label for="inputAddress2" class="form-label">Level</label>
-  
-                    <input type="emplevel" class="form-control" id="level" formControlName="emplevel">                
-                    <select id="level" class="form-select">
+                  <div class="col-md-6">
+                    <label for="inputlevel" class="form-label">Level</label>
+                   
+                    <select id="level" class="form-select"  formControlName="emplevel">
                       <option selected>Choose...</option>
-                      <option>Consultant</option>
-                      <option>Network team</option>
+                      <option *ngFor="let employee of emplevel">{{employee.listdtlcode}}</option>
+                      
                     </select>
-                  </div>  -->
+                  </div>
 
                   <div class="col-md-6">
                     <label for="inputZip" class="form-label">Manager Full Name</label>

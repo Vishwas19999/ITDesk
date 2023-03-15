@@ -13,7 +13,16 @@ import { AccountInfo } from '@azure/msal-browser';
 })
 export class HeaderComponent implements OnInit {
   
-  
+  showMe:boolean=true;
+
+profile:any="";
+
+
+
+  toggleTag(){
+    this.showMe = !this.showMe;
+  }
+
 constructor(private msalService:MsalService) {
     msal = this.msalService;
    }
@@ -23,11 +32,16 @@ constructor(private msalService:MsalService) {
     this.msalService.instance.handleRedirectPromise().then(
       async res=>{
         if(res != null && res.account != null){
+          
           this.msalService.instance.setActiveAccount(res.account)
+          console.log(res.account.username);
+          console.log(res.account.name);
+          
           // userIdToken = await getToken(['User.Read'])
         }
       }
-  )}
+  )
+}
   // toggleSidebar(){
   //   this.opened = !this.opened;
   // }
@@ -42,12 +56,29 @@ constructor(private msalService:MsalService) {
   })
 }
 
+
   isLoggedIn():boolean{
+    this.profile=this.msalService.instance.getActiveAccount()
     return this.msalService.instance.getActiveAccount()!=null 
   }
 
   login(){
   this.msalService.loginRedirect()
+  
+  this.msalService.instance.handleRedirectPromise().then(
+    async res=>{
+      if(res != null && res.account != null){
+        this.msalService.instance.setActiveAccount(res.account)
+
+        // console.log(res.account.username);
+        // console.log(res.account.name);
+        
+        // userIdToken = await getToken(['User.Read'])
+      }
+    }
+)
+  console.log(this.msalService);
+  
 
 
     // this.msalService.instance.loginPopup().then((response:any)=>{
@@ -67,7 +98,7 @@ constructor(private msalService:MsalService) {
     // this.msalService.logout();
     // console.log('inside logout2')
     this.msalService.logoutRedirect({
-      postLogoutRedirectUri: 'http://localhost:4200/'
+      postLogoutRedirectUri: 'http://localhost:4200/def'
     });
   }
     

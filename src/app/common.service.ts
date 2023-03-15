@@ -21,6 +21,10 @@ getEmployee(){
 }
 
 
+// getidbydevice(data:any){
+//   this.http.post<any>('http://localhost:3000/EmpManager/getidbydevice' ,data)
+// }
+
 addEmployee(data:any){
   const acc = msal.instance.getAllAccounts()[0]
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
@@ -57,4 +61,25 @@ filterEmployee(empfilter:any){
   // return this.http.post('http://localhost:3000/EmpManager/empfilter',empfilter)
 }
 
+
+
+addLocation(data:any){
+  return this.http.post('http://localhost:3000/LocationManager/add',data)
 }
+
+filterLocation(data:any){
+  return this.http.post('http://localhost:3000/LocationManager/locationfilter',data)
+}
+
+deleteLocation(locid:any){
+return this.http.post('http://localhost:3000/LocationManager/deletelocationbyId',locid)
+}
+
+editLocation(edit:any){
+return this.http.post('http://localhost:3000/LocationManager/updatelocation',edit)
+}
+
+}
+
+
+

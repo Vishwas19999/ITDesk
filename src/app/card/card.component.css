@@ -1,0 +1,83 @@
+.navbar-form {
+    display: flex;
+    margin-top: 0.625rem;
+    margin-left: 70%;
+  }
+  
+  .btn.btn-primary {
+    margin-left: 0.625rem;
+  }
+  
+  .form-control {
+    width: 100%;
+  }
+  
+  .row.abc {
+    margin-top: 0.625rem;
+  }
+  
+  .card {
+    margin: 0.625rem;
+    background-color: lavender;
+    font-weight: bold;
+    width: 30%;
+    box-shadow: 0 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+  }
+  
+  .cardno {
+    display: flex;
+    background-color: lightblue;
+    text-align: center;
+    height: 2.5rem;
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+  }
+  
+  .buttonIcon {
+    border-radius: 0.3125rem;
+    border-color: black;
+  }
+  
+  .country {
+    margin-left: 8.9375rem;
+    margin-top: 0.3125rem;
+  }
+  
+  ticket {
+    margin-top: 0.625rem;
+  }
+  
+  /* .cardButton {
+      margin-top: 0.3125rem;
+      margin-left: 7.125rem;
+      
+  } */
+  
+  .dropdown {
+    margin-top: 1px;
+    margin-left: 93px;
+  }
+  
+  .container.abc {
+    display: inline;
+    line-height: 0.625rem;
+    margin-top: 0.625rem;
+  }
+  
+  .card:hover {
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  @media only screen and (max-width: 800px) {
+    .card {
+      width: 90%;
+      height: 90%;
+    }
+  
+    .container.abc {
+      width: 90%;
+      height: 90%;
+    }
+  
+  }
