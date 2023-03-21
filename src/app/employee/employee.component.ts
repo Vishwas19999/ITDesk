@@ -226,7 +226,7 @@ filterRecords = this.fb.group({
 
     clearform() {
       this.addEmployee.reset();
-      }
+    }
   // reset(){
   //   this.empid = " ";
   //   this.empname = "";

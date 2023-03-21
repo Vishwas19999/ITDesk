@@ -1,21 +1,29 @@
 <div class="container">
     <!-- <div class="row"> -->
-    <form class="navbar-form navbar-left">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search" name="something"  [(ngModel)]="rapid"  />
-        </div>
-        <div class="form-group">
-            <!-- <button class="btn btn-primary"> <i class="bi bi-funnel"  data-bs-toggle="modal" data-bs-target="#ModalFilterForm"></i>  </button> -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <i class="bi bi-funnel"></i>
-            </button>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#PlusButton">
-                <i class="bi bi-plus"></i>
-            </button>
-        </div>
-    </form>
+    <!-- <form class="navbar-form navbar-left">
+       
+    </form> -->
+ <div class="searchany">
+    <!-- <div class="form-group"> -->
+        <input type="text" class="search form-control " placeholder="Search" name="something"  [(ngModel)]="rapid">
     <!-- </div> -->
-    <br />
+   
+    <!-- <div class="searcha"> -->
+        <!-- <button class="btn btn-primary"> <i class="bi bi-funnel"  data-bs-toggle="modal" data-bs-target="#ModalFilterForm"></i>  </button> -->
+        
+    <!-- </div> -->
+
+    <button type="button" class="btn btn-primary btn1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i class="bi bi-funnel"></i>
+    </button>
+    <button type="button" class="btn btn-primary btn2" data-bs-toggle="modal" data-bs-target="#PlusButton">
+        <i class="bi bi-plus"></i>
+    </button>
+</div>
+
+<br>
+<br>
+<br>
 
     <div class="row">
         <div *ngFor="let x of locationList | filter: rapid" class="col-md-4 card ">
@@ -30,6 +38,7 @@
                             aria-expanded="false">
                             <i class="bi bi-three-dots"></i>
                         </button>
+                        
                         <ul class="dropdown-menu" style="padding: 2px 3px; min-width: 1px !important; float: inline-start;">
                             <li>
                                 <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editButton" (click)="setloc(x)"><i class="bi bi-pen"></i></a>
@@ -118,24 +127,28 @@
                     <form [formGroup]="filterLocation" #flocation="ngForm" > 
                     <div class="form-floating mb-4">
                         <select class="form-select rounded-3"  id="Mode" formControlName="country">
-                            <option selected>Choose...</option>
+                            <!-- <option selected>Choose...</option> -->
+                            <option hidden [value] = ""></option>
                             <option *ngFor="let x of locationList">{{ x.country }}</option>
                         </select>
                         <!-- <label for="Mode">Country</label> -->
                         <label for="inputcountry" class="form-label">Country</label>
                     </div>
 
-                    <div class="form-floating mb-4">
+                    <!-- <div class="form-floating mb-4">
                         <select class="form-select rounded-3"  id="Mode" formControlName="locationid">
-                            <option selected>Choose...</option>
+                           
+                            
+                            <option hidden [value] = ""></option>
                             <option *ngFor="let x of locationList">{{ x.locationid }}</option>
                         </select>
-                        <!-- <label for="Mode">LocationId</label> -->
+                        
                         <label for="inputLocationid" class="form-label">locationid</label>
-                    </div>
+                    </div> -->
                     <div class="form-floating mb-4">
                         <select class="form-select rounded-3"  id="mode" formControlName="state">
-                            <option selected>Choose...</option>
+                            <!-- <option selected>Choose...</option> -->
+                            <option hidden [value] = ""></option>
                             <option *ngFor="let x of locationList">{{ x.state }}</option>
                         </select>
                         <!-- <label for="mode">State</label> -->
@@ -143,7 +156,8 @@
                     </div>
                     <div class="form-floating mb-4">
                         <select class="form-select rounded-3"  id="mode" formControlName="locname">
-                            <option selected>Choose...</option>
+                            <!-- <option selected>Choose...</option> -->
+                            <option hidden [value] = ""></option>
                             <option *ngFor="let x of locationList">{{ x.locname }}</option>
                         </select>
                         <!-- <label for="mode">LocationName</label> -->
@@ -151,7 +165,8 @@
                     </div>
                     <div class="form-floating mb-4">
                         <select class="form-select rounded-3"  id="mode" formControlName="zipcode">
-                            <option selected>Choose...</option>
+                            <!-- <option selected>Choose...</option> -->
+                            <option hidden [value] = ""></option>
                             <option *ngFor="let x of locationList">{{ x.zipcode }}</option>
                         </select>
                         <!-- <label for="mode">Zipcode</label> -->
@@ -261,7 +276,5 @@
             </div>
         </div>
     </div>
-
-
-
 </div>
+

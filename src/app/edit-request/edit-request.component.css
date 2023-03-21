@@ -1,0 +1,38 @@
+.hrText {
+    text-align: center;
+}
+.hdr {
+    background-color: lightblue;
+    /* background-color: darkgrey; */
+    
+}
+/* form {
+    border: none !important;
+} */
+.adjust{
+    height: 5%;
+}
+.padLeft {
+    padding-left: 0% !important;
+    margin-left: 4%;
+}
+.cancelBtn , .saveBtn, .submitBtn {
+display: inline;
+}
+.accordion-body {
+    background-color: aliceblue;
+      
+}
+/* .hdr , .home {
+    display: inline;
+}
+.home {
+    float: right;
+} */
+.inline1, .inline2 {
+    display: inline;
+}
+#managerApprove {
+    /* width: 50%; */
+    margin-left: 2%;
+}

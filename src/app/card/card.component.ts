@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../common.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders} from '@angular/common/http';
+import {userIdToken} from '../../app/header/header.component';
 import { FormGroup, FormControl ,FormBuilder} from '@angular/forms';
 
 
@@ -11,6 +12,8 @@ import { FormGroup, FormControl ,FormBuilder} from '@angular/forms';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
+
+  headers = new HttpHeaders({'Authorization':`Bearer ${userIdToken}`});
 
  rapid:any;
  locationList : any ;
@@ -81,18 +84,30 @@ ngOnInit(): void {
  
  
 addLoc(data:any){
-  this.common.addLocation(data.value).subscribe((res)=>{
-    console.log(res);
+  this.common.addLocation(data.value).then((add)=>{
+    add.subscribe((res)=>{
+      console.log(res);
+    })
   })
+  // subscribe((res)=>{
+  //   console.log(res);
+  // })
 }
 
 filterloc(flocation:any){
   console.log(flocation.value);
-  this.common.filterLocation(flocation.value).subscribe((data)=>{
-    this.locationList = data;
+  this.common.filterLocation(flocation.value).then((filter)=>{
+    filter.subscribe((data)=>{
+      this.locationList = data;
     this.locationList = this.locationList.result; 
     console.log(data);
+    })
   })
+  // subscribe((data)=>{
+  //   this.locationList = data;
+  //   this.locationList = this.locationList.result; 
+  //   console.log(data);
+  // })
 }
 
 locationid:any;
@@ -113,11 +128,15 @@ deleteLoc(){
 
 edit(editform:any){
   console.log(editform.value);
-   this.common.editLocation(editform.value).subscribe((val)=>
-  {
-    console.log(val);
-  }
-  )}
+   this.common.editLocation(editform.value).then((edit)=>{
+    edit.subscribe((val)=>{
+      console.log(val);
+    })
+   })
+  //  subscribe((val)=>{
+  //   console.log(val);
+  // })
+}
 
 setloc(data:any){
    debugger; 
@@ -141,10 +160,6 @@ setloc(data:any){
          console.log( this.locationList);
        } );
        }
-
- 
-
-
 }
 
 

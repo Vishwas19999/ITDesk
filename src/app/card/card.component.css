@@ -1,16 +1,47 @@
-.navbar-form {
+/* .navbar-form {
     display: flex;
     margin-top: 0.625rem;
     margin-left: 70%;
   }
-  
+   */
+
+/* .searchany{
+    width: 200px;
+    margin-left:700px;
+    margin-top: 20px;
+} */
+
+.search{
+    width:21%;
+    position: absolute;
+    right: 300px;
+    top: 100px;
+    margin-right: 0;
+}
+
+.btn1{
+    background-color: #789aff;
+    position: absolute;
+    right: 240px;
+    top: 100px;
+    margin-right: 0;
+}
+
+.btn2{
+    background-color: #789aff;
+    position: absolute;
+    right: 186px;
+    top: 100px;
+    margin-right: 0
+  }
+
   .btn.btn-primary {
     margin-left: 0.625rem;
   }
   
-  .form-control {
-    width: 100%;
-  }
+  /* .form-control {
+    width: 21%;
+  } */
   
   .row.abc {
     margin-top: 0.625rem;

@@ -21,6 +21,9 @@ import { InteractionType, IPublicClientApplication, PublicClientApplication } fr
 import { DefaultComponent } from './default/default.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CardComponent } from './card/card.component';
+import { NewRequestComponent } from './new-request/new-request.component';
+import { EditRequestComponent } from './edit-request/edit-request.component';
+import { EmailComponent } from './email/email.component';
 
 
 // Import the Azure AD B2C configuration 
@@ -29,9 +32,9 @@ import { CardComponent } from './card/card.component';
 export function MSALInstanceFactory():IPublicClientApplication{
   return new PublicClientApplication({
     auth:{
-      clientId:'d76f4c48-fcf4-4182-ba25-6b92e5ba3e7f',
+      clientId:' 2e27ce62-b349-437c-8835-b9918948ba36',
       authority: "https://login.microsoftonline.com/a7bae7fa-0df1-4562-a554-16a95f54c8ce",
-      redirectUri:'http://localhost:4200/'
+      redirectUri:'http://localhost:4200/dashboard'
     }
   })
 }
@@ -45,6 +48,9 @@ export function MSALInstanceFactory():IPublicClientApplication{
     DefaultComponent,
     DashboardComponent,
     CardComponent,
+    NewRequestComponent,
+    EditRequestComponent,
+    EmailComponent,
    
  
   ],

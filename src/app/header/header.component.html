@@ -48,10 +48,19 @@
                       </button>
                       <ul class="dropdown-menu pull-right" style="right: 0; left: auto;">
                         <!-- <li class="prf"><img src="assets/image/prfile pic.jpg" ></li> -->
-                        <li class="profile"><a class="dropdown-item" href="#"></a>Name:{{profile.name}}</li>
-                        <li class="pro"><a class="dropdown-item" href="#"></a>Email:{{profile.username}}</li>
-                        <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-                          <button class="btn btn-lg" (click)="logout()" (click)="toggleTag()"><i class="bi bi-box-arrow-left"></i></button>  
+                        
+                      <p id="div1" style="margin-left: 10px">JK Technosoft Ltd</p>
+                      <button class="btn btn-lg" id="div2"  (click)="logout()" routerLink="/def"><i class="bi bi-box-arrow-left"></i></button>  
+                  <div class="container">
+                      <div calss="left">
+                        <img class="icon" src="assets/image/login icon.jpg">
+                      </div>
+                      <div class="right">
+                        <label class="pro" style="font-size:18px ; font-weight:bold"><a class="dropdown-item" href="#"></a>{{profile.username}}</label>
+                        <label class="profile"><a class="dropdown-item" href="#"></a>{{profile.name}}</label>
+                        
+                      </div>
+                  </div>
                       </ul>
                     </div>
                     <!-- <ul class="dropdown-menu">
@@ -77,10 +86,9 @@
                   <div class="offcanvas offcanvas-start shadow" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" aria-label="Close">
                     <div class="offcanvas-body">
                           <ul class="navbar-nav"  data-bs-dismiss="container-fluid">
-                              <li><a href="#"><i class="bi bi-calendar3"></i> <span class="item-text">Dashboard</span></a></li>
-                              
+                              <li><a routerLink="dashboard"><i class="bi bi-calendar3"></i> <span class="item-text">Dashboard</span></a></li>
                               <li><a routerLink="employee"><i class="bi bi-people"></i> <span class="item-text">Employee details</span></a></li>
-                              <li><a  routerLink="emp"><i class="bi bi-book"></i> <span class="item-text" >Employee</span></a></li>
+                              <li><a  routerLink="card"><i class="bi bi-book"></i> <span class="item-text" >Location</span></a></li>
                           </ul>
                     </div>
                   </div>

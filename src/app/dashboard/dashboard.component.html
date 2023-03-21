@@ -1,20 +1,16 @@
-{{log}}
 <!-- <div class="container">
     <div class="col-12">
         <h2 class="headerText">IT Desk</h2>
     </div>
-
     <div class="input-group " style="width: 100%;">
         <input type="search" id="SearchBar" class="form-control rounded" placeholder="Search" aria-label="Search"
             aria-describedby="search-addon" />
         <button type="button" class="btn btn-outline-primary" (click)="searchResults()">search</button>
     </div>
-
      <div>
         <table class="table">
             <thead>
                 <tr>
-
                     <th scope="col">Ticket ID</th>
                     <th scope="col">Change Type</th>
                     <th scope="col">Created by</th>
@@ -37,7 +33,6 @@
                     <td>Kishore.M@jktech.com</td>
                     <td>CAB Rejected</td>
                     <td>Closed</td>
-
                 </tr>
                 <tr>
                     <td>2</td>
@@ -61,11 +56,9 @@
                     <td>Approved</td>
                     <td>Open</td>
                 </tr>
-
             </tbody>
         </table>
     </div> 
-
      <div class="card container mt-3 p-3 bg-light" tablecontainer>
         <div>
             
@@ -130,12 +123,11 @@
     <br>
     <a routerLink="/new_request">New Request</a> <br>
     <a routerLink="/dashboard">Dashboard</a>
-
 </div>-->
 
 
 
-<div *ngIf="log" class="container">
+<div  class="container">
     <!-- navbar -->
     <!-- <nav class="navbar mb-2">
         <div class="container-fluid justify-content-center">
@@ -157,13 +149,13 @@
                     placeholder="Search Tickets" [(ngModel)]="searchValue">
             </div>
             <div class="col-md-1">
-                <button type="button" class="filter btn btn-lg " data-bs-toggle="modal" 
+                <button type="button" class="filter btn btn-lg " data-bs-toggle="modal" (click)="setFilteredValues()"
                     data-bs-target="#ModalFilterForm">
                     <i class="fa fa-filter" aria-hidden="true" data-bs-toggle="tooltip" title="Filter Courses"
                         data-bs-placement="bottom"></i>
                 </button>
             </div>
-            <button type="button" class="add-course btn btn-lg " routerLink="new_request">
+            <button type="button" class="add-course btn btn-lg " routerLink="/new_request">
                 <i class="fa fa-plus" aria-hidden="true" data-bs-toggle="tooltip" title="Add New Course"
                   data-bs-placement="right"></i>
               </button>
@@ -213,7 +205,6 @@
                                 <label for="Mode">Mode</label>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <div class="form-floating mb-1">
                                 <select class="form-select rounded-3" name="Type" id="type">
@@ -244,7 +235,6 @@
                             </div>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
@@ -282,9 +272,13 @@
                             <div class="form-floating mb-4">
                                 <select class="form-select rounded-3" formControlName="status" name="Status"
                                     id="Status">
-                                    <option value="default">...</option>
-                                    <option value="new request"> new request </option>
-                                    <option value="draft">draft</option>
+                                   
+                                    <option value="new request"> New Request </option>
+                                    <option value="draft">Draft</option>
+                                    <option value="draft">Manager Approved</option>
+                                    <option value="draft">Manager Rejected</option>
+                                    <option value="draft">CAB Approved</option>
+                                    <option value="draft">CAB Rejected</option>
                                 </select>
                                 <label for="Status">Status</label>
                             </div>
@@ -301,8 +295,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Clear</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Search</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="clearForm()">Clear</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="filterRecords()">Search</button>
                 </div>
             </div>
         </div>
@@ -315,14 +309,14 @@
     <div class="row row-cols-1 row-cols-md-3 g-3">
         <div class="col" *ngFor="let ticket of tickets | filter:searchValue">
             <div>
-                {{enableDisbaleEdit(ticket.createdby,ticket.reqstatus)}}
+                {{enableDisbaleEdit(ticket.createdby,ticket.reqstatus,ticket.approveremail ,ticket.status )}}
             </div>
             <div class="card">
                 <div class="card-header">
                     <h5>
-                        <strong routerLink="edit_request" (click)="viewTicket(ticket.requestid)"> {{ticket.requestid}} </strong>
+                        <strong  >CMR-{{ticket.requestid}} </strong>
                     </h5>
-            
+                    
                     <div class="dropdown">
                         <button class="more btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false" >
@@ -331,7 +325,7 @@
                         <ul *ngIf="edit" class="dropdown-menu"
                             style="padding: 2px 3px; min-width: 1px !important; float: inline-start">
                             <li class="button">
-                                <button  class="btn dropdown-item dropbutton" (click)="sendTicketIdToService(ticket.requestid)" routerLink="edit_request">
+                                <button  class="btn dropdown-item dropbutton" (click)="sendTicketIdToService(ticket.requestid)" routerLink="/edit_request">
                                     <i class="fa fa-edit" aria-hidden="true" data-bs-toggle="tooltip" title="Edit"
                                         data-bs-placement="bottom" ></i>
                                 </button>
@@ -350,11 +344,11 @@
                 <div class="card-body">
                     <!-- <p class="card-text "> <strong>ChangeType: </strong> {{ticket.ChangeType}} </p> -->
                     <div class="row">
-                        <strong class="col-md-5" for="">ChangeType:</strong> <span
+                        <strong class="col-md-5" for="">Change Type:</strong> <span
                             class="col-md-7">{{ticket.type}}</span>
                     </div>
                     <div class="row">
-                        <strong class="col-md-5" for="">CreatedBy:</strong> <span
+                        <strong class="col-md-5" for="">Created By:</strong> <span
                             class="col-md-7">{{ticket.createdby}}</span>
                     </div>
                     <div class="row">
@@ -362,22 +356,22 @@
                             class="col-md-7">{{ticket.priority}}</span>
                     </div>
                     <div class="row">
-                        <strong class="col-md-5" for="">DeviceType:</strong> <span
+                        <strong class="col-md-5" for="">Device Type:</strong> <span
                             class="col-md-7">{{ticket.devicetype}}</span>
                     </div>
                     <div class="row">
-                        <strong class="col-md-5" for="">CreatedDate:</strong> <span
+                        <strong class="col-md-5" for="">Created Date:</strong> <span
                             class="col-md-7">{{ticket.createddate}}</span>
                     </div>
                     <div class="row">
-                        <strong class="col-md-5" for="">ApproverName:</strong> <span
+                        <strong class="col-md-5" for="">Approver Name:</strong> <span
                             class="col-md-7">{{ticket.approveremail}}</span>
                     </div>
                     <div class="row">
                         <strong class="col-md-5" for="">Status:</strong> <span class="col-md-7">{{ticket.reqstatus}}</span>
                     </div>
                     <div class="row">
-                        <strong class="col-md-5" for="">TicketStatus:</strong> <span
+                        <strong class="col-md-5" for="">Ticket Status:</strong> <span
                             class="col-md-7">{{ticket.status}}</span>
                     </div>
 
@@ -394,9 +388,9 @@
         </div>
     </div>
 
-    <a routerLink="/add_ticket">Add Ticket</a>
+    <!-- <a routerLink="/add_ticket">Add Ticket</a>
     <br>
     <a routerLink="/new_request">New Request</a> <br>
-    <a routerLink="/dashboard">courses</a>
+    <a routerLink="/dashboard">courses</a> -->
 
 </div>

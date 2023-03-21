@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MsalService } from '@azure/msal-angular';
+import { CommonService } from '../common.service';
 import { AccountInfo } from '@azure/msal-browser';
 // import {getToken} from '../../app/fetch';
 
@@ -19,11 +20,11 @@ profile:any="";
 
 
 
-  toggleTag(){
-    this.showMe = !this.showMe;
-  }
+  // toggleTag(){
+  //   this.showMe = !this.showMe;
+  // }
 
-constructor(private msalService:MsalService) {
+constructor(private msalService:MsalService, private common:CommonService) {
     msal = this.msalService;
    }
   
@@ -41,6 +42,7 @@ constructor(private msalService:MsalService) {
         }
       }
   )
+  this.empDetails();
 }
   // toggleSidebar(){
   //   this.opened = !this.opened;
@@ -101,12 +103,17 @@ constructor(private msalService:MsalService) {
       postLogoutRedirectUri: 'http://localhost:4200/def'
     });
   }
-    
-
+  empResponse:any;  
+  manager:any;
+  empDetails () {
+     this.common.getEmpDetails().subscribe(response => {
+       this.empResponse = response.result;
+        this.common.empDetails = this.empResponse;
+        if (this.empResponse[0].emplevel === "Manager") {
+           this.manager = true;
+          }
+        } );
 
   
 }
-// function getToken(arg0: string[]): any {
-//   throw new Error('Function not implemented.');
-// }
-
+}
