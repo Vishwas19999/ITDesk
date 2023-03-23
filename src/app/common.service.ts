@@ -22,12 +22,18 @@ export class CommonService {
    manager1 : any ;
    cabManager : any ;
    something : boolean = false ;
-  getEmpDetails ()  {
+   UserName:any;
+  getEmpDetails (username:string)  {
    // this.user = "vishwas26@gmail.com";
- let employee = {empemailid : "mahamad.rafi@jktech.com"} ;
-   //let employee = {empemailid : "mallikarjun.managavi@jktech.com"};
+   console.log('common servis');
+   console.log(username);
+   
+   
+  //  let empemailid={ empemailid: "mahamad.rafi@jktech.com"};
+//  let employee =empemailid ;
+   let employee = {empemailid : username};
   //let employee = {empemailid : "thummana.pavani@jktech.com"};
-  
+  // empemailid:mahamad.rafi@jktech.com
    
    return this.http.post<any>('http://localhost:3000/EmpManager/empfilter' , employee
     )

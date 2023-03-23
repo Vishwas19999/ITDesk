@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
   manager: any;
   log : any ;
   some : any;
-
+UserName:any;
 
   id : any = this.activatedRoute.snapshot.params['id'];
   
@@ -82,24 +82,26 @@ export class DashboardComponent implements OnInit {
    
   //  this.log = true;
   debugger;
-;
-    
+
+    this.UserName=this.common.UserName;
     this.getTypeDropdown();
     this.getPriorityDropdown();
     this.getDeviceTypeDropdown();
+    this.getRequestDropdown ();
   // this.empDetails();
    
-   if (this.id != "") {
-    this.getTicketById(this.id);
+  if (this.id != "") {
+  this.getTicketById(this.id);
  }
 //  else{
+
  
   this.some = setTimeout(() => {
     this.getAllRequest();
   }, 300) 
- // }
+//  }
 
-   }
+}
 
 
 
@@ -132,6 +134,23 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  reqStatusList:any;
+  getRequestDropdown () {
+     this.common.getRequestStatuses().then((http)=>{
+      http.subscribe(
+        response => {
+         this.reqStatusList = response;
+          this.reqStatusList = this.reqStatusList.result;
+         });
+      }
+     )
+    }
+    //  subscribe(
+    //    response => {
+    //     this.reqStatusList = response;
+    //      this.reqStatusList = this.reqStatusList.result;
+    //     });
+    //  }
   // empDetails () { not required
     
   //   this.common.getEmpDetails().subscribe(

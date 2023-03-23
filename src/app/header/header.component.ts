@@ -36,13 +36,16 @@ constructor(private msalService:MsalService, private common:CommonService) {
           
           this.msalService.instance.setActiveAccount(res.account)
           console.log(res.account.username);
+          this.UserName=res.account.username;
           console.log(res.account.name);
           
           // userIdToken = await getToken(['User.Read'])
         }
       }
   )
+  this.UserName=this.msalService.instance.getActiveAccount();
   this.empDetails();
+    
 }
   // toggleSidebar(){
   //   this.opened = !this.opened;
@@ -58,11 +61,15 @@ constructor(private msalService:MsalService, private common:CommonService) {
   })
 }
 
+UserName:any;
 
   isLoggedIn():boolean{
     this.profile=this.msalService.instance.getActiveAccount()
+
     return this.msalService.instance.getActiveAccount()!=null 
-  }
+    
+    
+}
 
   login(){
   this.msalService.loginRedirect()
@@ -105,15 +112,14 @@ constructor(private msalService:MsalService, private common:CommonService) {
   }
   empResponse:any;  
   manager:any;
+ 
   empDetails () {
-     this.common.getEmpDetails().subscribe(response => {
+     this.common.getEmpDetails(this.UserName.username).subscribe(response => {
        this.empResponse = response.result;
         this.common.empDetails = this.empResponse;
         if (this.empResponse[0].emplevel === "Manager") {
            this.manager = true;
           }
         } );
-
-  
 }
 }
