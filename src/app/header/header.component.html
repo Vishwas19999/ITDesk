@@ -39,11 +39,11 @@
                   
 
                   <div class="icon">
-                    <button class="btn btn-lg" (click)="login()" *ngIf="!isLoggedIn()" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-box-arrow-in-right"></i></button>
+                    <button class="btn btn-lg" (click)="login()" *ngIf="!isLoggedIn()" data-bs-toggle="dropdown" aria-expanded="false" ><i class="bi bi-box-arrow-in-right"></i></button>
                   
                     <div class="dropdown">
                       <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                      *ngIf="isLoggedIn()">
+                      *ngIf="isLoggedIn()" routerLink="dashboard">
                         <i class="fa fa-user" aria-hidden="true"></i>
                       </button>
                       <ul class="dropdown-menu pull-right" style="right: 0; left: auto;">
@@ -56,7 +56,7 @@
                         <img class="icon" src="assets/image/login icon.jpg">
                       </div>
                       <div class="right">
-                        <label class="pro" style="font-size:18px ; font-weight:bold"><a class="dropdown-item" href="#"></a>{{profile.username}}</label>
+                        <label class="pro" style="font-size:15px ; font-weight:bold"><a class="dropdown-item" href="#"></a>{{profile.username}}</label>
                         <label class="profile"><a class="dropdown-item" href="#"></a>{{profile.name}}</label>
                         
                       </div>

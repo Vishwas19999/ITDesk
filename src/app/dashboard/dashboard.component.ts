@@ -4,6 +4,7 @@ import { filter } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { CommonService } from '../common.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MsalService } from '@azure/msal-angular';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient, 
-    private common: CommonService , private activatedRoute:ActivatedRoute , private router:Router ) {
+    private common: CommonService , private activatedRoute:ActivatedRoute , private router:Router,private msalService:MsalService ) {
 
   }
 
@@ -82,12 +83,14 @@ UserName:any;
    
   //  this.log = true;
   debugger;
-
-    this.UserName=this.common.UserName;
+  this.UserName = this.msalService.instance.getActiveAccount();
+    // this.UserName=this.common.UserName;
     this.getTypeDropdown();
     this.getPriorityDropdown();
     this.getDeviceTypeDropdown();
     this.getRequestDropdown ();
+    this.common.getEmpDetails (this.UserName);
+    // this.common.dummy();
   // this.empDetails();
    
   if (this.id != "") {

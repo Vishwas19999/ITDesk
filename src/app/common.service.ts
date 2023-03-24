@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {msal, tokens} from './header/header.component'
+import { MsalService } from '@azure/msal-angular';
+import {HeaderComponent, msal, tokens} from './header/header.component'
 
 @Injectable({
   providedIn: 'root'
@@ -23,22 +24,34 @@ export class CommonService {
    cabManager : any ;
    something : boolean = false ;
    UserName:any;
+   constructor(private http:HttpClient,private msalService:MsalService) { }
+
   getEmpDetails (username:string)  {
    // this.user = "vishwas26@gmail.com";
-   console.log('common servis');
-   console.log(username);
+  //  console.log('common service');
+  //  console.log(username);
    
    
   //  let empemailid={ empemailid: "mahamad.rafi@jktech.com"};
 //  let employee =empemailid ;
    let employee = {empemailid : username};
+
+   console.log("employee",employee);
+   
   //let employee = {empemailid : "thummana.pavani@jktech.com"};
   // empemailid:mahamad.rafi@jktech.com
    
-   return this.http.post<any>('http://localhost:3000/EmpManager/empfilter' , employee
-    )
-  }
-  constructor(private http:HttpClient) { }
+   this.http.post<any>('http://localhost:3000/EmpManager/empfilter' , employee
+    ).subscribe(response => {
+      this.empResponse = response.result;
+       this.empDetails = this.empResponse;
+       console.log("var",this.empResponse);
+  })
+}
+
+// dummy(){
+//   this.UserName = this.msalService.instance.getActiveAccount();
+// }
 
 getEmployee(){
   // const acc = msal.instance.getAllAccounts()[0]

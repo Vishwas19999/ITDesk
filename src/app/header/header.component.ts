@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   showMe:boolean=true;
 
 profile:any="";
-
+UserName:any;
 
 
   // toggleTag(){
@@ -30,19 +30,23 @@ constructor(private msalService:MsalService, private common:CommonService) {
   
 
   ngOnInit(): void {
+    
     this.msalService.instance.handleRedirectPromise().then(
       async res=>{
         if(res != null && res.account != null){
           
           this.msalService.instance.setActiveAccount(res.account)
           console.log(res.account.username);
-          this.UserName=res.account.username;
           console.log(res.account.name);
           
           // userIdToken = await getToken(['User.Read'])
         }
+       
       }
   )
+  
+  console.log( this.UserName);
+  
   this.UserName=this.msalService.instance.getActiveAccount();
   this.empDetails();
     
@@ -61,13 +65,11 @@ constructor(private msalService:MsalService, private common:CommonService) {
   })
 }
 
-UserName:any;
+
 
   isLoggedIn():boolean{
     this.profile=this.msalService.instance.getActiveAccount()
-
     return this.msalService.instance.getActiveAccount()!=null 
-    
     
 }
 
@@ -113,13 +115,20 @@ UserName:any;
   empResponse:any;  
   manager:any;
  
-  empDetails () {
-     this.common.getEmpDetails(this.UserName.username).subscribe(response => {
-       this.empResponse = response.result;
-        this.common.empDetails = this.empResponse;
+   empDetails () {
+   debugger;
+    // this.UserName = this.msalService.instance.getActiveAccount();
+    console.log("vishwas");
+    this.empResponse=this.common.empResponse;
+      //  this.common.getEmpDetails(this.UserName.username)
+      //  .subscribe(response => {
+      //  this.empResponse = response.result;
+      //   this.common.empDetails = this.empResponse;
+      //   console.log("var",this.empResponse);
+        
         if (this.empResponse[0].emplevel === "Manager") {
            this.manager = true;
           }
-        } );
+        
 }
 }

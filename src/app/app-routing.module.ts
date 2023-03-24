@@ -24,16 +24,17 @@ const routes: Routes = [
   // {path:'edit_request' , component:EditRequestComponent},
   // {path:"request/:id" , component:EmailComponent}
 
-  {path:'', component:DefaultComponent },
-  // {path:'' , component:DashboardComponent},
+  // {path:'', component:DefaultComponent },
+  {path:'' , component:DashboardComponent},
+  // {path:'' , redirectTo:'/dashboard',pathMatch:"full"},
   {path:'def', component:DefaultComponent },
   {path:'employee',component:EmployeeComponent,canActivate:[MaslGuard]},
   {path:'card',component:CardComponent,canActivate:[MaslGuard]},
   {path:'new_request' , component:NewRequestComponent},
   {path:'edit_request' , component:EditRequestComponent},
-  {path:"something/:id" , component:DashboardComponent},
+  {path:'something/:id' , component:DashboardComponent},
   {path:'dashboard' , component:DashboardComponent,canActivate:[MaslGuard]},
-  {path:"request/:id" , component:EmailComponent,canActivate:[MaslGuard]}
+  {path:'request/:id' , component:EmailComponent,canActivate:[MaslGuard]}
 
 ];
 

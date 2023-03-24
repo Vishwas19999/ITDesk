@@ -2,7 +2,7 @@ import { LogLevel, Configuration, BrowserCacheLocation } from '@azure/msal-brows
 const isIE = window.navigator.userAgent.indexOf("MSIE ") > -1 || window.navigator.userAgent.indexOf("Trident/") > -1;
 export const msalConfig: Configuration = {
      auth: {
-         clientId: ' 2e27ce62-b349-437c-8835-b9918948ba36',
+         clientId: '2e27ce62-b349-437c-8835-b9918948ba36',
          authority: "https://login.microsoftonline.com/a7bae7fa-0df1-4562-a554-16a95f54c8ce",
          redirectUri: "http://localhost:4200/dashboard", 
      },
