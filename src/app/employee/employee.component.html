@@ -24,7 +24,7 @@
                     <th scope="col">Emp ID</th>
                     <th scope="col">Email ID</th>
                     <th scope="col">Employee Name</th>
-                    <!-- <th scope="col">Level</th> -->
+                    <th scope="col">Level</th>
                     <th scope="col">Device</th>
                     <th scope="col">MgrEmpID</th>
                     <th scope="col">MgrName</th>
@@ -37,7 +37,7 @@
                     <td>{{employee.empid}}</td>
                     <td>{{employee.empemailid}}</td>
                     <td>{{employee.empname}}</td>
-                    <!-- <td>{{employee.level}}</td> -->
+                    <td>{{employee.emplevel}}</td>
                     <td>{{employee.device}}</td>
                     <td>{{employee.mgrempid}}</td>
                     <td>{{employee.mgrname}}</td>
@@ -102,6 +102,7 @@
                     <option>...</option>
                   </select>
                 </div>  -->
+               
                 <div class="col-md-6">
                   <label for="inputZip" class="form-label">MgrEmpID</label>
                   <!-- <input type="mgrempid" class="form-control" id="inputZip" formControlName="mgrempid"> -->
@@ -115,6 +116,12 @@
                     <label for="inputZip" class="form-label">Manager Full Name</label>
                     <input type="mgrname" class="form-control" id="inputZip" formControlName="mgrname">
                 </div>
+
+                <div class="col-md-6">
+                  <label for="inputZip" class="form-label">Manager Email ID</label>
+                  <input type="mgremailid" class="form-control" id="inputZip" formControlName="mgremailid">
+              </div>
+
             </form>
         </div>
         <div class="modal-footer">
@@ -155,6 +162,13 @@
                       <option selected>Choose...</option>
                       <option *ngFor="let employee of emplevel">{{employee.listdtlcode}}</option>
                       
+                    </select>
+                  </div> 
+                  <div class="col-md-6">
+                    <label for="inputDevice" class="form-label">Device</label>
+                    <select  id="deviceId"  class="form-select" formControlName="device" (ngModelChange)="getidbydevice($event)" >
+                      <option selected>Choose...</option>
+                      <option *ngFor="let employee of typeList" value="{{employee.listdtlcode}}">{{employee.listdtlcode}}</option>
                     </select>
                   </div> 
                 <!-- <div class="col-md-6">

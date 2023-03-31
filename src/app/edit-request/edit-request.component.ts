@@ -13,7 +13,7 @@ import { CommonService } from '../common.service';
 export class EditRequestComponent implements OnInit {
 
   constructor(private http: HttpClient , private formBuilder: FormBuilder , private datepipe :DatePipe,
-    private common:CommonService) {
+    private common:CommonService ) {
       
 
   }
@@ -201,7 +201,7 @@ export class EditRequestComponent implements OnInit {
 
   // getTicketDetailsById () : void {
     
-  //   let ticket = {requestid:this.common.ticketId};
+  //   let ticket = {requestid:this.ticketService.ticketId};
   //   this.http.post<any>('http://localhost:3000/RequestManager/requestbyid' , ticket
   //   ).subscribe(
   //     response => {
@@ -220,7 +220,7 @@ export class EditRequestComponent implements OnInit {
   getTicketDetailsById () {
     let ticket = {requestid:this.common.ticketId};
     this.common.getRequestByID(ticket).then((http)=>{
-      http. subscribe(
+      http.subscribe(
         response => {
           this.ticketDetails = response;
           this.ticketDetails = this.ticketDetails.result;
@@ -234,18 +234,7 @@ export class EditRequestComponent implements OnInit {
         }
       );
     })
-    // subscribe(
-    //   response => {
-    //     this.ticketDetails = response.result;
-    //     console.log("TicketDetailsbyId", this.ticketDetails);
-    //     console.log("id", this.ticketDetails[0].requestid);
-    //     this.ticketNumber = this.ticketDetails[0].requestid;
-      
-    //   this.SystemDate = new Date().toISOString().slice(0, 10)
-    //     this.setValues();
-    //     this.enableAndDisableViewMode();
-    //   }
-    // );
+    
   }
 
 
@@ -278,15 +267,11 @@ export class EditRequestComponent implements OnInit {
       http. subscribe(
         response => {
           this.typeList = response;
-          this.typeList =  this.typeList.result;
+          this.typeList = this.typeList.result;
         }
       );
     })
-    // subscribe(
-    //   response => {
-    //     this.typeList = response.result;
-    //   }
-    // );
+   
   }
 
   // getPriorityDropdown () : void {
@@ -311,17 +296,13 @@ export class EditRequestComponent implements OnInit {
         }
       );
     })
-    // subscribe(
-    //   response => {
-    //     this.priorityList = response.result;
-    //   }
-    // );
+   
   }
 
   getRequestDropdown () {
 
     this.common.getRequestStatuses().then((http)=>{
-      http. subscribe(
+      http.subscribe(
         response => {
           this.RequestStatusList = response;
           this.RequestStatusList = this.RequestStatusList.result;
@@ -329,12 +310,7 @@ export class EditRequestComponent implements OnInit {
         }
       );
     })
-    // subscribe(
-    //   response => {
-    //     this.RequestStatusList = response.result;
-        
-    //   }
-    // );
+    
 
   }
 
@@ -352,18 +328,14 @@ export class EditRequestComponent implements OnInit {
 
   getDeviceTypeDropdown() {
     this.common.getDeviceType().then((http)=>{
-      http. subscribe(
+      http.subscribe(
         response => {
-          this.deviceTypeList  = response;
-          this.deviceTypeList = this.deviceTypeList .result;
+          this.deviceTypeList = response;
+          this.deviceTypeList = this.deviceTypeList.result;
         }
       );
     })
-    // subscribe(
-    //   response => {
-    //     this.deviceTypeList = response.result;
-    //   }
-    // );
+    
   }
 
   // getSiteNameDropdown () : void {
@@ -391,18 +363,14 @@ export class EditRequestComponent implements OnInit {
 
   getDevicesDropdown(data : any) {
     this.common.getDevices(data).then((http)=>{
-      http. subscribe(
+      http.subscribe(
         response => {
           this.deviceList = response;
-          this.deviceList =  this.deviceList.result;
+          this.deviceList = this.deviceList.result;
         }
       );
     })
-    // subscribe(
-    //   response => {
-    //     this.deviceList = response.result;
-    //   }
-    // );
+    
   }
 
   // getLocationDropdown() : void {
@@ -483,19 +451,14 @@ export class EditRequestComponent implements OnInit {
   sendDataToUpdtTicketAPI () {
 
     this.common.updateRequest(this.editTicketData).then((http)=>{
-      http.subscribe(
+      http. subscribe(
         response => {
-         this.updtTicketResponse = response;
+          this.updtTicketResponse = response;
          
         }
       );
     })
-    // subscribe(
-    //   response => {
-    //     this.updtTicketResponse = response;
-       
-    //   }
-    // );
+   
 
   }
 
@@ -838,17 +801,13 @@ sendmgrResponse () {
   let rejectReson = this.editTicketFormGroup.controls['mgrReje'].value;
   let mgr = {requestid:this.ticketDetails[0].requestid , reqstatus : this.managerRespon , rejreason : rejectReson , status : this.ticketDetails[0].status }
   this.common.mgrResponse(mgr).then((http)=>{
-    http. subscribe(
+    http.subscribe(
       response => {
         let updStatus = response;
       }
     );
   })
-  // subscribe(
-  //   response => {
-  //     let updStatus = response;
-  //   }
-  // );
+  
 }
 
 
@@ -868,17 +827,13 @@ SendCabManagerResponse() {
   let cabRejReason = this.editTicketFormGroup.controls['cabReje'].value;
   let mgr = {requestid:this.ticketDetails[0].requestid , reqstatus : this.CABrespon , rejreason : cabRejReason , status : this.ticketDetails[0].status}
   this.common.CABresponse(mgr).then((http)=>{
-    http. subscribe(
+    http.subscribe(
       response => {
         let updStatus = response;
       }
     );
   })
-  // subscribe(
-  //   response => {
-  //     let updStatus = response;
-  //   }
-  // );
+  
 }
 
 // closeTicket () {
@@ -898,17 +853,13 @@ closeTicket () {
   // 
   let closeTicketPayLoad = {requestid:this.ticketDetails[0].requestid , reqstatus :this.ticketDetails[0].reqstatus , empid:this.common.empDetails[0].empid , status:"closed"}
   this.common.closeTicketById(closeTicketPayLoad).then((http)=>{
-    http.  subscribe(
+    http.subscribe(
       response => {
         let updStatus = response;
       }
     );
   })
-  // subscribe(
-  //   response => {
-  //     let updStatus = response;
-  //   }
-  // );
+  
 }
 
 }

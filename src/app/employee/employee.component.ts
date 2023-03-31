@@ -29,6 +29,7 @@ export class EmployeeComponent implements OnInit {
 
   mid:any;
   mname:any;
+  mgremail:any;
   p:any = 1;
 
 levelname:any;
@@ -77,6 +78,7 @@ levelname:any;
     device: ['',Validators.required],
     mgrempid: ['',Validators.required],
     mgrname: ['',Validators.required],
+    mgremailid: ['',Validators.required]
  })
   
 // addEmployee = this.fb.group({
@@ -95,7 +97,8 @@ levelname:any;
     empname: ['',Validators.required],
     mgrempid: ['',Validators.required],
     emplevel: ['',Validators.required],
-    mgrname: ['',Validators.required]
+    mgrname: ['',Validators.required],
+    device: ['',Validators.required],
    })
 
 //  getemp(data:any){
@@ -110,16 +113,19 @@ getdata(data:any){
 if(data=='Manager'){
   this.addEmployee.controls['mgrempid'].disable()
   this.addEmployee.controls['mgrname'].disable()
+  this.addEmployee.controls['mgremailid'].disable()
  }
 else if(data=='CAB Manager'){
   this.addEmployee.controls['device'].disable()
   this.addEmployee.controls['mgrempid'].disable()
   this.addEmployee.controls['mgrname'].disable()
+  this.addEmployee.controls['mgremailid'].disable()
 }
 else{
   this.addEmployee.controls['device'].enable()
   this.addEmployee.controls['mgrempid'].enable()
   this.addEmployee.controls['mgrname'].enable()
+  
 }
 }
 
@@ -167,12 +173,38 @@ getnamebyid(empid:any){
     response => {
       debugger;
       this.mname = response.result[0].empname;
+      this.mgremail = response.result[0].empemailid;
+      console.log(response.result[0]);
+      
+
+
+      console.log(this.mname,"name");
+      console.log(this.mgremail,"mail");
+      
+      
       console.log("mname=", this.mname);
       this.addEmployee.controls['mgrname'].setValue(this.mname);
+      this.addEmployee.controls['mgremailid'].setValue(this.mgremail);
     }
   );
 }
 
+getemailbyid(empid:any){
+  debugger;
+  // let abc={emp}
+  this.http.post<any>('http://localhost:3000/EmpManager/getnamebyid',{empid})
+  .subscribe(
+    response => {
+      debugger;
+      this.mname = response.result[0].empname;
+      console.log(this.mname,"name");
+      
+      console.log("mname=", this.mname);
+      this.addEmployee.controls['mgrname'].setValue(this.mname);
+
+    }
+  );
+}
 
 // getdev(data:any){
 //   console.log(data.value);
@@ -256,6 +288,7 @@ filterRecords = this.fb.group({
     this.editEmployee.controls['mgrempid'].setValue(data.mgrempid);
     this.editEmployee.controls['mgrname'].setValue(data.mgrname);
     this.editEmployee.controls['emplevel'].setValue(data.emplevel);
+    this.editEmployee.controls['device'].setValue(data.device);
 }
 
  
@@ -269,9 +302,12 @@ filterRecords = this.fb.group({
   deleteemployee(){
     debugger;
    let empid={"empid":this.employeeid }
-    this.common.deleteEmployee(empid).subscribe((result)=>{
-      console.log("deleted successfully", result);
+    this.common.deleteEmployee(empid).then((http)=>{
+      http. subscribe((result)=>{
+        console.log("deleted successfully", result);
+      })
     })
+   
   }
 
 }

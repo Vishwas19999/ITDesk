@@ -14,7 +14,7 @@ import { MsalService } from '@azure/msal-angular';
 export class DashboardComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient, 
-    private common: CommonService , private activatedRoute:ActivatedRoute , private router:Router,private msalService:MsalService ) {
+    private common: CommonService , private activatedRoute:ActivatedRoute , private router:Router, private msalService:MsalService ) {
 
   }
 
@@ -41,7 +41,8 @@ export class DashboardComponent implements OnInit {
   manager: any;
   log : any ;
   some : any;
-UserName:any;
+  UserName: any;
+
 
   id : any = this.activatedRoute.snapshot.params['id'];
   
@@ -79,30 +80,35 @@ UserName:any;
 
   ngOnInit(): void {
     
-   //if (this.common.loggedIn === true) {
+   //if (this.ticketService.loggedIn === true) {
    
   //  this.log = true;
   debugger;
+ 
   this.UserName = this.msalService.instance.getActiveAccount();
-    // this.UserName=this.common.UserName;
+ 
+    
     this.getTypeDropdown();
     this.getPriorityDropdown();
     this.getDeviceTypeDropdown();
-    this.getRequestDropdown ();
-    this.common.getEmpDetails (this.UserName);
-    // this.common.dummy();
+
+    this.common.getEmpDetails(this.UserName.username);
+
+    // console.log(this.UserName.username);
+    
   // this.empDetails();
    
-  if (this.id != "") {
+//    if (this.id != "") {
+//     this.getTicketById(this.id);
+//  }
+
+if (this.id != "") {
   this.getTicketById(this.id);
  }
-//  else{
 
- 
-  this.some = setTimeout(() => {
-    this.getAllRequest();
-  }, 300) 
-//  }
+ this.some = setTimeout(() => {
+  this.getAllRequest();
+}, 300)
 
 }
 
@@ -115,7 +121,7 @@ UserName:any;
   //       this.tickets = response.result;
         
         
-  //       if (this.common.filtered === true) {
+  //       if (this.ticketService.filtered === true) {
   //         this.getFlteredRecords();
   //       }
         
@@ -137,23 +143,6 @@ UserName:any;
     );
   }
 
-  reqStatusList:any;
-  getRequestDropdown () {
-     this.common.getRequestStatuses().then((http)=>{
-      http.subscribe(
-        response => {
-         this.reqStatusList = response;
-          this.reqStatusList = this.reqStatusList.result;
-         });
-      }
-     )
-    }
-    //  subscribe(
-    //    response => {
-    //     this.reqStatusList = response;
-    //      this.reqStatusList = this.reqStatusList.result;
-    //     });
-    //  }
   // empDetails () { not required
     
   //   this.common.getEmpDetails().subscribe(
@@ -193,12 +182,7 @@ UserName:any;
         }
       );
     })
-    // subscribe(
-    //   response => {
-    //     this.typeList = response;
-    //     this.typeList = this.typeList.result;
-    //   }
-    // );
+   
 
   }
 
@@ -217,19 +201,14 @@ UserName:any;
 
   getPriorityDropdown () {
     this.common.getPriority().then((http)=>{
-        http.subscribe(
-          response => {
-            this.priorityList = response;
-            this.priorityList = this.priorityList.result;
-          }
-        );
+      http. subscribe(
+        response => {
+          this.priorityList = response;
+          this.priorityList = this.priorityList.result;
+        }
+      );
     })
-    // subscribe(
-    //   response => {
-    //     this.priorityList = response;
-    //     this.priorityList = this.priorityList.result;
-    //   }
-    // );
+   
   }
 
   // getDeviceTypeDropdown(): void {
@@ -246,19 +225,14 @@ UserName:any;
 
   getDeviceTypeDropdown () {
     this.common.getDeviceType().then((http)=>{
-      http. subscribe(
+      http.subscribe(
         response => {
           this.deviceTypeList = response;
           this.deviceTypeList = this.deviceTypeList.result;
         }
       );
     })
-    // subscribe(
-    //   response => {
-    //     this.deviceTypeList = response;
-    //     this.deviceTypeList = this.deviceTypeList.result;
-    //   }
-    // );
+    
   }
 
   enableDisbaleEdit(createdName: any, reqStatus: any , approver : any , ticketStatus : any): void {
@@ -364,13 +338,7 @@ UserName:any;
           }
         );
       })
-      // subscribe(
-      //   response => {
-      //     this.tickets = response;
-      //     this.tickets = this.tickets.result;
-      //     console.log("filtered tickets :"  ,this.tickets )
-      //   }
-      // );
+      
 
   }
 
@@ -413,12 +381,7 @@ UserName:any;
             }
           );
         })
-        // subscribe(
-        //   response => {
-        //     this.tickets = response;
-        //     this.tickets = this.tickets.result;
-        //   }
-        // );
+        
 
   }
 
@@ -474,19 +437,14 @@ UserName:any;
     let ticket = {requestid : ticketId}
 
     this.common.getRequestByID(ticket).then((http)=>{
-      http.subscribe(
+      http. subscribe(
         response => {
           this.tickets = response ;
           this.tickets = this.tickets.result;
         }
       );
     })
-    // subscribe(
-    //   response => {
-    //     this.tickets = response ;
-    //     this.tickets = this.tickets.result;
-    //   }
-    // );
+   
 
   }
 

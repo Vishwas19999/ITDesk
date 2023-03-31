@@ -29,12 +29,13 @@ export class CommonService {
   getEmpDetails (username:string)  {
    // this.user = "vishwas26@gmail.com";
   //  console.log('common service');
-  //  console.log(username);
+    // console.log(username.username);
    
    
   //  let empemailid={ empemailid: "mahamad.rafi@jktech.com"};
 //  let employee =empemailid ;
    let employee = {empemailid : username};
+
 
    console.log("employee",employee);
    
@@ -85,7 +86,14 @@ editEmployee(edit:any){
 }
 
 deleteEmployee(empid:any){
-  return this.http.post('http://localhost:3000/EmpManager/deleteemployeebyId ',empid)
+  const acc = msal.instance.getAllAccounts()[0]
+  return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
+    console.log('repsonse ---',response)
+    return this.http.post('http://localhost:3000/EmpManager/deleteemployeebyId',empid,{headers:{
+      'Authorization':`Bearer ${response.idToken}`
+    }})
+  })
+  // return this.http.post('http://localhost:3000/EmpManager/deleteemployeebyId',empid)
 }
 
 filterEmployee(empfilter:any){

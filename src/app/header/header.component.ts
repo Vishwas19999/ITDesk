@@ -45,9 +45,10 @@ constructor(private msalService:MsalService, private common:CommonService) {
       }
   )
   
-  console.log( this.UserName);
-  
   this.UserName=this.msalService.instance.getActiveAccount();
+  // console.log(this.UserName.username);
+  
+  // console.log( this.UserName.username,"v");
   this.empDetails();
     
 }
@@ -118,8 +119,10 @@ constructor(private msalService:MsalService, private common:CommonService) {
    empDetails () {
    debugger;
     // this.UserName = this.msalService.instance.getActiveAccount();
-    console.log("vishwas");
+    
     this.empResponse=this.common.empResponse;
+    console.log(this.empResponse);
+    
       //  this.common.getEmpDetails(this.UserName.username)
       //  .subscribe(response => {
       //  this.empResponse = response.result;
@@ -127,8 +130,8 @@ constructor(private msalService:MsalService, private common:CommonService) {
       //   console.log("var",this.empResponse);
         
         if (this.empResponse[0].emplevel === "Manager") {
-           this.manager = true;
-          }
+          this.manager = true;
+      }
         
 }
 }

@@ -4,7 +4,6 @@ import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { CommonService } from '../common.service';
 
-
 @Component({
   selector: 'app-new-request',
   templateUrl: './new-request.component.html',
@@ -251,44 +250,23 @@ export class NewRequestComponent implements OnInit{
         }
       );
     })
-    // subscribe(
-    //   response => {
-    //     this.typeList = response.result;
-        
-    //   }
-    // );
+   
 
   }
 
-  // getPriorityDropdown () : void {
-  //   let listmstid = 1 ;
-  //   this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID' , {listmstid}
-  //   ).subscribe(
-  //     response => {
-        
-      
-  //         this.priorityList = response.result;
-        
-       
-  //     }
-  //   );
-  // }
+ 
 
   getPriorityDropdown () {
+
     this.common.getPriority().then((http)=>{
-        http.subscribe(
-          response => {
-            this.priorityList = response;
-            this.priorityList = this.priorityList.result;
-          }
-        );
+      http.subscribe(
+        response => {
+          this.priorityList = response;
+          this.priorityList = this.priorityList.result;
+        }
+      );
     })
-    // subscribe(
-    //   response => {
-    //     this.priorityList = response;
-    //     this.priorityList = this.priorityList.result;
-    //   }
-    // );
+    
   }
 
   // getDeviceTypeDropdown () : void {
@@ -307,19 +285,14 @@ export class NewRequestComponent implements OnInit{
 
   getDeviceTypeDropdown () {
     this.common.getDeviceType().then((http)=>{
-      http. subscribe(
+      http.subscribe(
         response => {
           this.deviceTypeList = response;
           this.deviceTypeList = this.deviceTypeList.result;
         }
       );
     })
-    // subscribe(
-    //   response => {
-    //     this.deviceTypeList = response;
-    //     this.deviceTypeList = this.deviceTypeList.result;
-    //   }
-    // );
+    
   }
 
   // getSiteNameDropdown () : void {
@@ -347,18 +320,14 @@ export class NewRequestComponent implements OnInit{
 
   getDevicesDropdown (data : any) {
     this.common.getDevices(data).then((http)=>{
-      http. subscribe(
+      http.subscribe(
         response => {
           this.deviceList = response;
           this.deviceList = this.deviceList.result;
         }
       );
     })
-    // subscribe(
-    //   response => {
-    //     this.deviceList = response.result;
-    //   }
-    // );
+    
   }
 
 
@@ -410,14 +379,7 @@ export class NewRequestComponent implements OnInit{
         }
       );
     })
-    // subscribe(
-    //   response => {
-    //     this.reqDropdown = response.result;
-        
-    //   }
-    // );
-
-  }
+}
 
   transFormDate (date:any) {
     
@@ -517,19 +479,14 @@ export class NewRequestComponent implements OnInit{
       console.log("this.adddraftTicketData" , this.addTicketData);
 
       this.common.createRequest(this.addTicketData).then((http)=>{
-        http.subscribe(
+        http. subscribe(
           response => {
             this.postTicketResponse = response;
             
           }
         );
       })
-      // subscribe(
-      //   response => {
-      //     this.postTicketResponse = response;
-          
-      //   }
-      // );
+     
 
   }
 
@@ -578,19 +535,14 @@ export class NewRequestComponent implements OnInit{
       verbalapprovaldate : this.verbalApproval , isemailattached : this.email}
 
       this.common.createRequest(this.addTicketData).then((http)=>{
-        http. subscribe(
+        http.subscribe(
           response => {
             this.postTicketResponse = response;
             
           }
         );
       })
-      // subscribe(
-      //   response => {
-      //     this.postTicketResponse = response;
-          
-      //   }
-      // );
+      
   }
 
   getCheckboxResponse1() : void {

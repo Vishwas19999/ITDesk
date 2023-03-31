@@ -13,19 +13,9 @@ import { NewRequestComponent } from './new-request/new-request.component';
 
 
 const routes: Routes = [
-  // {path:'',component:EmployeeComponent,canActivate:[MaslGuard]},
-  // {path:'',redirectTo: 'DashboardComponent',pathMatch: 'full'},
 
-  // {path:'dashboard' , component:DashboardComponent},
-  // {path:'def', component:DefaultComponent },
-  // {path:'employee',component:EmployeeComponent, },
-  // {path:'card',component:CardComponent},
-  // {path:'new_request' , component:NewRequestComponent},
-  // {path:'edit_request' , component:EditRequestComponent},
-  // {path:"request/:id" , component:EmailComponent}
-
-  // {path:'', component:DefaultComponent },
-  {path:'' , component:DashboardComponent},
+  {path:'', component:DefaultComponent },
+  // {path:'' , component:DashboardComponent},
   // {path:'' , redirectTo:'/dashboard',pathMatch:"full"},
   {path:'def', component:DefaultComponent },
   {path:'employee',component:EmployeeComponent,canActivate:[MaslGuard]},

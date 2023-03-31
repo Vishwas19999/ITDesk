@@ -14,7 +14,7 @@
 
     <nav aria-label="breadcrumb" class="mt-2">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a >Dashboard</a></li>
+          <li class="breadcrumb-item"><a routerLink="">Dashboard</a></li>
           <li class="breadcrumb-item active" aria-current="page">New request</li>
         </ol>
       </nav>
@@ -84,7 +84,7 @@
                             </div> -->
                             <div class="form-floating mb-3 col-md-3 ">
                                 <input class="form-control " id="approverName" formControlName="approverName">
-                                <label for="approverName">Approver Name</label>
+                                <label for="approverName">Approver Email ID</label>
                             </div>
                         </div>
                           <!-- list = "SME_list"
@@ -356,8 +356,8 @@
                         </div>
                         <div class="form-floating mb-3 col-md-3">
 
-                            <input type="text" class="form-control" id="verbalApproval" formControlName="verbalApproval"
-                                placeholder="verbalApproval">
+                            <input type="date" class="form-control" id="verbalApproval" formControlName="verbalApproval"
+                                placeholder="verbalApproval" [(ngModel)]="setVerbalDate">
                         </div>
 
                         <div class="mb-2 ">
@@ -365,8 +365,8 @@
                         </div>
                         <div class="col-md-3">
                             <select id=""  class="form-control mt-2 mb-2" formControlName="email">
-                                <option  value="Yes">Yes</option>
-                                <option  value="No">No</option>
+                                <option  value="1">Yes</option>
+                                <option  value="0">No</option>
                                 
                               </select>
                         </div>
@@ -375,15 +375,16 @@
 
                     <div style="float: right;" class="">
                         <div class="cancelBtn ">
-                            <button type="button" class="btn btn-danger " >Cancel</button>
+                            <button type="button" class="btn btn-danger " routerLink="">Cancel</button>
                         </div>
                         <div class="saveBtn">
-                            <button type="button" class="btn btn-success" style="margin-left: 10px;" (click)="sendDraftRequest()" routerLink="" >Save</button>
+                            <button type="button" class="btn btn-success" style="margin-left: 10px;" (click)="sendDraftRequest()"
+                             routerLink="" [disabled]="!addTicketFormGroup.valid" >Save</button>
                         </div>
                         <div class="submitBtn">
                             <!-- [disabled]="!addTicketFormGroup.valid" -->
-                            <button class="btn btn-primary" style="margin: 10px;" 
-                                (click)="sendNewRequest()" routerLink="" >Submit</button>
+                            <button class="btn btn-primary" style="margin: 10px;" routerLink=""
+                                (click)="sendNewRequest()" [disabled]="!addTicketFormGroup.valid" >Submit</button>
                         </div>
                     </div>  
                     <div>

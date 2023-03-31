@@ -273,7 +273,12 @@
                                 <select class="form-select rounded-3" formControlName="status" name="Status"
                                     id="Status">
                                    
-                                    <option *ngFor="let status of reqStatusList" value="{{status.listdtlcode}}" >{{status.listdtlcode}}</option>
+                                    <option value="new request"> New Request </option>
+                                    <option value="draft">Draft</option>
+                                    <option value="draft">Manager Approved</option>
+                                    <option value="draft">Manager Rejected</option>
+                                    <option value="draft">CAB Approved</option>
+                                    <option value="draft">CAB Rejected</option>
                                 </select>
                                 <label for="Status">Status</label>
                             </div>
@@ -320,18 +325,18 @@
                         <ul *ngIf="edit" class="dropdown-menu"
                             style="padding: 2px 3px; min-width: 1px !important; float: inline-start">
                             <li class="button">
-                                <button  class="btn dropdown-item dropbutton" (click)="sendTicketIdToService(ticket.requestid)" routerLink="/edit_request">
+                                <button  class="btn dropdown-item dropbutton" (click)="sendTicketIdToService(ticket.requestid)" routerLink="edit_request">
                                     <i class="fa fa-edit" aria-hidden="true" data-bs-toggle="tooltip" title="Edit"
                                         data-bs-placement="bottom" ></i>
                                 </button>
                             </li>
 
-                            <!-- <li class="button">
+                            <li class="button">
                                 <button class="btn dropdown-item dropbutton">
                                     <i class="fa fa-trash-o" aria-hidden="true" data-bs-toggle="tooltip" title="Delete"
                                         data-bs-placement="bottom"></i>
                                 </button>
-                            </li> -->
+                            </li>
                         </ul>
                     </div>
 
