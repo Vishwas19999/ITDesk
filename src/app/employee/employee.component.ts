@@ -6,6 +6,7 @@ import { timeStamp } from 'console';
 import { getLocaleExtraDayPeriodRules } from '@angular/common';
 import {userIdToken} from '../../app/header/header.component';
 import { IfStmt } from '@angular/compiler';
+import { MsalService } from '@azure/msal-angular';
 
 @Component({
   selector: 'app-employee',
@@ -57,18 +58,35 @@ levelname:any;
    
     private http:HttpClient,
     private common: CommonService,
-    private fb:FormBuilder
+    private fb:FormBuilder,
+    private msalService:MsalService
   ){ 
-    common.getEmployee().subscribe((data:any)=>{
-      this.employees=data.result;
-      
-      console.log(this.employees);
+    common.getEmployee().then((http)=>{
+      http.subscribe((data:any)=>{
+        this.employees=data.result;
+        
+        console.log(this.employees);
+      })
     })
+
+
+
+   
+    // subscribe((data:any)=>{
+    //   this.employees=data.result;
+      
+    //   console.log(this.employees);
+    // })
     // this.emplevel = this.employees.map((x:any) => x.emplevel);
     // console.log(this.emplevel);
     
     // this.emplevel= Array.from(new Set(this.emplevel));
+    
  }
+
+
+
+
  
   addEmployee =  this.fb.group({
     empemailid: ['',Validators.required],
@@ -132,7 +150,7 @@ else{
 
 getTypeDropdown () : void {
   let listmstid = 2 ;
-  this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID' , {listmstid},{headers:this.headers})
+  this.http.post<any>('https://10.10.20.44:3000/ListDataDetail/getCodeByMasterID' , {listmstid},{headers:this.headers})
   .subscribe(
     response => {
       this.typeList = response.result;
@@ -143,7 +161,7 @@ getTypeDropdown () : void {
 
 getemplevels () : void {
   let listmstid = 7 ;
-  this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID' , {listmstid},{headers:this.headers})
+  this.http.post<any>('https://10.10.20.44:3000/ListDataDetail/getCodeByMasterID' , {listmstid},{headers:this.headers})
   .subscribe(
     response => {
       this.emplevel = response.result;
@@ -154,7 +172,7 @@ getemplevels () : void {
 
 getidbydevice(device:any){
 
- this.http.post<any>('http://localhost:3000/EmpManager/getidbydevice' ,{device})
+ this.http.post<any>('https://10.10.20.44:3000/EmpManager/getidbydevice' ,{device})
   .subscribe(
     response => {
      
@@ -168,7 +186,7 @@ getidbydevice(device:any){
 getnamebyid(empid:any){
   debugger;
   // let abc={emp}
-  this.http.post<any>('http://localhost:3000/EmpManager/getnamebyid',{empid})
+  this.http.post<any>('https://10.10.20.44:3000/EmpManager/getnamebyid',{empid})
   .subscribe(
     response => {
       debugger;
@@ -192,7 +210,7 @@ getnamebyid(empid:any){
 getemailbyid(empid:any){
   debugger;
   // let abc={emp}
-  this.http.post<any>('http://localhost:3000/EmpManager/getnamebyid',{empid})
+  this.http.post<any>('https://10.10.20.44:3000/EmpManager/getnamebyid',{empid})
   .subscribe(
     response => {
       debugger;
@@ -241,6 +259,9 @@ filterRecords = this.fb.group({
     })
   }
 
+
+
+  
   filterdata(emp:any){
     console.log(emp.value);
     this.common.filterEmployee(emp.value).then((http)=>{
@@ -254,11 +275,15 @@ filterRecords = this.fb.group({
 
    clearForm() {
     this.filterRecords.reset();
-    }
+  }
 
     clearform() {
       this.addEmployee.reset();
     }
+
+    // clearform() {
+    //   this.editEmployee.reset();
+    // }
   // reset(){
   //   this.empid = " ";
   //   this.empname = "";

@@ -151,7 +151,7 @@ setloc(data:any){
   
  getLocationDropdown() : void {
  
-    this.http.get<any>('http://localhost:3000/LocationManager')
+    this.http.get<any>('https://10.10.20.44:3000/LocationManager')
       .subscribe( response => 
        {
         this.locationList = response.result; 

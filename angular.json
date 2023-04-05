@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "81b73ae5-c749-4ca6-b1eb-b41adadd19e9"
+    "analytics": "ea572506-5ace-413b-bb39-bd5203c8b7fe"
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -75,6 +75,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+           "options": {
+            "sslKey": "src/cert/key.pem",
+            "sslCert": "src/cert/cert.pem"
+          },
           "configurations": {
             "production": {
               "browserTarget": "itdesk:build:production"

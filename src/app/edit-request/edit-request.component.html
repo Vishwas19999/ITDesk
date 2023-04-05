@@ -368,7 +368,7 @@
 
                     <div *ngIf="empButtons" style="float: right;" class="">
                         <div class="cancelBtn ">
-                            <button type="button" class="btn btn-danger " routerLink="" >Cancel</button>
+                            <button type="button" class="btn btn-danger " routerLink="/dashboard" >Cancel</button>
                         </div>
                         <div class="saveBtn ">
                             <button type="button"  class="btn btn-success" style="margin-left: 10px;" routerLink="" 
@@ -376,39 +376,39 @@
                         </div>
                         <div class="submitBtn">
                             <!-- [disabled]="!addTicketFormGroup.valid" -->
-                            <button class="btn btn-primary" style="margin: 10px;" routerLink=""
+                            <button class="btn btn-primary" style="margin: 10px;" routerLink="/dashboard"
                             [disabled]="!editTicketFormGroup.valid"  (click)="sendNewRequest()">Submit</button>
                         </div>
                     </div>
                     <div *ngIf="enablemgrButtons" style="float: right;" class="">
                         <div class="cancelBtn ">
-                            <button type="button" class="btn btn-danger " routerLink="">Cancel</button>
+                            <button type="button" class="btn btn-danger " routerLink="/dashboard">Cancel</button>
                         </div>
                         <div class="saveBtn " >
                             <button hidden type="button" class="btn btn-success" style="margin-left: 10px;">Save</button>
                         </div>
                         <div class="submitBtn">
                             <!-- [disabled]="!addTicketFormGroup.valid" -->
-                            <button class="btn btn-primary" style="margin: 10px;" routerLink=""
-                            [disabled]="!editTicketFormGroup.valid"  (click)="sendmgrResponse()">Submitmgr</button>
+                            <button class="btn btn-primary" style="margin: 10px;" routerLink="/dashboard"
+                            [disabled]="!editTicketFormGroup.valid"  (click)="sendmgrResponse()">Submit</button>
                         </div>
                     </div>
                     <div *ngIf="enableCABbuttons" style="float: right;" class="">
                         <div class="cancelBtn ">
-                            <button type="button" class="btn btn-danger " routerLink="">Cancel</button>
+                            <button type="button" class="btn btn-danger " routerLink="/dashboard">Cancel</button>
                         </div>
                         <div class="saveBtn ">
                             <button hidden type="button" class="btn btn-success" style="margin-left: 10px;">Save</button>
                         </div>
                         <div class="submitBtn">
                             <!-- [disabled]="!addTicketFormGroup.valid" -->
-                            <button class="btn btn-primary" style="margin: 10px;" routerLink=""
-                            [disabled]="!editTicketFormGroup.valid"  (click)="SendCabManagerResponse()">SubmitCab</button>
+                            <button class="btn btn-primary" style="margin: 10px;" routerLink="/dashboard"
+                            [disabled]="!editTicketFormGroup.valid"  (click)="SendCabManagerResponse()">Submit</button>
                         </div>
                     </div>
                     <div *ngIf="close" style="float: right;" class="">
                         <div class="cancelBtn ">
-                            <button type="button" class="btn btn-danger " routerLink="">Cancel</button>
+                            <button type="button" class="btn btn-danger " routerLink="/dashboard">Cancel</button>
                         </div>
                         <div class="saveBtn " >
                             <button hidden type="button" class="btn btn-success" style="margin-left: 10px;">Save</button>
@@ -424,12 +424,12 @@
                             <button type="button" class="btn btn-danger "  data-bs-toggle="modal" data-bs-target="#closeTicketPop">Close Ticket</button>
                         </div>
                         <div class="saveBtn ">
-                            <button type="button"  class="btn btn-success" style="margin-left: 10px;" routerLink=""
+                            <button type="button"  class="btn btn-success" style="margin-left: 10px;" routerLink="/dashboard"
                             [disabled]="!editTicketFormGroup.valid" (click)="sendDraftRequest()">Save</button>
                         </div>
                         <div class="submitBtn">
                             <!-- [disabled]="!addTicketFormGroup.valid" -->
-                            <button class="btn btn-primary" style="margin: 10px;" routerLink=""
+                            <button class="btn btn-primary" style="margin: 10px;" routerLink="/dashboard"
                             [disabled]="!editTicketFormGroup.valid"  (click)="sendNewRequest()">Submit</button>
                         </div>
                     </div>
@@ -460,7 +460,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Are you sure , you want to close ticket {{ticketDetails[0].requestid}} ?
+          Are you sure , you want to close ticket CMR-{{ticketDetails[0].requestid}} ?
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

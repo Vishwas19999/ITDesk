@@ -110,7 +110,7 @@ constructor(private msalService:MsalService, private common:CommonService) {
     // this.msalService.logout();
     // console.log('inside logout2')
     this.msalService.logoutRedirect({
-      postLogoutRedirectUri: 'http://localhost:4200/def'
+      postLogoutRedirectUri: 'https://10.10.20.44:4200/'
     });
   }
   empResponse:any;  
@@ -135,3 +135,5 @@ constructor(private msalService:MsalService, private common:CommonService) {
         
 }
 }
+
+

@@ -17,7 +17,7 @@ const routes: Routes = [
   {path:'', component:DefaultComponent },
   // {path:'' , component:DashboardComponent},
   // {path:'' , redirectTo:'/dashboard',pathMatch:"full"},
-  {path:'def', component:DefaultComponent },
+  // {path:'def', component:DefaultComponent },
   {path:'employee',component:EmployeeComponent,canActivate:[MaslGuard]},
   {path:'card',component:CardComponent,canActivate:[MaslGuard]},
   {path:'new_request' , component:NewRequestComponent},
@@ -25,7 +25,6 @@ const routes: Routes = [
   {path:'something/:id' , component:DashboardComponent},
   {path:'dashboard' , component:DashboardComponent,canActivate:[MaslGuard]},
   {path:'request/:id' , component:EmailComponent,canActivate:[MaslGuard]}
-
 ];
 
 @NgModule({

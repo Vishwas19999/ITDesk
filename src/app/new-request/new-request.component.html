@@ -375,15 +375,15 @@
 
                     <div style="float: right;" class="">
                         <div class="cancelBtn ">
-                            <button type="button" class="btn btn-danger " routerLink="">Cancel</button>
+                            <button type="button" class="btn btn-danger " routerLink="/dashboard">Cancel</button>
                         </div>
                         <div class="saveBtn">
                             <button type="button" class="btn btn-success" style="margin-left: 10px;" (click)="sendDraftRequest()"
-                             routerLink="" [disabled]="!addTicketFormGroup.valid" >Save</button>
+                            routerLink="/dashboard" [disabled]="!addTicketFormGroup.valid" >Save</button>
                         </div>
                         <div class="submitBtn">
                             <!-- [disabled]="!addTicketFormGroup.valid" -->
-                            <button class="btn btn-primary" style="margin: 10px;" routerLink=""
+                            <button class="btn btn-primary" style="margin: 10px;" routerLink="/dashboard"
                                 (click)="sendNewRequest()" [disabled]="!addTicketFormGroup.valid" >Submit</button>
                         </div>
                     </div>  

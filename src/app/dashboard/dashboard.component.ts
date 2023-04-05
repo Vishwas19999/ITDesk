@@ -39,12 +39,17 @@ export class DashboardComponent implements OnInit {
   user: any;
   empResponse: any;
   manager: any;
-  log : any ;
+  // log : any ;
   some : any;
   UserName: any;
+  reqStatusList:any;
 
 
   id : any = this.activatedRoute.snapshot.params['id'];
+
+  
+  
+  
   
 
   //[{
@@ -91,6 +96,7 @@ export class DashboardComponent implements OnInit {
     this.getTypeDropdown();
     this.getPriorityDropdown();
     this.getDeviceTypeDropdown();
+    this.getRequestDropdown();
 
     this.common.getEmpDetails(this.UserName.username);
 
@@ -98,19 +104,26 @@ export class DashboardComponent implements OnInit {
     
   // this.empDetails();
    
-//    if (this.id != "") {
-//     this.getTicketById(this.id);
+  //  if (this.id == "" || this.id.length <1) {
+    this.some = setTimeout(() => {
+      this.getAllRequest();
+    }, 300)
+//  }
+//  else{
+ 
+//   this.getTicketById(this.id);
 //  }
 
 if (this.id != "") {
+  console.log(this.id,typeof(this.id));
+  
   this.getTicketById(this.id);
- }
+}
 
- this.some = setTimeout(() => {
-  this.getAllRequest();
-}, 300)
+
 
 }
+
 
 
 
@@ -143,6 +156,26 @@ if (this.id != "") {
     );
   }
 
+  getRequestDropdown () {
+
+
+
+
+    this.common.getRequestStatuses().then((http)=>{
+      http.subscribe(
+    
+        response => {
+          this.reqStatusList = response;
+      this.reqStatusList = this.reqStatusList.result;
+         
+         
+         
+          }
+         
+      );
+    })
+    
+     }
   // empDetails () { not required
     
   //   this.common.getEmpDetails().subscribe(

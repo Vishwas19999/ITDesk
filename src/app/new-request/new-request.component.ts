@@ -208,13 +208,17 @@ export class NewRequestComponent implements OnInit{
 
   getTicketNumber () {
 
-    this.common.ticketSequence().subscribe(
-      response => {
-        this.ticketNumber = response.result;
-        this.setInitialValues() ;
-        
-      }
-    );
+    this.common.ticketSequence().then((http)=>{
+      http.subscribe(
+        response => {
+          this.ticketNumber = response;
+          this.ticketNumber = this.ticketNumber.result;
+          this.setInitialValues() ;
+          
+        }
+      );
+    })
+    
 
   }
 

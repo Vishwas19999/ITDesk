@@ -1,93 +1,169 @@
 
 <div class="card container mt-3 p-3 overflow-auto" style="background-color: #eee;">
-    <div class="searchany">
-        <input class="form-control" type="text" name="firstname" placeholder="search " [(ngModel)]="searchText">
+  <div class="searchany">
+      <input class="form-control" type="text" name="firstname" placeholder="search " [(ngModel)]="searchText">
 
-     <button type="button" class="right btn btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" > 
-       <i class="fa fa-plus " aria-hidden="true"  ></i>
-     </button> 
+   <button type="button" class="right btn btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" > 
+     <i class="fa fa-plus " aria-hidden="true"  ></i>
+   </button> 
 
-     <button type="button"
-     class="filter btn btn-lg"
-     title="Filter"
-     data-bs-toggle="modal" data-bs-target="#ModalFilterForm"><i class="fa fa-filter" aria-hidden="true"></i>          
-     </button>
+   <button type="button"
+   class="filter btn btn-lg"
+   title="Filter"
+   data-bs-toggle="modal" data-bs-target="#ModalFilterForm"><i class="fa fa-filter" aria-hidden="true"></i>          
+   </button>
 
-    </div>
-    
+  </div>
+  
 
-   <!-- Tabular structure -->
-     <div>
-        <table class="table table-hover table-responsive mt-3 p-3 overflow-auto">
-            <thead>
-                <tr>
-                    <th scope="col">Emp ID</th>
-                    <th scope="col">Email ID</th>
-                    <th scope="col">Employee Name</th>
-                    <th scope="col">Level</th>
-                    <th scope="col">Device</th>
-                    <th scope="col">MgrEmpID</th>
-                    <th scope="col">MgrName</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-             <tbody>
-                <tr *ngFor="let employee of employees | filter:searchText | paginate: {itemsPerPage: 5, currentPage: p} ">
-                    <td>{{employee.empid}}</td>
-                    <td>{{employee.empemailid}}</td>
-                    <td>{{employee.empname}}</td>
-                    <td>{{employee.emplevel}}</td>
-                    <td>{{employee.device}}</td>
-                    <td>{{employee.mgrempid}}</td>
-                    <td>{{employee.mgrname}}</td>
-                    <td><a href=""  data-bs-toggle="modal" data-bs-target="#editModal" (click)="setemp(employee)"><i class="fa fa-edit" style="color:green" ></i></a></td>
-                    <td><a href=""  data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="getEmployeeid(employee.empid)"><i class="fa fa-trash" style="color:red" aria-hidden="true" ></i></a></td>
-                </tr>
-            </tbody> 
-        </table>
-    </div>
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+ <!-- Tabular structure -->
+   <div>
+      <table class="table table-hover table-responsive mt-3 p-3 overflow-auto">
+          <thead>
+              <tr>
+                  <th scope="col">Emp ID</th>
+                  <th scope="col">Email ID</th>
+                  <th scope="col">Employee Name</th>
+                  <th scope="col">Level</th>
+                  <th scope="col">Device</th>
+                  <th scope="col">MgrEmpID</th>
+                  <th scope="col">MgrName</th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+              </tr>
+          </thead>
+           <tbody>
+              <tr *ngFor="let employee of employees | filter:searchText | paginate: {itemsPerPage: 5, currentPage: p} ">
+                  <td>{{employee.empid}}</td>
+                  <td>{{employee.empemailid}}</td>
+                  <td>{{employee.empname}}</td>
+                  <td>{{employee.emplevel}}</td>
+                  <td>{{employee.device}}</td>
+                  <td>{{employee.mgrempid}}</td>
+                  <td>{{employee.mgrname}}</td>
+                  <td><a href=""  data-bs-toggle="modal" data-bs-target="#editModal" (click)="setemp(employee)"><i class="fa fa-edit" style="color:green" ></i></a></td>
+                  <td><a href=""  data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="getEmployeeid(employee.empid)"><i class="fa fa-trash" style="color:red" aria-hidden="true" ></i></a></td>
+              </tr>
+          </tbody> 
+      </table>
+  </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 
 
 
 
-  
-  <!-- #add the employee -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Details</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
 
-            <form class="row g-3" [formGroup]="addEmployee" #employee="ngForm" (ngSubmit)="callAPI(employee)" >
+<!-- #add the employee -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
 
-                <div class="col-md-6">
-                  <label for="inputEmail" class="form-label">Email ID</label>
-                  <input type="email" class="form-control" id="inputEmail4" formControlName="empemailid">
-                </div>
-                <div class="col-md-6">
-                  <label for="inputPassword4" class="form-label">Emp ID</label>
-                  <input type="empid" class="form-control" id="inputPassword4" formControlName="empid">
-                </div>
-                <div class="col-md-6">
-                  <label for="inputname" class="form-label">Employee Name</label>
-                  <input type="empname" class="form-control" id="full name" formControlName="empname">
-                </div>
+          <form class="row g-3" [formGroup]="addEmployee" #employee="ngForm" (ngSubmit)="callAPI(employee)" >
 
-                 <div class="col-md-6">
+              <div class="col-md-6">
+                <label for="inputEmail" class="form-label">Email ID</label>
+                <input type="email" class="form-control" id="inputEmail4" formControlName="empemailid">
+              </div>
+              <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Emp ID</label>
+                <input type="empid" class="form-control" id="inputPassword4" formControlName="empid">
+              </div>
+              <div class="col-md-6">
+                <label for="inputname" class="form-label">Employee Name</label>
+                <input type="empname" class="form-control" id="full name" formControlName="empname">
+              </div>
+
+               <div class="col-md-6">
+                <label for="inputlevel" class="form-label">Level</label>
+               
+                <select id="emplevel" class="form-select" (ngModelChange)="getdata($event)"  formControlName="emplevel">
+                  <option selected>Choose...</option>
+                  <option *ngFor="let employee of emplevel" value="{{employee.listdtlcode}}">{{employee.listdtlcode}}</option>
+                </select>
+              </div> 
+
+              <div class="col-md-6">
+                <label for="inputDevice" class="form-label">Device</label>
+                <select  id="deviceId"  class="form-select" formControlName="device" (ngModelChange)="getidbydevice($event)" >
+                  <option selected>Choose...</option>
+                  <option *ngFor="let employee of typeList" value="{{employee.listdtlcode}}">{{employee.listdtlcode}}</option>
+                </select>
+              </div> 
+               <!-- <div class="col-md-6">
+                <label for="inputState" class="form-label">Manager Email ID</label>
+                <select id="inputState" class="form-select">
+                  <option selected>Choose...</option>
+                  <option>...</option>
+                </select>
+              </div>  -->
+             
+              <div class="col-md-6">
+                <label for="inputZip" class="form-label">MgrEmpID</label>
+                <!-- <input type="mgrempid" class="form-control" id="inputZip" formControlName="mgrempid"> -->
+                <select  id="deviceId"  class="form-select" formControlName="mgrempid" (ngModelChange)="getnamebyid($event)">
+                  <option selected>Choose...</option>
+                  <option *ngFor="let employee of mid" value="{{employee.empid}}">{{employee.empid}}</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                  <label for="inputZip" class="form-label">Manager Full Name</label>
+                  <input type="mgrname" class="form-control" id="inputZip" formControlName="mgrname">
+              </div>
+
+              <div class="col-md-6">
+                <label for="inputZip" class="form-label">Manager Email ID</label>
+                <input type="mgremailid" class="form-control" id="inputZip" formControlName="mgremailid">
+            </div>
+
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="callAPI(employee)" [disabled]="!employee.valid">Submit </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- #edit the employee -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form class="row g-3" [formGroup]="editEmployee" #editform="ngForm">
+              <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Emp ID</label>
+                <input type="empid" class="form-control" id="inputEmail4" formControlName="empid">
+              </div>
+              <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Email ID</label>
+                <input type="empemailid" class="form-control" id="inputPassword4" formControlName="empemailid" >
+              </div>
+              <div class="col-6">
+                <label for="inputname" class="form-label">Employee Name</label>
+                <input type="empname" class="form-control" id="full name" formControlName="empname">
+              </div>
+              <div class="col-md-6">
                   <label for="inputlevel" class="form-label">Level</label>
                  
-                  <select id="emplevel" class="form-select" (ngModelChange)="getdata($event)"  formControlName="emplevel">
+                  <select id="level" class="form-select" formControlName="emplevel" >
                     <option selected>Choose...</option>
-                    <option *ngFor="let employee of emplevel" value="{{employee.listdtlcode}}">{{employee.listdtlcode}}</option>
+                    <option *ngFor="let employee of emplevel">{{employee.listdtlcode}}</option>
+                    
                   </select>
                 </div> 
-
                 <div class="col-md-6">
                   <label for="inputDevice" class="form-label">Device</label>
                   <select  id="deviceId"  class="form-select" formControlName="device" (ngModelChange)="getidbydevice($event)" >
@@ -95,345 +171,269 @@
                     <option *ngFor="let employee of typeList" value="{{employee.listdtlcode}}">{{employee.listdtlcode}}</option>
                   </select>
                 </div> 
-                 <!-- <div class="col-md-6">
-                  <label for="inputState" class="form-label">Manager Email ID</label>
-                  <select id="inputState" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                  </select>
-                </div>  -->
-               
-                <div class="col-md-6">
-                  <label for="inputZip" class="form-label">MgrEmpID</label>
-                  <!-- <input type="mgrempid" class="form-control" id="inputZip" formControlName="mgrempid"> -->
-                  <select  id="deviceId"  class="form-select" formControlName="mgrempid" (ngModelChange)="getnamebyid($event)">
-                    <option selected>Choose...</option>
-                    <option *ngFor="let employee of mid" value="{{employee.empid}}">{{employee.empid}}</option>
-                  </select>
-                </div>
-
-                <div class="col-md-6">
-                    <label for="inputZip" class="form-label">Manager Full Name</label>
-                    <input type="mgrname" class="form-control" id="inputZip" formControlName="mgrname">
-                </div>
-
-                <div class="col-md-6">
-                  <label for="inputZip" class="form-label">Manager Email ID</label>
-                  <input type="mgremailid" class="form-control" id="inputZip" formControlName="mgremailid">
+              <!-- <div class="col-md-6">
+                <label for="inputCity" class="form-label">Device</label>
+                <select id="device" class="form-select">
+                  <option selected>Choose...</option>
+                  <option>Network</option>
+                  <option>Service</option>
+                </select>
               </div>
+              
+              <div class="col-md-6">
+                <label for="inputState" class="form-label">Manager Email ID</label>
+                <select id="inputState" class="form-select">
+                  <option selected>Choose...</option>
+                  <option>...</option>
+                </select>
+              </div>   -->
 
-            </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="callAPI(employee)" [disabled]="!employee.valid">Submit </button>
-        </div>
+              <div class="col-md-6">
+                <label for="inputZip" class="form-label">MgrEmpID</label>
+                <input type="mgrempid" class="form-control" id="inputZip" formControlName="mgrempid" >
+              </div>
+             
+              <div class="col-md-6">
+                  <label for="inputZip" class="form-label">MgrName</label>
+                  <input type="mgrname" class="form-control" id="inputZip" formControlName="mgrname" >
+                </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="edit(editform)">Save</button>
       </div>
     </div>
   </div>
-
-
-<!-- #edit the employee -->
-  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Details</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <form class="row g-3" [formGroup]="editEmployee" #editform="ngForm">
-                <div class="col-md-6">
-                  <label for="inputEmail4" class="form-label">Emp ID</label>
-                  <input type="empid" class="form-control" id="inputEmail4" formControlName="empid">
-                </div>
-                <div class="col-md-6">
-                  <label for="inputPassword4" class="form-label">Email ID</label>
-                  <input type="empemailid" class="form-control" id="inputPassword4" formControlName="empemailid" >
-                </div>
-                <div class="col-6">
-                  <label for="inputname" class="form-label">Employee Name</label>
-                  <input type="empname" class="form-control" id="full name" formControlName="empname">
-                </div>
-                <div class="col-md-6">
-                    <label for="inputlevel" class="form-label">Level</label>
-                   
-                    <select id="level" class="form-select" formControlName="emplevel" >
-                      <option selected>Choose...</option>
-                      <option *ngFor="let employee of emplevel">{{employee.listdtlcode}}</option>
-                      
-                    </select>
-                  </div> 
-                  <div class="col-md-6">
-                    <label for="inputDevice" class="form-label">Device</label>
-                    <select  id="deviceId"  class="form-select" formControlName="device" (ngModelChange)="getidbydevice($event)" >
-                      <option selected>Choose...</option>
-                      <option *ngFor="let employee of typeList" value="{{employee.listdtlcode}}">{{employee.listdtlcode}}</option>
-                    </select>
-                  </div> 
-                <!-- <div class="col-md-6">
-                  <label for="inputCity" class="form-label">Device</label>
-                  <select id="device" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>Network</option>
-                    <option>Service</option>
-                  </select>
-                </div>
-                
-                <div class="col-md-6">
-                  <label for="inputState" class="form-label">Manager Email ID</label>
-                  <select id="inputState" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                  </select>
-                </div>   -->
-
-                <div class="col-md-6">
-                  <label for="inputZip" class="form-label">MgrEmpID</label>
-                  <input type="mgrempid" class="form-control" id="inputZip" formControlName="mgrempid" >
-                </div>
-               
-                <div class="col-md-6">
-                    <label for="inputZip" class="form-label">MgrName</label>
-                    <input type="mgrname" class="form-control" id="inputZip" formControlName="mgrname" >
-                  </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="edit(editform)">Save</button>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
 
 
 
 
 <!-- #delete the employee -->
-  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Details</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <form class="row g-3"  >
-               <p>Are you sure want to delete?</p>
-               
-            </form>
-            
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" (click)="deleteemployee()" >Delete</button>
-        </div>
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form class="row g-3"  >
+             <p>Are you sure want to delete?</p>
+             
+          </form>
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="deleteemployee()" >Delete</button>
       </div>
     </div>
   </div>
+</div>
 
 
 
 
 
 <!-- #filter the records -->
-  <div class="modal ri fade" id="ModalFilterForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Details</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <form class="row g-3" [formGroup]="filterRecords" #emp="ngForm">
-                  <div class="col-md-6">
-                    <label for="inputPassword4" class="form-label">Emp ID</label>
-                    <input type="empid" class="form-control" id="inputPassword4" formControlName="empid">
-                  </div>
-   
-                  <div class="col-md-6">
-                    <label for="inputname" class="form-label">Employee Name</label>
-                    <input type="empname" class="form-control" id="full name" formControlName="empname">
-                  </div>
-
-
-                  <div class="col-md-6">
-                    <label for="inputlevel" class="form-label">Level</label>
-                   
-                    <select id="level" class="form-select"  formControlName="emplevel">
-                      <option selected>Choose...</option>
-                      <option *ngFor="let employee of emplevel">{{employee.listdtlcode}}</option>
-                      
-                    </select>
-                  </div>
-
-                  <div class="col-md-6">
-                    <label for="inputZip" class="form-label">Manager Full Name</label>
-                    <input type="mgrname" class="form-control" id="inputZip" formControlName="mgrname">
-                </div> 
-                <div class="col-md-6">
-                  <label for="inputEmail4" class="form-label">Email ID</label>
-                  <input type="email" class="form-control" id="inputEmail4" formControlName="empemailid" >
-                </div>
-                <div class="col-md-6">
-                  <label for="inputCity" class="form-label">Device</label>
-                  <select id="device" class="form-select" formControlName="device" >
-                    <option selected>Choose...</option>
-                    <option *ngFor="let employee of typeList" >{{employee.listdtlcode}}</option>
-                  </select>
-                </div>  
-                 <!-- <div class="col-md-6">
-                  <label for="inputState" class="form-label">Manager Email ID</label>
-                  <select id="inputState" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                  </select>
-                </div>  -->
-                <div class="col-md-6">
-                  <label for="inputZip" class="form-label">MgrEmpID</label>
-                  <input type="mgrempid" class="form-control" id="inputZip" formControlName="mgrempid">
-                </div>
-                
-            </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  (click)="clearForm()">Clear</button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="filterdata(emp)">Search </button>
-        </div>
+<div class="modal ri fade" id="ModalFilterForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-    </div>
-  </div>
-
-
-  <!-- <div id="ModalFilterForm" class="modal right fade col-sm-12" tabindex="-1">
-    <div class="modal-dialog ">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Employee details</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <div class="col-md-6">
-                <label for="inputPassword4" class="form-label">Email ID</label>
-                <input type="empemailid" class="form-control" id="inputPassword4"  >
-              </div>
-              <div class="col-6">
-                <label for="inputname" class="form-label">Employee Name</label>
-                <input type="empname" class="form-control" id="full name" >
-            </div>
-            <div class="form-group">
-                <div class="form-floating mb-4">
-                    <select class="form-select rounded-3" name="Mode" id="Mode">
-                        <option value="default">...</option>
-                        <option value="Online"> Normal </option>
-                        <option value="Face-To-Face">Emergency</option>
-                    </select>
-                    <label for="Mode">Change Type</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-floating mb-4">
-                    <select class="form-select rounded-3" name="Priority" id="Priority">
-                        <option value="default">...</option>
-                        <option value="Online"> Low </option>
-                        <option value="Face-To-Face">High</option>
-                    </select>
-                    <label for="Priority">Priority</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-floating mb-4">
-                    <select class="form-select rounded-3" name="Status" id="Status">
-                        <option value="default">...</option>
-                        <option value="Online"> New Request </option>
-                        <option value="Face-To-Face">Rejected</option>
-                    </select>
-                    <label for="Status">Status</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-floating mb-4">
-                    <select class="form-select rounded-3" name="Device" id="Device">
-                        <option value="default">...</option>
-                        <option value="Online"> Router </option>
-                        <option value="Face-To-Face">Server</option>
-                    </select>
-                    <label for="Device">Device Type</label>
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Search</button>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  
-  
-  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Details</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <form class="row g-3"  #employee="ngForm" (ngSubmit)="callAPI(employee)" >
-                <div class="col-md-6">
-                  <label for="inputEmail4" class="form-label">Email ID</label>
-                  <input type="email" class="form-control" id="inputEmail4" >
-                </div>
+      <div class="modal-body">
+          <form class="row g-3" [formGroup]="filterRecords" #emp="ngForm">
                 <div class="col-md-6">
                   <label for="inputPassword4" class="form-label">Emp ID</label>
-                  <input type="empid" class="form-control" id="inputPassword4">
+                  <input type="empid" class="form-control" id="inputPassword4" formControlName="empid">
                 </div>
+ 
                 <div class="col-md-6">
                   <label for="inputname" class="form-label">Employee Name</label>
-                  <input type="empname" class="form-control" id="full name" >
+                  <input type="empname" class="form-control" id="full name" formControlName="empname">
                 </div>
-                 <!-- <div class="col-md-6">
-                  <label for="inputAddress2" class="form-label">Level</label>
-                 
-                  <select id="level" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>Consultant</option>
-                    <option>Network team</option>
-                  </select>
-                </div>  -->
-             <!-- <div class="col-md-6">
-                  <label for="inputCity" class="form-label">Device</label>
-                  <select id="device" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>Network</option>
-                    <option>Service</option>
-                  </select>
-                </div>  -->
-                 <!-- <div class="col-md-6">
-                  <label for="inputState" class="form-label">Manager Email ID</label>
-                  <select id="inputState" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                  </select>
-                </div>  -->
+
+
                 <div class="col-md-6">
-                  <label for="inputZip" class="form-label">MgrEmpID</label>
-                  <input type="mgrempid" class="form-control" id="inputZip" >
+                  <label for="inputlevel" class="form-label">Level</label>
+                 
+                  <select id="level" class="form-select"  formControlName="emplevel">
+                    <option selected>Choose...</option>
+                    <option *ngFor="let employee of emplevel">{{employee.listdtlcode}}</option>
+                    
+                  </select>
                 </div>
-                <!-- <div class="col-md-6">
-                    <label for="inputZip" class="form-label">Manager Full Name</label>
-                    <input type="mgrname" class="form-control" id="inputZip" formControlName="managerfullname">
-                </div> -->
-            </form>
-        </div>
-        <div class="modal-footer">
-          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-          <button type="button" class="btn btn-primary" (click)="callAPI(employee)">Submit </button>
-        </div>
+
+                <div class="col-md-6">
+                  <label for="inputZip" class="form-label">Manager Full Name</label>
+                  <input type="mgrname" class="form-control" id="inputZip" formControlName="mgrname">
+              </div> 
+              <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Email ID</label>
+                <input type="email" class="form-control" id="inputEmail4" formControlName="empemailid" >
+              </div>
+              <div class="col-md-6">
+                <label for="inputCity" class="form-label">Device</label>
+                <select id="device" class="form-select" formControlName="device" >
+                  <option selected>Choose...</option>
+                  <option *ngFor="let employee of typeList" >{{employee.listdtlcode}}</option>
+                </select>
+              </div>  
+               <!-- <div class="col-md-6">
+                <label for="inputState" class="form-label">Manager Email ID</label>
+                <select id="inputState" class="form-select">
+                  <option selected>Choose...</option>
+                  <option>...</option>
+                </select>
+              </div>  -->
+              <div class="col-md-6">
+                <label for="inputZip" class="form-label">MgrEmpID</label>
+                <input type="mgrempid" class="form-control" id="inputZip" formControlName="mgrempid">
+              </div>
+              
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  (click)="clearForm()">Clear</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="filterdata(emp)">Search </button>
       </div>
     </div>
   </div>
+</div>
+
+
+<!-- <div id="ModalFilterForm" class="modal right fade col-sm-12" tabindex="-1">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Employee details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <div class="col-md-6">
+              <label for="inputPassword4" class="form-label">Email ID</label>
+              <input type="empemailid" class="form-control" id="inputPassword4"  >
+            </div>
+            <div class="col-6">
+              <label for="inputname" class="form-label">Employee Name</label>
+              <input type="empname" class="form-control" id="full name" >
+          </div>
+          <div class="form-group">
+              <div class="form-floating mb-4">
+                  <select class="form-select rounded-3" name="Mode" id="Mode">
+                      <option value="default">...</option>
+                      <option value="Online"> Normal </option>
+                      <option value="Face-To-Face">Emergency</option>
+                  </select>
+                  <label for="Mode">Change Type</label>
+              </div>
+          </div>
+          <div class="form-group">
+              <div class="form-floating mb-4">
+                  <select class="form-select rounded-3" name="Priority" id="Priority">
+                      <option value="default">...</option>
+                      <option value="Online"> Low </option>
+                      <option value="Face-To-Face">High</option>
+                  </select>
+                  <label for="Priority">Priority</label>
+              </div>
+          </div>
+          <div class="form-group">
+              <div class="form-floating mb-4">
+                  <select class="form-select rounded-3" name="Status" id="Status">
+                      <option value="default">...</option>
+                      <option value="Online"> New Request </option>
+                      <option value="Face-To-Face">Rejected</option>
+                  </select>
+                  <label for="Status">Status</label>
+              </div>
+          </div>
+          <div class="form-group">
+              <div class="form-floating mb-4">
+                  <select class="form-select rounded-3" name="Device" id="Device">
+                      <option value="default">...</option>
+                      <option value="Online"> Router </option>
+                      <option value="Face-To-Face">Server</option>
+                  </select>
+                  <label for="Device">Device Type</label>
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form class="row g-3"  #employee="ngForm" (ngSubmit)="callAPI(employee)" >
+              <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Email ID</label>
+                <input type="email" class="form-control" id="inputEmail4" >
+              </div>
+              <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Emp ID</label>
+                <input type="empid" class="form-control" id="inputPassword4">
+              </div>
+              <div class="col-md-6">
+                <label for="inputname" class="form-label">Employee Name</label>
+                <input type="empname" class="form-control" id="full name" >
+              </div>
+               <!-- <div class="col-md-6">
+                <label for="inputAddress2" class="form-label">Level</label>
+               
+                <select id="level" class="form-select">
+                  <option selected>Choose...</option>
+                  <option>Consultant</option>
+                  <option>Network team</option>
+                </select>
+              </div>  -->
+           <!-- <div class="col-md-6">
+                <label for="inputCity" class="form-label">Device</label>
+                <select id="device" class="form-select">
+                  <option selected>Choose...</option>
+                  <option>Network</option>
+                  <option>Service</option>
+                </select>
+              </div>  -->
+               <!-- <div class="col-md-6">
+                <label for="inputState" class="form-label">Manager Email ID</label>
+                <select id="inputState" class="form-select">
+                  <option selected>Choose...</option>
+                  <option>...</option>
+                </select>
+              </div>  -->
+              <div class="col-md-6">
+                <label for="inputZip" class="form-label">MgrEmpID</label>
+                <input type="mgrempid" class="form-control" id="inputZip" >
+              </div>
+              <!-- <div class="col-md-6">
+                  <label for="inputZip" class="form-label">Manager Full Name</label>
+                  <input type="mgrname" class="form-control" id="inputZip" formControlName="managerfullname">
+              </div> -->
+          </form>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+        <button type="button" class="btn btn-primary"  (click)="callAPI(employee)">Submit </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

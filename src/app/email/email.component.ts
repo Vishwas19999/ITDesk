@@ -41,7 +41,7 @@ export class EmailComponent implements OnInit {
     console.log('repsonse ---', response);
     ticketId = parseInt(ticketId);
     let ticket = {requestid : ticketId}
-    this.http.post<any>('http://localhost:3000/RequestManager/requestbyid' , ticket
+    this.http.post<any>('https://10.10.20.44:3000/RequestManager/requestbyid' , ticket
     ,{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }}
