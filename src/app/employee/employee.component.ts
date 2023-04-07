@@ -36,23 +36,8 @@ export class EmployeeComponent implements OnInit {
 levelname:any;
   typeList:any;
   emplevel:any;
-//  pageSize: number = 5;
-//  pageNumber:any = 1;
+  some:any;
 
-  // employees:any = [
-  //   {EmpID:99291, EmailID:'vishwas261999@gmail.com', EmployeeName:'Vishwas.V',Level:'Consultant', Device:'Network',MgrEmpID:982882 },
-  //   {EmpID:33291, EmailID:'msd@gmail.com', EmployeeName:'Dhoni',Level:'Consultant', Device:'Network',MgrEmpID:822882},
-  //   {EmpID:82291, EmailID:'jah@gmail.com', EmployeeName:'Ajay',Level:'Consultant', Device:'Service',MgrEmpID:982882},
-  //   {EmpID:26291, EmailID:'malli@gmail.com', EmployeeName:'Mallikarjun',Level:'Consultant', Device:'Network',MgrEmpID:182882},
-  //   {EmpID:31291, EmailID:'rafi@gmail.com', EmployeeName:'Mahmad Rafi',Level:'Consultant', Device:'Network',MgrEmpID:982782},
-  //   {EmpID:73245, EmailID:'ronaldo@gmail.com', EmployeeName:'Christiano',Level:'Consultant', Device:'Service',MgrEmpID:182882},
-  //   {EmpID:97191, EmailID:'rahul@gmail.com', EmployeeName:'KL Rahul',Level:'Consultant', Device:'Network',MgrEmpID:982882},
-  //   {EmpID:11291, EmailID:'chettri@gmail.com', EmployeeName:'Sunil',Level:'Consultant', Device:'Service',MgrEmpID:927882},
-  //   {EmpID:99291, EmailID:'srikanth@gmail.com', EmployeeName:'Sriknath',Level:'Consultant', Device:'Network',MgrEmpID:172882},
-  //   {EmpID:73291, EmailID:'sindhu@gmail.com', EmployeeName:'Sindhu',Level:'Consultant', Device:'Network',MgrEmpID:987282},
-  //   {EmpID:99273, EmailID:'saina@gmail.com', EmployeeName:'Saina',Level:'Consultant', Device:'Network',MgrEmpID:98912},
-    
-  // ]
 
   constructor(
    
@@ -61,26 +46,20 @@ levelname:any;
     private fb:FormBuilder,
     private msalService:MsalService
   ){ 
-    common.getEmployee().then((http)=>{
-      http.subscribe((data:any)=>{
-        this.employees=data.result;
-        
-        console.log(this.employees);
+   
+      common.getEmployee().then((http)=>{
+        http.subscribe((data:any)=>{
+          this.employees=data.result;
+          
+          console.log(this.employees);
+        })
       })
-    })
+  
 
 
 
    
-    // subscribe((data:any)=>{
-    //   this.employees=data.result;
-      
-    //   console.log(this.employees);
-    // })
-    // this.emplevel = this.employees.map((x:any) => x.emplevel);
-    // console.log(this.emplevel);
-    
-    // this.emplevel= Array.from(new Set(this.emplevel));
+ 
     
  }
 
@@ -99,15 +78,7 @@ levelname:any;
     mgremailid: ['',Validators.required]
  })
   
-// addEmployee = this.fb.group({
-//   empemailid: new FormControl('',),
-//   empid: new FormControl(''),
-//   empname: new FormControl(''),
-//   mgrempid: new FormControl(''),
-//   emplevel: new FormControl(''),
-//   mgrname: new FormControl(''),
-//   device: new FormControl('')
-//  })
+
 
   editEmployee = this.fb.group({
     empemailid: ['',Validators.required],
@@ -119,12 +90,7 @@ levelname:any;
     device: ['',Validators.required],
    })
 
-//  getemp(data:any){
-//   this.common.getEmployee(this.pageNumber,this.pageSize).subscribe((data)=>{
-//     this.employees = data;
-//     this.employees = this.employees.result;
-//   })
-//  }
+
 
 getdata(data:any){
   debugger
@@ -185,7 +151,7 @@ getidbydevice(device:any){
 
 getnamebyid(empid:any){
   debugger;
-  // let abc={emp}
+
   this.http.post<any>('https://10.10.20.44:3000/EmpManager/getnamebyid',{empid})
   .subscribe(
     response => {
@@ -209,7 +175,7 @@ getnamebyid(empid:any){
 
 getemailbyid(empid:any){
   debugger;
-  // let abc={emp}
+ 
   this.http.post<any>('https://10.10.20.44:3000/EmpManager/getnamebyid',{empid})
   .subscribe(
     response => {
@@ -224,13 +190,7 @@ getemailbyid(empid:any){
   );
 }
 
-// getdev(data:any){
-//   console.log(data.value);
-//   this.levelname=data.value;
-// if(this.levelname === "Manager"){
-//   this.addEmployee.controls['mgrempid'].setValue("");
-// }
-// }
+
 
 
 filterRecords = this.fb.group({
@@ -246,7 +206,7 @@ filterRecords = this.fb.group({
   ngOnInit(): void {
     this.getTypeDropdown ();
     this.getemplevels ();
-    // this.getidbydevice();
+   
   }
 
 
@@ -255,8 +215,20 @@ filterRecords = this.fb.group({
     this.common.addEmployee(employee.value).then((add)=>{
       add.subscribe((data)=>{
         console.log(data)
+        
       })
+      this.some = setTimeout(() => {
+        this.common.getEmployee().then((http)=>{
+          http.subscribe((data:any)=>{
+            this.employees=data.result;
+            
+            console.log(this.employees);
+          })
+        })
+      }, 1000)
     })
+
+
   }
 
 
@@ -284,15 +256,7 @@ filterRecords = this.fb.group({
     // clearform() {
     //   this.editEmployee.reset();
     // }
-  // reset(){
-  //   this.empid = " ";
-  //   this.empname = "";
-  //   this.empemailid = "";
-  //   this.device = "";
-  //   this.mgrname ="";
-  //   this.mgrempid = "";
-
-  // }
+ 
 
   edit(editform:any){
     console.log(editform.value);
@@ -301,6 +265,15 @@ filterRecords = this.fb.group({
         edit.subscribe((val)=>{
           console.log(val);
         })
+        this.some = setTimeout(() => {
+          this.common.getEmployee().then((http)=>{
+            http.subscribe((data:any)=>{
+              this.employees=data.result;
+              
+              console.log(this.employees);
+            })
+          })
+        }, 1000)
       })
   }
  
@@ -327,11 +300,22 @@ filterRecords = this.fb.group({
   deleteemployee(){
     debugger;
    let empid={"empid":this.employeeid }
+   
     this.common.deleteEmployee(empid).then((http)=>{
       http. subscribe((result)=>{
         console.log("deleted successfully", result);
       })
+      this.some = setTimeout(() => {
+        this.common.getEmployee().then((http)=>{
+          http.subscribe((data:any)=>{
+            this.employees=data.result;
+            
+           
+          })
+        })
+      }, 1000)
     })
+
    
   }
 

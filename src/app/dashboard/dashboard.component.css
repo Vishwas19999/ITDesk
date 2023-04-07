@@ -1,9 +1,3 @@
-/* .headerText {
-    text-align: center;
-}
-.input-group {
-    margin-bottom: 10px;
-} */
 
 label{
     display: block;
@@ -17,7 +11,7 @@ label{
     background-color:lightblue;
 }
 .card-header a {
-    /* box-shadow: inset 0 0 0 0 #54b3d6; */
+    
     color: #635b50;
     margin: 0 -.25rem;
     padding: 0 .25rem;
@@ -25,7 +19,7 @@ label{
 }
 .card-header:hover{
     cursor: pointer;
-    /* box-shadow: inset 414px 0 0 0 #88c5b8; */
+   
     background-color:#88c5b8 ;
 }
 .card-header:hover a{
@@ -44,7 +38,7 @@ label{
     transform: scale(1.05);
     transition: transform .4s ease-in-out, box-shadow .3s ease-in-out;
 }
-/* Searchbuttons container CSS */
+
 .Searchbuttons{
     padding: 5px;
     top: 10px;
@@ -54,24 +48,18 @@ label{
 
 .filter{
     background-color: #789aff;
-    /* position: absolute;
-    right: 90px;
-    top: 200px;
-    margin-right: 0; */
+    
 }
 
 .search-form{
-    /* width:60%; */
-   /* position: absolute;
-     right: 150px;
-    top: 205px; */
+  
     margin-right: 0;
     
 }
 
 .add-course{
     background-color: #789aff;
-    /* position: absolute; */
+    
     right: 30px;
     top: 200px;
     margin-right: 0;
@@ -97,11 +85,7 @@ label{
 
 
 
-/*******************************
-* MODAL AS LEFT/RIGHT SIDEBAR
-* Add "left" or "right" in modal parent div, after class="modal".
-* Get free snippets on bootpen.com
-*******************************/
+
 .modal-dialog{
     overflow-y: initial !important
 }
@@ -149,18 +133,7 @@ label{
 .dropbutton:hover{
     background-color:lightblue
 }
-/* .Name{
-    width:100px;
-    padding: 0px;
-}
-.Desc{
-    width:1000px;
-    padding:0px;
-}
-.grade{
-    width:400px;
-    padding:0px;
-} */
+
 
 
 .editing:hover{
@@ -179,6 +152,3 @@ label{
     background-color: lightblue;
    
 }
-/* .inline1, .inline2 {
-    display: inline;
-} */

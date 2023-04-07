@@ -1,405 +1,331 @@
 <div class="container">
     
-    <!-- <div class="hdr">
-        <h3 class="hrText">Change Request Form</h3>
-         <i style="float: right;" class="fa fa-home "></i> 
-        
-    </div> -->
-    <!-- <div  class="home" >
-        <i class="fa fa-home "></i>
-    </div> -->
+   
 
-
-<form [formGroup]="addTicketFormGroup">
-
-    <nav aria-label="breadcrumb" class="mt-2">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a routerLink="">Dashboard</a></li>
-          <li class="breadcrumb-item active" aria-current="page">New request</li>
-        </ol>
-      </nav>
-
-    <div style="float: right;" class="m-2">
-        <label class="col-md-5 col-sm-12" for="ticketNumber">Ticket Number</label>
-        <input class="col-md-6" style="margin-left: 10px;" formControlName="ticketNumber">
-    </div>
-    <div class="accordion" id="accordionExample">
-
-        <div class="accordion-item ">
-            <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button hdr" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    General Information
-                </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <div class="generalInfo">
+    <form [formGroup]="addTicketFormGroup">
+    
+        <nav aria-label="breadcrumb" class="mt-2">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="">Dashboard</a></li>
+              <li class="breadcrumb-item active" aria-current="page">New request</li>
+            </ol>
+          </nav>
+    
+        <div style="float: right;" class="m-2">
+            <label class="col-md-5 col-sm-12" for="ticketNumber">Ticket Number</label>
+            <input class="col-md-6" style="margin-left: 10px;" formControlName="ticketNumber">
+        </div>
+        <div class="accordion" id="accordionExample">
+    
+            <div class="accordion-item ">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button hdr" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        General Information
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="generalInfo">
+                            <div class=" row justify-content-evenly">
+                                <div class="form-floating form-inline mb-3 col-md-3 ">
+                                    <input class="form-control " id="empID" formControlName="empID">
+                                    <label for="empID">Emp ID</label>
+                                </div>
+                                <div class="form-floating mb-3 col-md-3">
+                                    <input type="date" class="form-control" id="createdOn" name="Created" formControlName="createdOn" [(ngModel)]="setCreatedDate"
+                                        placeholder="Created On" >
+                                    <label for="createdOn">Created On</label>
+                                </div>
+       
+    
+                            </div>
+                            <div class=" row justify-content-evenly">
+                                
+                               
+                                <div class="form-floating mb-3 col-md-3 ">
+                                    <input class="form-control " id="SME_Assigned" formControlName="SME_Assigned">
+                                    <label for="SME_Assigned">SME Assigned</label>
+                                </div>
+    
+                               
+                                <div class="form-floating mb-3 col-md-3 ">
+                                    <input class="form-control " id="approverName" formControlName="approverName">
+                                    <label for="approverName">Approver Email ID</label>
+                                </div>
+                            </div>
+                              
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed hdr" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Change Request Details
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
                         <div class=" row justify-content-evenly">
-                            <div class="form-floating form-inline mb-3 col-md-3 ">
-                                <input class="form-control " id="empID" formControlName="empID">
-                                <label for="empID">Emp ID</label>
+                           
+                            <div class="mb-3 col-md-3">
+                                <label class="mb-2" for="type">Type</label>
+                                <select  #type (change) = "typeResponse(type.value)" id="type" class="form-control" formControlName="type">
+                            
+                                    <option *ngFor="let type of typeList" value = {{type.listdtlcode}}>{{type.listdtlcode}}</option>
+                                    
+                                  </select>
+                                  
+                            </div>
+                            
+                            <div class="mb-3 col-md-3">
+                                <label class="mb-2" for="Priority">Priority</label>
+                                <select id="Priority" class="form-control " formControlName="priority" >
+                                    <option value="Critical" hidden>Critical</option>
+                                    <option  *ngFor="let priority of priorityList" value="{{priority.listdtlcode}}" >{{priority.listdtlcode}}</option>
+                                    
+                                  </select>
+                            </div>
+                        </div>
+                        <div class=" row justify-content-evenly">
+                            <div class="mb-3 col-md-3">
+                                <label class="mb-2" for="Device">Select Device Type</label>
+                                <select id="Device"  #deviceTypeResponse (change) = "selectedDeviceType(deviceTypeResponse.value)" class="form-control " formControlName="selectDevice">
+                                    
+                                    <option *ngFor="let DeviceType of deviceTypeList" value="{{DeviceType.listdtlcode}}">{{DeviceType.listdtlcode}}</option>
+                                    
+                                  </select>
+                            </div>
+                            <div class="mb-3 col-md-3">
+                                <label class="mb-2" for="site">Site Name</label>
+                                <select id="site" class="form-control " formControlName="siteName">
+                                    
+                                    <option *ngFor="let Site of siteNameList" value="{{Site.locname}}">{{Site.locname}}</option>
+                                    
+                                  </select>
+                            </div>
+                        </div>
+                        <div class=" row justify-content-evenly">
+                            <div class="mb-3 col-md-3">
+                                <label class="mb-2" for="Devices">Devices</label>
+                                <select id="Devices" class="form-control " formControlName="devices">
+                            
+                                    <option *ngFor="let Device of deviceList" value="{{Device.listdtlcode}}">{{Device.listdtlcode}}</option>
+                                    
+                                  </select>
+                            </div>
+                            <div class="mb-3 col-md-3">
+                                <label class="mb-2" for="Location">Location</label>
+                                <select id="Location" class="form-control " formControlName="location">
+                                
+                                    <option *ngFor="let Location of locationList" value="{{Location.locname}}">{{Location.locname}}</option>
+                                    
+                                  </select>
+                            </div>
+                        </div>
+                        <div class=" row justify-content-evenly">
+                            <div class="form-floating mb-3 col-md-3 ">
+                                <input type="time" class="form-control " id="implementTime"
+                                    formControlName="implementTime" placeholder="implementTime">
+                                <label for="implementTime">Implement Time</label>
                             </div>
                             <div class="form-floating mb-3 col-md-3">
-                                <input type="date" class="form-control" id="createdOn" name="Created" formControlName="createdOn" [(ngModel)]="setCreatedDate"
-                                    placeholder="Created On" >
-                                <label for="createdOn">Created On</label>
+                                <input type="date" class="form-control" id="scheduledDate" 
+                                    formControlName="scheduledDate" placeholder="scheduledDate" [(ngModel)]="setScheduletDate">
+                                <label for="scheduledDate">Scheduled Date</label>
                             </div>
-                            <!-- <label for="date" class="col-1 col-form-label">Date</label>
-    <div class="col-5">
-    <div class="input-group date" id="datepicker">
-        <input type="text" class="form-control" id="date"/>
-        <span class="input-group-append">
-        <span class="input-group-text bg-light d-block">
-            <i class="fa fa-calendar"></i>
-        </span>
-        </span>
-    </div>
-    </div> -->
-
                         </div>
                         <div class=" row justify-content-evenly">
-                            
-                            <!-- <div class=" mb-3 col-md-3">
-                                <select  class="form-select " formControlName="SME_Assigned" >
-                                    <option value="default">mahamad.rafi@jktech.com</option>
-                                    <option value="fromList" *ngFor="let sme of SME_list">{{sme}}</option>
+                            <div class="mb-3 col-md-3">
+                                <select class="form-control " formControlName="requestStatus" >
+                                   
+                                    <option *ngFor="let RequestStatus of reqDropdown" value="{{RequestStatus.listdtlcode}}">{{RequestStatus.listdtlcode}}</option>
                                     
                                   </select>
-                                  
-                            </div> -->
-                            <div class="form-floating mb-3 col-md-3 ">
-                                <input class="form-control " id="SME_Assigned" formControlName="SME_Assigned">
-                                <label for="SME_Assigned">SME Assigned</label>
                             </div>
-
-                            <!-- <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example"> -->
-                            <!-- <div class="mb-3 col-md-3">
-                                <select class="form-control " formControlName="approverName" aria-label="Default select example">
-                                    <option  value="default">naveen.poovaiah@jktech.com</option>
-                                    <option *ngFor="let approver of approverList">{{approver}}</option>
-                                    
-                                  </select>
-                            </div> -->
-                            <div class="form-floating mb-3 col-md-3 ">
-                                <input class="form-control " id="approverName" formControlName="approverName">
-                                <label for="approverName">Approver Email ID</label>
+                            <div class=" col-md-3">
+    
                             </div>
                         </div>
-                          <!-- list = "SME_list"
-                        <datalist id="SME_list">
-                            <option *ngFor="let sme of SME_list">{{sme}}</option>
-                        </datalist> -->
                         
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-                <button class="accordion-button collapsed hdr" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Change Request Details
-                </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <div class=" row justify-content-evenly">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingPlanning">
+                    <button class="accordion-button collapsed hdr" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapsePlanning" aria-expanded="false" aria-controls="collapsePlanning">
+                        Planning
+                    </button>
+                </h2>
+                <div id="collapsePlanning" class="accordion-collapse collapse" aria-labelledby="headingPlanning"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+    
+                        <div class="row mt-4 justify-content-center">
+                            <label class="col-md-2 align-self-center" for="businessJustification">Business
+                                Justification</label>
+                            <textarea class="col-md-8 " name="businessJustification" rows="3" cols="50"
+                                formControlName="businessJustification"></textarea>
+                        </div>
+                        <div class="row mt-4 justify-content-center">
+                            <label class="col-md-2 align-self-center" for="CMRdescre">CMR Description</label>
+                            <textarea class="col-md-8 " name="CMRdescre" rows="3" cols="50"
+                                formControlName="CMRdescre"></textarea>
+                        </div>
+                        <div class="row mt-4 justify-content-center">
+                            <label class="col-md-2 align-self-center" for="riskImpact">Risk/Impact</label>
+                            <textarea class="col-md-8 " name="riskImpact" rows="3" cols="50"
+                                formControlName="riskImpact"></textarea>
+                        </div>
+                        <div class="row mt-4 justify-content-center">
+                            <label class="col-md-2 align-self-center" for="actionPlan">Action Plan</label>
+                            <textarea class="col-md-8 " name="actionPlan" rows="3" cols="50"
+                                formControlName="actionPlan"></textarea>
+                        </div>
+                        <div class="row mt-4 justify-content-center">
+                            <label class="col-md-2 align-self-center" for="rollbackPlan">Roll-back Plan</label>
+                            <textarea class="col-md-8 " name="rollbackPlan" rows="3" cols="50"
+                                formControlName="rollbackPlan"></textarea>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed hdr" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Note
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="row justify-content-center">
+                            <label class="col-md-11" for="note">Please Mention Relevant Incident or Problem Number
+                                Triggering the
+                                Change</label>
+                            <textarea class="col-md-10 mt-2 " name="note" rows="3" cols="50"
+                                formControlName="note"></textarea>
+    
+                        </div>
+    
                        
-                        <div class="mb-3 col-md-3">
-                            <label class="mb-2" for="type">Type</label>
-                            <select  #type (change) = "typeResponse(type.value)" id="type" class="form-control" formControlName="type">
-                        
-                                <option *ngFor="let type of typeList" value = {{type.listdtlcode}}>{{type.listdtlcode}}</option>
-                                
-                              </select>
-                              
+    
+                        <div class="form-check form-switch padLeft mt-2 mb-2 col-md-11">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Do you need to take a
+                                backup of the server / Network device configuration before the
+                                change?</label>
+    
+                            <input style="float: right;" (click)="getCheckboxResponse1()" class="form-check-input "
+                                type="checkbox" id="flexSwitchCheckDefault">
+    
+                        </div>
+                        <div *ngIf="backupDate" class="mt-2 padLeft">
+    
+                            <div class="mb-2 ">
+                                <label for="">Please mention when the backup will be taken</label>
+                            </div>
+                            <div class="form-floating mb-3 col-md-3">
+    
+                                <input type="date" class="form-control" id="backupDate" formControlName="backupDate" [(ngModel)]="setBackupDate"
+                                    placeholder="backupDate">
+                            </div>
+    
+                        </div>
+    
+    
+                        <div class="form-check form-switch padLeft mt-2 col-md-11">
+    
+                            <input style="float: right;" (click)="getCheckboxResponse2()" class="form-check-input"
+                                type="checkbox" id="flexSwitchCheckDefault1">
+                            <label class="form-check-label" for="flexSwitchCheckDefault1">Is there any downtime
+                                involved for end-users ?</label>
+                        </div>
+                        <div *ngIf="notifyEndUser" class="mt-2 padLeft">
+    
+                            <div class="mb-2 ">
+                                <label for="">If yes, please mention when you will send a notification to end-users?</label>
+                            </div>
+                            <div class="form-floating mb-3 col-md-3">
+    
+                                <input type="date" class="form-control" id="notifyEndUser" [(ngModel)]="setNotifyDate"
+                                    formControlName="notifyEndUser" placeholder="notifyEndUser">
+                            </div>
+    
                         </div>
                         
-                        <div class="mb-3 col-md-3">
-                            <label class="mb-2" for="Priority">Priority</label>
-                            <select id="Priority" class="form-control " formControlName="priority" >
-                                <option value="Critical" hidden>Critical</option>
-                                <option  *ngFor="let priority of priorityList" value="{{priority.listdtlcode}}" >{{priority.listdtlcode}}</option>
-                                
-                              </select>
+                        <div  *ngIf="managerReject" class="row justify-content-center mb-2 mb-2">
+                            <label class="col-md-11" for="note">Please mention the reason for rejection</label>
+                            <textarea class="col-md-10 mt-2 " name="note" rows="3" cols="50"
+                                formControlName="note"></textarea>
+    
                         </div>
-                    </div>
-                    <div class=" row justify-content-evenly">
-                        <div class="mb-3 col-md-3">
-                            <label class="mb-2" for="Device">Select Device Type</label>
-                            <select id="Device"  #deviceTypeResponse (change) = "selectedDeviceType(deviceTypeResponse.value)" class="form-control " formControlName="selectDevice">
-                                <!-- <option disabled = true >Critical</option> -->
-                                <option *ngFor="let DeviceType of deviceTypeList" value="{{DeviceType.listdtlcode}}">{{DeviceType.listdtlcode}}</option>
-                                
-                              </select>
-                        </div>
-                        <div class="mb-3 col-md-3">
-                            <label class="mb-2" for="site">Site Name</label>
-                            <select id="site" class="form-control " formControlName="siteName">
-                                
-                                <option *ngFor="let Site of siteNameList" value="{{Site.locname}}">{{Site.locname}}</option>
-                                
-                              </select>
-                        </div>
-                    </div>
-                    <div class=" row justify-content-evenly">
-                        <div class="mb-3 col-md-3">
-                            <label class="mb-2" for="Devices">Devices</label>
-                            <select id="Devices" class="form-control " formControlName="devices">
                         
-                                <option *ngFor="let Device of deviceList" value="{{Device.listdtlcode}}">{{Device.listdtlcode}}</option>
-                                
-                              </select>
+                        <div *ngIf="CABrejected" class="row justify-content-center mb-2 mb-2">
+                            <label class="col-md-11" for="note">Please mention the reason for rejection</label>
+                            <textarea class="col-md-10 mt-2 " name="note" rows="3" cols="50"
+                                formControlName="note"></textarea>
+    
                         </div>
-                        <div class="mb-3 col-md-3">
-                            <label class="mb-2" for="Location">Location</label>
-                            <select id="Location" class="form-control " formControlName="location">
-                            
-                                <option *ngFor="let Location of locationList" value="{{Location.locname}}">{{Location.locname}}</option>
-                                
-                              </select>
-                        </div>
-                    </div>
-                    <div class=" row justify-content-evenly">
-                        <div class="form-floating mb-3 col-md-3 ">
-                            <input type="time" class="form-control " id="implementTime"
-                                formControlName="implementTime" placeholder="implementTime">
-                            <label for="implementTime">Implement Time</label>
-                        </div>
-                        <div class="form-floating mb-3 col-md-3">
-                            <input type="date" class="form-control" id="scheduledDate" 
-                                formControlName="scheduledDate" placeholder="scheduledDate" [(ngModel)]="setScheduletDate">
-                            <label for="scheduledDate">Scheduled Date</label>
-                        </div>
-                    </div>
-                    <div class=" row justify-content-evenly">
-                        <div class="mb-3 col-md-3">
-                            <select class="form-control " formControlName="requestStatus" >
-                                <!-- <option value="default" >New Request</option> -->
-                                <option *ngFor="let RequestStatus of reqDropdown" value="{{RequestStatus.listdtlcode}}">{{RequestStatus.listdtlcode}}</option>
-                                
-                              </select>
-                        </div>
-                        <div class=" col-md-3">
-
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingPlanning">
-                <button class="accordion-button collapsed hdr" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapsePlanning" aria-expanded="false" aria-controls="collapsePlanning">
-                    Planning
-                </button>
-            </h2>
-            <div id="collapsePlanning" class="accordion-collapse collapse" aria-labelledby="headingPlanning"
-                data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-
-                    <div class="row mt-4 justify-content-center">
-                        <label class="col-md-2 align-self-center" for="businessJustification">Business
-                            Justification</label>
-                        <textarea class="col-md-8 " name="businessJustification" rows="3" cols="50"
-                            formControlName="businessJustification"></textarea>
-                    </div>
-                    <div class="row mt-4 justify-content-center">
-                        <label class="col-md-2 align-self-center" for="CMRdescre">CMR Description</label>
-                        <textarea class="col-md-8 " name="CMRdescre" rows="3" cols="50"
-                            formControlName="CMRdescre"></textarea>
-                    </div>
-                    <div class="row mt-4 justify-content-center">
-                        <label class="col-md-2 align-self-center" for="riskImpact">Risk/Impact</label>
-                        <textarea class="col-md-8 " name="riskImpact" rows="3" cols="50"
-                            formControlName="riskImpact"></textarea>
-                    </div>
-                    <div class="row mt-4 justify-content-center">
-                        <label class="col-md-2 align-self-center" for="actionPlan">Action Plan</label>
-                        <textarea class="col-md-8 " name="actionPlan" rows="3" cols="50"
-                            formControlName="actionPlan"></textarea>
-                    </div>
-                    <div class="row mt-4 justify-content-center">
-                        <label class="col-md-2 align-self-center" for="rollbackPlan">Roll-back Plan</label>
-                        <textarea class="col-md-8 " name="rollbackPlan" rows="3" cols="50"
-                            formControlName="rollbackPlan"></textarea>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
-                <button class="accordion-button collapsed hdr" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Note
-                </button>
-            </h2>
-            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <div class="row justify-content-center">
-                        <label class="col-md-11" for="note">Please Mention Relevant Incident or Problem Number
-                            Triggering the
-                            Change</label>
-                        <textarea class="col-md-10 mt-2 " name="note" rows="3" cols="50"
-                            formControlName="note"></textarea>
-
-                    </div>
-
-                    <!-- <div>
-                        <div class="padLeft mt-2 mb-2 col-md-11">
-                            <label for="">Please mention the date when verbal approval was taken from the change approver</label>
-                                  
-                        </div>
-                        <div class="form-floating mb-3 col-md-3">
-
-                            <input type="text" class="form-control" id="backupDate" formControlName="backupDate"
-                                placeholder="backupDate">
-                        </div>
-                    </div> -->
-
-                    
-                    
-
-                    <div class="form-check form-switch padLeft mt-2 mb-2 col-md-11">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Do you need to take a
-                            backup of the server / Network device configuration before the
-                            change?</label>
-
-                        <input style="float: right;" (click)="getCheckboxResponse1()" class="form-check-input "
-                            type="checkbox" id="flexSwitchCheckDefault">
-
-                    </div>
-                    <div *ngIf="backupDate" class="mt-2 padLeft">
-
-                        <div class="mb-2 ">
-                            <label for="">Please mention when the backup will be taken</label>
-                        </div>
-                        <div class="form-floating mb-3 col-md-3">
-
-                            <input type="date" class="form-control" id="backupDate" formControlName="backupDate" [(ngModel)]="setBackupDate"
-                                placeholder="backupDate">
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-check form-switch padLeft mt-2 col-md-11">
-
-                        <input style="float: right;" (click)="getCheckboxResponse2()" class="form-check-input"
-                            type="checkbox" id="flexSwitchCheckDefault1">
-                        <label class="form-check-label" for="flexSwitchCheckDefault1">Is there any downtime
-                            involved for end-users ?</label>
-                    </div>
-                    <div *ngIf="notifyEndUser" class="mt-2 padLeft">
-
-                        <div class="mb-2 ">
-                            <label for="">If yes, please mention when you will send a notification to end-users?</label>
-                        </div>
-                        <div class="form-floating mb-3 col-md-3">
-
-                            <input type="date" class="form-control" id="notifyEndUser" [(ngModel)]="setNotifyDate"
-                                formControlName="notifyEndUser" placeholder="notifyEndUser">
-                        </div>
-
-                    </div>
-                    <!-- <div *ngIf="manager" class="mt-2 padLeft">
-                        <label for="managerApprove">Would you like to approve or reject</label>
-                        <div class="row">
+    
+                        <div *ngIf="emergenc" class="mt-2 padLeft">
+    
+                            <div class="mb-2 ">
+                                <label for="">Please mention the date when verbal approval was taken from the change approver</label>
+                            </div>
+                            <div class="form-floating mb-3 col-md-3">
+    
+                                <input type="date" class="form-control" id="verbalApproval" formControlName="verbalApproval"
+                                    placeholder="verbalApproval" [(ngModel)]="setVerbalDate">
+                            </div>
+    
+                            <div class="mb-2 ">
+                                <label for="">You must attach an E-Mail sent to change approver on the ticket. Has it been done?</label>
+                            </div>
                             <div class="col-md-3">
-                                <select #mgrResponse (change) = "managerResponse(mgrResponse.value)" id="managerApprove" class="form-control mt-2 mb-2" formControlName="devices">
-                                    <option value="Approve" >Approve</option>
-                                    <option  value="Reject">Reject</option>
+                                <select id=""  class="form-control mt-2 mb-2" formControlName="email">
+                                    <option  value="1">Yes</option>
+                                    <option  value="0">No</option>
                                     
                                   </select>
                             </div>
+    
                         </div>
-                                                      
-                       
-                    </div> -->
-                    <div  *ngIf="managerReject" class="row justify-content-center mb-2 mb-2">
-                        <label class="col-md-11" for="note">Please mention the reason for rejection</label>
-                        <textarea class="col-md-10 mt-2 " name="note" rows="3" cols="50"
-                            formControlName="note"></textarea>
-
-                    </div>
-                    <!-- <div *ngIf="CABmanager" class="mt-2 padLeft">
-                        <label for="managerApprove">Would you like to approve or reject</label>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <select id="managerApprove" #cabResponse (change) = "CABresponse(cabResponse.value)" class="form-control mt-2 mb-2" formControlName="devices">
-                                    <option  value="Approve">Approve</option>
-                                    <option  value="Reject">Reject</option>
-                                    
-                                  </select>
+    
+                        <div style="float: right;" class="">
+                            <div class="cancelBtn ">
+                                <button type="button" class="btn btn-danger " routerLink="/dashboard">Cancel</button>
                             </div>
+                            <div class="saveBtn">
+                                <button type="button" class="btn btn-success" style="margin-left: 10px;" (click)="sendDraftRequest()"
+                                routerLink="/dashboard" [disabled]="!addTicketFormGroup.valid" >Save</button>
+                            </div>
+                            <div class="submitBtn">
+                               
+                                <button class="btn btn-primary" style="margin: 10px;" routerLink="/dashboard"
+                                    (click)="sendNewRequest()" [disabled]="!addTicketFormGroup.valid" >Submit</button>
+                            </div>
+                        </div>  
+                        <div>
+                           <br>
+                           <br>
+                           <br>
                         </div>
-                                                      
-                       
-                    </div> -->
-                    <div *ngIf="CABrejected" class="row justify-content-center mb-2 mb-2">
-                        <label class="col-md-11" for="note">Please mention the reason for rejection</label>
-                        <textarea class="col-md-10 mt-2 " name="note" rows="3" cols="50"
-                            formControlName="note"></textarea>
-
+                        
+    
+    
                     </div>
-
-                    <div *ngIf="emergenc" class="mt-2 padLeft">
-
-                        <div class="mb-2 ">
-                            <label for="">Please mention the date when verbal approval was taken from the change approver</label>
-                        </div>
-                        <div class="form-floating mb-3 col-md-3">
-
-                            <input type="date" class="form-control" id="verbalApproval" formControlName="verbalApproval"
-                                placeholder="verbalApproval" [(ngModel)]="setVerbalDate">
-                        </div>
-
-                        <div class="mb-2 ">
-                            <label for="">You must attach an E-Mail sent to change approver on the ticket. Has it been done?</label>
-                        </div>
-                        <div class="col-md-3">
-                            <select id=""  class="form-control mt-2 mb-2" formControlName="email">
-                                <option  value="1">Yes</option>
-                                <option  value="0">No</option>
-                                
-                              </select>
-                        </div>
-
-                    </div>
-
-                    <div style="float: right;" class="">
-                        <div class="cancelBtn ">
-                            <button type="button" class="btn btn-danger " routerLink="/dashboard">Cancel</button>
-                        </div>
-                        <div class="saveBtn">
-                            <button type="button" class="btn btn-success" style="margin-left: 10px;" (click)="sendDraftRequest()"
-                            routerLink="/dashboard" [disabled]="!addTicketFormGroup.valid" >Save</button>
-                        </div>
-                        <div class="submitBtn">
-                            <!-- [disabled]="!addTicketFormGroup.valid" -->
-                            <button class="btn btn-primary" style="margin: 10px;" routerLink="/dashboard"
-                                (click)="sendNewRequest()" [disabled]="!addTicketFormGroup.valid" >Submit</button>
-                        </div>
-                    </div>  
-                    <div>
-                       <br>
-                       <br>
-                       <br>
-                    </div>
-                    
-
-
+    
                 </div>
-
             </div>
+    
         </div>
-
+    </form>
     </div>
-</form>
-</div>

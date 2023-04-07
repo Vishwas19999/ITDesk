@@ -1,145 +1,5 @@
-<!-- <div class="container">
-    <div class="col-12">
-        <h2 class="headerText">IT Desk</h2>
-    </div>
-    <div class="input-group " style="width: 100%;">
-        <input type="search" id="SearchBar" class="form-control rounded" placeholder="Search" aria-label="Search"
-            aria-describedby="search-addon" />
-        <button type="button" class="btn btn-outline-primary" (click)="searchResults()">search</button>
-    </div>
-     <div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Ticket ID</th>
-                    <th scope="col">Change Type</th>
-                    <th scope="col">Created by</th>
-                    <th scope="col">Priority</th>
-                    <th scope="col">Device Type</th>
-                    <th scope="col">Created Date</th>
-                    <th scope="col">Approver Name</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Ticket Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Normal</td>
-                    <td>Sagar@jktech.com</td>
-                    <td>High</td>
-                    <td>Hardware</td>
-                    <td>1/30/2023</td>
-                    <td>Kishore.M@jktech.com</td>
-                    <td>CAB Rejected</td>
-                    <td>Closed</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Normal</td>
-                    <td>Sagar@jktech.com</td>
-                    <td>High</td>
-                    <td>Software</td>
-                    <td>1/25/2023</td>
-                    <td>Kishore.M@jktech.com</td>
-                    <td>Manager Rejected</td>
-                    <td>Closed</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Urgent</td>
-                    <td>Shivamurthy@jktech.com</td>
-                    <td>Low</td>
-                    <td>Network</td>
-                    <td>2/02/2023</td>
-                    <td>Naveen.Poovaiah@jktech.com</td>
-                    <td>Approved</td>
-                    <td>Open</td>
-                </tr>
-            </tbody>
-        </table>
-    </div> 
-     <div class="card container mt-3 p-3 bg-light" tablecontainer>
-        <div>
-            
-        </div>  Tabular structure 
-        <div style="overflow-x:auto;">
-            <table class="table table-responsive table-hover">
-                <thead>
-                    <tr>                   
-                        <th scope="col">Ticket ID</th>
-                    <th scope="col">Change Type</th>
-                    <th scope="col">Created by</th>
-                    <th scope="col">Priority</th>
-                    <th scope="col">Device Type</th>
-                    <th scope="col">Created Date</th>
-                    <th scope="col">Approver Name</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Ticket Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Normal</td>
-                        <td>Sagar@jktech.com</td>
-                        <td>High</td>
-                        <td>Hardware</td>
-                        <td>1/30/2023</td>
-                        <td>Kishore.M@jktech.com</td>
-                        <td>CAB Rejected</td>
-                        <td>Closed</td>
-    
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Normal</td>
-                        <td>Sagar@jktech.com</td>
-                        <td>High</td>
-                        <td>Software</td>
-                        <td>1/25/2023</td>
-                        <td>Kishore.M@jktech.com</td>
-                        <td>Manager Rejected</td>
-                        <td>Closed</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Urgent</td>
-                        <td>Shivamurthy@jktech.com</td>
-                        <td>Low</td>
-                        <td>Network</td>
-                        <td>2/02/2023</td>
-                        <td>Naveen.Poovaiah@jktech.com</td>
-                        <td>Approved</td>
-                        <td>Open</td>
-                    </tr>
-    
-                </tbody>
-            </table>
-        </div> 
-        
-    </div> 
-    <a routerLink="/add_ticket">Add Ticket</a>
-    <br>
-    <a routerLink="/new_request">New Request</a> <br>
-    <a routerLink="/dashboard">Dashboard</a>
-</div>-->
-
-
-
 <div  class="container">
-    <!-- navbar -->
-    <!-- <nav class="navbar mb-2">
-        <div class="container-fluid justify-content-center">
-            <h3>IT Desk</h3>
-        </div>
-    </nav> -->
-    <!-- sidenavn -->
-
     
-
-
-    <!-- search and filter -->
 
     <div class="Searchbuttons mt-2">
         <div class="row justify-content-end col-sm-12">
@@ -164,81 +24,7 @@
 
     </div>
 
-    <!-- filter modal -->
-
-    <!-- <div id="ModalFilterForm1" class="modal right fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <input type="hidden" name="_token" value="">
-                        <div class="form-group">
-                            <div class="form-floating mb-1">
-                                <input type="text" class="form-control rounded-3" name="coursecode" id="courseCode"
-                                    value="">
-                                <label for="courseCode">Course Code</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-floating mb-1">
-                                <input type="text" class="form-control rounded-3" name="coursename" id="courseName"
-                                    value="">
-                                <label for="courseName">Name</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-floating mb-1">
-                                <input type="text" class="form-control rounded-3" name="desc" id="desc" value="">
-                                <label for="desc">Description</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-floating mb-1">
-                                <select class="form-select rounded-3" name="Mode" id="Mode">
-                                    <option value="default">...</option>
-                                    <option value="Online"> Online </option>
-                                    <option value="Face-To-Face">Face-To-Face</option>
-                                </select>
-                                <label for="Mode">Mode</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-floating mb-1">
-                                <select class="form-select rounded-3" name="Type" id="type">
-                                    <option value="default">...</option>
-                                    <option value="Audio">Audio</option>
-                                    <option value="Video">Video</option>
-                                    <option value="Video">Book</option>
-                                </select>
-                                <label for="type"> Type </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-floating mb-1">
-                                <input type="text" class="form-control rounded-3" name="session" id="session" value="">
-                                <label for="session">Sessions</label>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <div>
-                                <button type="reset" class="search btn btn-success btn-space" data-bs-dismiss="modal"
-                                    id="search">
-                                    Search
-                                </button>
-                                <button type="reset" class="cancel btn btn-secondary btn-space" data-bs-dismiss="modal">
-                                    Cancel
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div> -->
+   
 
 
     <div id="ModalFilterForm" class="modal right fade col-sm-12" tabindex="-1">
@@ -299,7 +85,7 @@
 
 
 
-    <!-- cards -->
+  
 
     <div class="row row-cols-1 row-cols-md-3 g-3">
         <div class="col" *ngFor="let ticket of tickets | filter:searchValue">
@@ -326,18 +112,13 @@
                                 </button>
                             </li>
 
-                            <!-- <li class="button">
-                                <button class="btn dropdown-item dropbutton">
-                                    <i class="fa fa-trash-o" aria-hidden="true" data-bs-toggle="tooltip" title="Delete"
-                                        data-bs-placement="bottom"></i>
-                                </button>
-                            </li> -->
+                            
                         </ul>
                     </div>
 
                 </div>
                 <div class="card-body">
-                    <!-- <p class="card-text "> <strong>ChangeType: </strong> {{ticket.ChangeType}} </p> -->
+                   
                     <div class="row">
                         <strong class="col-md-5" for="">Change Type:</strong> <span
                             class="col-md-7">{{ticket.type}}</span>
@@ -370,22 +151,13 @@
                             class="col-md-7">{{ticket.status}}</span>
                     </div>
 
-                    <!-- <p class="card-text"> <strong>CreatedBy: </strong> {{ticket.CreatedBy}} </p>
-          <p class="card-text"> <strong>Priority: </strong> {{ticket.Priority}} </p>
-          <p class="card-text"> <strong>DeviceType: </strong5 {{ticket.DeviceType}} </p>
-          <p class="card-text"> <strong>CreatedDate: </strong> {{ticket.CreatedDate}} </p>
-          <p class="card-text"> <strong>ApproverName: </strong> {{ticket.ApproverName}} </p>
-          <p class="card-text"> <strong>Status: </strong> {{ticket.Status}} </p>
-          <p class="card-text"> <strong>TicketStatus: </strong> {{ticket.TicketStatus}} </p> -->
+                    
 
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- <a routerLink="/add_ticket">Add Ticket</a>
-    <br>
-    <a routerLink="/new_request">New Request</a> <br>
-    <a routerLink="/dashboard">courses</a> -->
+   
 
 </div>

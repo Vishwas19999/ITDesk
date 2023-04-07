@@ -3,12 +3,10 @@
 }
 .hdr {
     background-color: lightblue;
-    /* background-color: darkgrey; */
+   
     
 }
-/* form {
-    border: none !important;
-} */
+
 .adjust{
     height: 5%;
 }
@@ -23,16 +21,11 @@ display: inline;
     background-color: aliceblue;
       
 }
-/* .hdr , .home {
-    display: inline;
-}
-.home {
-    float: right;
-} */
+
 .inline1, .inline2 {
     display: inline;
 }
 #managerApprove {
-    /* width: 50%; */
+   
     margin-left: 2%;
 }

@@ -33,40 +33,7 @@ export class EditRequestComponent implements OnInit {
   
 
 
-  // editTicketFormGroup = this.formBuilder.group({
-  //   ticketNumber: [{value :'' , disabled : true }],
-  //   empID: [{value :'' , disabled : true }],
-  //   createdBy: [''],
-  //   createdOn: [{value :'' , disabled : true }],
-  //   SME_Assigned: [{value :'' , disabled : true }],
-  //   approverName: [{value :'' , disabled : true }],
-  //   type: ['', Validators.required ,],
-  //   priority: ['', Validators.required],
-  //   selectDevice: ['', Validators.required],
-  //   siteName: ['', Validators.required],
-  //   devices: ['', Validators.required],
-  //   location: ['', Validators.required],
-  //   implementTime: ['', Validators.required],
-  //   scheduledDate: ['', Validators.required],
-  //   requestStatus: [{value :'' , disabled : true }],
-  //   businessJustification: ['', Validators.required],
-  //   CMRdescre: ['', Validators.required],
-  //   riskImpact: ['', Validators.required],
-  //   actionPlan: ['', Validators.required],
-  //   rollbackPlan: ['', Validators.required],
-  //   note: ['', Validators.required],
-  //   backupDate : [''] ,
-  //   notifyEndUser : [''] ,
-  //   verbalApproval : [''] ,
-  //   AttachEmail: [''] ,
-  //   mgrAppr: [''] ,
-  //   mgrReje: [''] ,
-  //   cabmgr: [''] ,
-  //   cabReje: [''] ,
-  //   mgrRejectionReason:[{value :'' , disabled : true }] ,
-  //   cabRejectionReason:[{value :'' , disabled : true }]
-    
-  // });
+ 
 
   editTicketFormGroup = this.formBuilder.group({
     ticketNumber: [{value :'' , disabled : true }],
@@ -138,7 +105,7 @@ export class EditRequestComponent implements OnInit {
   siteNameList : any  ;
   deviceList : any ;
   locationList : any ;
- // RequestStatusList: any = [ "Draft" , "New Request" , "Manager Approved" , "Manager Rejected" , "CAB Approved" , "CAB Rejected"];
+
  RequestStatusList : any ;
   updtTicketResponse : any ; 
   backup : any = 0;
@@ -172,50 +139,7 @@ export class EditRequestComponent implements OnInit {
   setApprovalDate : any ;
   rejectionReason : any ;
 
- 
- // now = new Date();
-  //SystemDate : any = this.datepipe.transform(this.now, 'dd/MM/YYYY');
- // SystemDate : any = this.datepipe.transform(this.now, 'MM/dd/YYYY');
 
-
-
-  // getDate () {
-   
-   
-  //  this.SystemDate = this.datepipe.transform(now, 'd/m/yyyy, h:mm a');
-  //  console.log("date" , this.SystemDate);
-  //   this.systemtime = this.datepipe.transform(now, 'h:mm a');
-  //   console.log("date" , this.SystemDate);
-  //  console.log("time" , this.systemtime);
-  //   this.editTicketFormGroup.controls.createdOn.setValue(this.SystemDate);
-  //  this.editTicketFormGroup.controls.implementTime.setValue(this.systemtime);
-  //   this.editTicketFormGroup.controls.ticketNumber.setValue("CR-23456");
-  //   this.editTicketFormGroup.controls.empID.setValue("2777");
-  //   this.editTicketFormGroup.controls['SME_Assigned'].setValue("sudhir.k@Jktech.com");
-  //   this.editTicketFormGroup.controls['createdBy'].setValue("sudhir.k@Jktech.com");
-  //   this.editTicketFormGroup.controls['approverName'].setValue("naveen.poovaiah@jktech.com");
-  //   this.editTicketFormGroup.controls['priority'].setValue("Medium");
-  //   this.editTicketFormGroup.controls['businessJustification'].setValue("Medium");
-    
-  // }
-
-  // getTicketDetailsById () : void {
-    
-  //   let ticket = {requestid:this.ticketService.ticketId};
-  //   this.http.post<any>('http://localhost:3000/RequestManager/requestbyid' , ticket
-  //   ).subscribe(
-  //     response => {
-  //       this.ticketDetails = response.result;
-  //       console.log("TicketDetailsbyId", this.ticketDetails);
-      
-  //     this.SystemDate = new Date().toISOString().slice(0, 10)
-  //       this.setValues();
-  //       this.enableAndDisableViewMode();
-  
-  //     }
-  //   );
-    
-  // }
    
   getTicketDetailsById () {
     let ticket = {requestid:this.common.ticketId};
@@ -250,17 +174,6 @@ export class EditRequestComponent implements OnInit {
     }
   }
 
-  // getTypeDropdown () : void {
-  //   let listmstid = 5 ;
-  //   this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID' , {listmstid}
-  //   ).subscribe(
-  //     response => {
-  //       this.typeList = response.result;
-        
-  
-  //     }
-  //   );
-  // }
 
   getTypeDropdown () {
     this.common.getType().then((http)=>{
@@ -274,18 +187,7 @@ export class EditRequestComponent implements OnInit {
    
   }
 
-  // getPriorityDropdown () : void {
-  //   let listmstid = 1 ;
-  //   this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID' , {listmstid}
-  //   ).subscribe(
-  //     response => {
-  //       this.priorityList = response.result;
-        
-        
-       
-  //     }
-  //   );
-  // }
+ 
 
   getPriorityDropdown () {
     this.common.getPriority().then((http)=>{
@@ -314,17 +216,7 @@ export class EditRequestComponent implements OnInit {
 
   }
 
-  // getDeviceTypeDropdown () : void {
-  //   let listmstid = 2 ;
-  //   this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID' , {listmstid}
-  //   ).subscribe(
-  //     response => {
-  //       this.deviceTypeList = response.result;
-        
-       
-  //     }
-  //   );
-  // }
+ 
 
   getDeviceTypeDropdown() {
     this.common.getDeviceType().then((http)=>{
@@ -338,28 +230,8 @@ export class EditRequestComponent implements OnInit {
     
   }
 
-  // getSiteNameDropdown () : void {
-  //   let listmstid = 5 ;
-  //   this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID' , {listmstid}
-  //   ).subscribe(
-  //     response => {
-  //       this.siteNameList = response.result;
-       
-  //     }
-  //   );
-  // }
+ 
 
-  // getDevicesDropdown (data : any) : void {
-  //   let listmstid = data;
-    
-  //   this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID' , {listmstid}
-  //   ).subscribe(
-  //     response => {
-  //       this.deviceList = response.result;
-       
-  //     }
-  //   );
-  // }
 
   getDevicesDropdown(data : any) {
     this.common.getDevices(data).then((http)=>{
@@ -373,17 +245,7 @@ export class EditRequestComponent implements OnInit {
     
   }
 
-  // getLocationDropdown() : void {
-    
-  //   this.http.get<any>('http://localhost:3000/LocationManager'
-  //   ).subscribe(
-  //     response => {
-  //       this.locationList = response.result;
-  //       this.siteNameList = this.locationList;
-       
-  //     }
-  //   );
-  // }
+
 
   getLocationDropdown () {
     this.common.getAllLocations().subscribe(
@@ -396,11 +258,11 @@ export class EditRequestComponent implements OnInit {
 
   makeUpdateTicketPayLoad ( ) : void {
 
-    //this.ticketNumber = this.editTicketFormGroup.controls['ticketNumber'].value;
+  
     this.empID = this.editTicketFormGroup.controls['empID'].value;
     this.createdBy = this.editTicketFormGroup.controls['createdBy'].value;
     this.createdOn = this.editTicketFormGroup.controls['createdOn'].value;
-  //this.createdOn = "03/30/2023"
+ 
     this.SME_Assigned = this.editTicketFormGroup.controls['SME_Assigned'].value;
     this.approverName = this.editTicketFormGroup.controls['approverName'].value;
     this.type = this.editTicketFormGroup.controls['type'].value;
@@ -411,7 +273,7 @@ export class EditRequestComponent implements OnInit {
     this.location = this.editTicketFormGroup.controls['location'].value;
     this.implementTime = this.editTicketFormGroup.controls['implementTime'].value;
     this.scheduledDate = this.editTicketFormGroup.controls['scheduledDate'].value;
-  // this.scheduledDate = "03/30/2023";
+
     this.businessJustification = this.editTicketFormGroup.controls['businessJustification'].value;
     this.CMRdescre = this.editTicketFormGroup.controls['CMRdescre'].value;
     this.riskImpact = this.editTicketFormGroup.controls['riskImpact'].value;
@@ -423,30 +285,13 @@ export class EditRequestComponent implements OnInit {
     this.verbalApprovalDate = this.editTicketFormGroup.controls['verbalApproval'].value;
     this.attachedEmail = this.editTicketFormGroup.controls['AttachEmail'].value;
     
-       //let checkbox = document.getElementById("flexSwitchCheckDefault");
-       
-       
-
-
-  }
+     
+}
 
 
 
 
 
-  // sendDataToUpdtTicketAPI () : void {
-  
-  //   console.log("sendUpdatePayLoad:" , this.editTicketData )
-  //   this.http.post<any>('http://localhost:3000/RequestManager/updaterequest' , this.editTicketData
-  //   ).subscribe(
-  //     response => {
-  //       this.updtTicketResponse = response;
-        
-  //     }
-  //   );
-  
-
-  // }
 
   sendDataToUpdtTicketAPI () {
 
@@ -469,7 +314,7 @@ export class EditRequestComponent implements OnInit {
      { 
       this.backupDate = true;
       this.backup = 1 ;
-     // this.editTicketFormGroup.controls['backupDate'].setValue(this.SystemDate);
+    
      this.setBackupDate = this.SystemDate;
 
 
@@ -477,7 +322,7 @@ export class EditRequestComponent implements OnInit {
     else {
       this.backupDate = false;
       this.backup = 0 ;
-     // this.editTicketFormGroup.controls['backupDate'].setValue("");
+   
      this.setBackupDate = "";
     }
   }
@@ -489,13 +334,13 @@ export class EditRequestComponent implements OnInit {
      { 
       this.notifyEndUser = true;
       this.downTime = 1;
-    //  this.editTicketFormGroup.controls['notifyEndUser'].setValue(this.SystemDate);
+   
     this.setNotifyDate = this.SystemDate;
     }
     else {
       this.notifyEndUser = false;
       this.downTime = 0;
-     // this.editTicketFormGroup.controls['notifyEndUser'].setValue("");
+    
      this.setNotifyDate = "";
     }
   }
@@ -505,7 +350,7 @@ export class EditRequestComponent implements OnInit {
     
     if (value === "Manager Approved"){
       this.managerReject = false;
-     // this.editTicketFormGroup.controls['mgrReje'].clearValidators();
+    
       this.editTicketFormGroup.controls['mgrReje'].setValidators([]);
       this.editTicketFormGroup.controls['mgrReje'].updateValueAndValidity();
     }
@@ -523,13 +368,13 @@ export class EditRequestComponent implements OnInit {
     this.CABrespon = value
     if (value === "CAB Approved"){
       this.CABrejected = false;
-    //  this.editTicketFormGroup.controls['cabReje'].clearValidators();
+  
       this.editTicketFormGroup.controls['cabReje'].setValidators([]);
       this.editTicketFormGroup.controls['cabReje'].updateValueAndValidity();
     }
     else {
       this.CABrejected = true;
-     // this.editTicketFormGroup.controls['cabReje'].setValue("");
+     
       this.editTicketFormGroup.controls['cabReje'].setValidators([Validators.required]);
       this.editTicketFormGroup.controls['cabReje'].updateValueAndValidity();
       
@@ -558,7 +403,7 @@ export class EditRequestComponent implements OnInit {
     this.editTicketFormGroup.controls['ticketNumber'].setValue("CMR-" + this.ticketNumber);
     this.editTicketFormGroup.controls['empID'].setValue(this.ticketDetails[0].empid);
     this.editTicketFormGroup.controls['createdBy'].setValue(this.ticketDetails[0].createdby);
-   //this.editTicketFormGroup.controls.createdOn.setValue(this.ticketDetails[0].createddate);
+  
 
    this.setCreated  = this.ticketDetails[0].createddate;
     this.editTicketFormGroup.controls['SME_Assigned'].setValue(this.ticketDetails[0].smeemailid);
@@ -571,7 +416,7 @@ export class EditRequestComponent implements OnInit {
     this.editTicketFormGroup.controls['devices'].setValue(this.ticketDetails[0].device);
     this.editTicketFormGroup.controls['location'].setValue(this.ticketDetails[0].location);
     this.editTicketFormGroup.controls['implementTime'].setValue(this.ticketDetails[0].implemettime);
-    //this.editTicketFormGroup.controls.scheduledDate.setValue(this.ticketDetails[0].scheduleddate);
+    
     this.setScheduleDate = this.ticketDetails[0].scheduleddate;
     this.editTicketFormGroup.controls['requestStatus'].setValue(this.ticketDetails[0].reqstatus);
     this.editTicketFormGroup.controls['businessJustification'].setValue(this.ticketDetails[0].justification);
@@ -583,7 +428,7 @@ export class EditRequestComponent implements OnInit {
     
     if (this.ticketDetails[0].type === "Emergency") {
       this.emergenc = true;
-      //this.editTicketFormGroup.controls.verbalApproval.setValue(this.ticketDetails[0].verbalapprovaldate);
+    
       this.setApprovalDate = this.ticketDetails[0].verbalapprovaldate;
       this.editTicketFormGroup.controls['priority'].disable();
       this.editTicketFormGroup.controls['AttachEmail'].setValue(this.ticketDetails[0].isemailattached);
@@ -594,7 +439,7 @@ export class EditRequestComponent implements OnInit {
       this.backupIsSet = true;
       this.backupDate = true ;
       this.backup = 1;
-      //this.editTicketFormGroup.controls.backupDate.setValue(this.ticketDetails[0].backupdate);
+     
       
       this.setBackupDate = this.ticketDetails[0].backupdate;
       
@@ -603,7 +448,7 @@ export class EditRequestComponent implements OnInit {
       this.notifySet = true;
       this.notifyEndUser = true;
       this.downTime = 1;
-    //this.editTicketFormGroup.controls.notifyEndUser.setValue(this.ticketDetails[0].downtimenotifydate);
+   
     this.setNotifyDate = this.ticketDetails[0].downtimenotifydate;
     
     }
@@ -662,27 +507,13 @@ export class EditRequestComponent implements OnInit {
     }
 
     
-    // if (this.ticketDetails[0].rejreason != "") {
-    //   this.mgrRjctRsn = true;
-    //   this.editTicketFormGroup.controls.cabRejectionReason.setValue(this.ticketDetails[0].rejreason);
-    // }
-
-   
-
-    // if (this.common.empDetails[0].empemailid === this.ticketDetails[0].createdby && (this.ticketDetails[0].reqstatus === "Draft" || this.ticketDetails[0].reqstatus === "Manager Rejected"))
-
-    // this.enablemgrButtons = false;
-    // this.empButtons = true;
-    // this.enableCABbuttons = false ;
-    // this.close = false;
 
 
   }
 
   enableAll () : void {
 
- //   this.editTicketFormGroup.controls.SME_Assigned.enable();
- //   this.editTicketFormGroup.controls.approverName.enable();
+
     this.editTicketFormGroup.controls['type'].enable();
     this.editTicketFormGroup.controls['priority'].enable();
     this.editTicketFormGroup.controls['selectDevice'].enable();
@@ -691,7 +522,7 @@ export class EditRequestComponent implements OnInit {
     this.editTicketFormGroup.controls['location'].enable();
     this.editTicketFormGroup.controls['implementTime'].enable();
     this.editTicketFormGroup.controls['scheduledDate'].enable();
-   // this.editTicketFormGroup.controls.requestStatus.enable();
+ 
     this.editTicketFormGroup.controls['businessJustification'].enable();
     this.editTicketFormGroup.controls['CMRdescre'].enable();
     this.editTicketFormGroup.controls['riskImpact'].enable();
@@ -733,10 +564,10 @@ export class EditRequestComponent implements OnInit {
     else {
       this.emergenc = false ;
       this.editTicketFormGroup.controls['priority'].setValue("Low");
-     // this.priorityList = [{listdtlcode : "High" }, {listdtlcode : "Medium" },{listdtlcode : "Low" }]
+  
       this.editTicketFormGroup.controls['priority'].enable();
       this.setApprovalDate = ""; 
-     // this.editTicketFormGroup.controls['AttachEmail'].clearValidators();
+    
       this.editTicketFormGroup.controls['AttachEmail'].setValidators([]);
       this.editTicketFormGroup.controls['AttachEmail'].updateValueAndValidity();
     }
@@ -781,20 +612,7 @@ sendNewRequest () : void {
 
 }
 
-// sendmgrResponse() {
-//   let rejectReson = this.editTicketFormGroup.controls['mgrReje'].value;
-//   let mgr = {requestid:this.ticketDetails[0].requestid , reqstatus : this.managerRespon , rejreason : rejectReson , status : this.ticketDetails[0].status }
-//   console.log("mgr response " , mgr);
-//   this.http.post<any>('http://localhost:3000/RequestManager/updaterequest' , mgr
-//   ).subscribe(
-//     response => {
-    
-//     let updStatus = response;
-      
-//     }
-//   ); 
 
-// }
 
 sendmgrResponse () {
 
@@ -811,17 +629,7 @@ sendmgrResponse () {
 }
 
 
-// SendCabManagerResponse() {
-//   let cabRejReason = this.editTicketFormGroup.controls['cabReje'].value;
-//   let mgr = {requestid:this.ticketDetails[0].requestid , reqstatus : this.CABrespon , rejreason : cabRejReason , status : this.ticketDetails[0].status}
 
-//   this.http.post<any>('http://localhost:3000/RequestManager/updaterequest' , mgr
-//   ).subscribe(
-//     response => {
-      
-//     }
-//   );
-// }
 
 SendCabManagerResponse() {
   let cabRejReason = this.editTicketFormGroup.controls['cabReje'].value;
@@ -836,18 +644,7 @@ SendCabManagerResponse() {
   
 }
 
-// closeTicket () {
 
-//   let closeTicketPayLoad = {requestid:this.ticketDetails[0].requestid , reqstatus :this.ticketDetails[0].reqstatus , status:"closed"}
-//   console.log("closeTicketPayLoad" , closeTicketPayLoad)
-//   this.http.post<any>('http://localhost:3000/RequestManager/updaterequest' , closeTicketPayLoad
-//   ).subscribe(
-//     response => {
-    
-      
-//     }
-//   );
-// }
 
 closeTicket () {
   // 

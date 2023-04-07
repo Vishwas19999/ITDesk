@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
   user: any;
   empResponse: any;
   manager: any;
-  // log : any ;
+ 
   some : any;
   UserName: any;
   reqStatusList:any;
@@ -47,47 +47,13 @@ export class DashboardComponent implements OnInit {
 
   id : any = this.activatedRoute.snapshot.params['id'];
 
-  
-  
-  
-  
-
-  //[{
-  //   TicketID: "CR-305819", ChangeType: "Normal", CreatedBy: "sagar@jktech.com", Priority: "Critical", DeviceType: "network", CreatedDate: "1/20/2023", ApproverName: "Sandeep.Kapoor@jktech.com",
-  //   Status: "manager approved", TicketStatus: "Closed"
-  // }, {
-  //   TicketID: "CR-405819", ChangeType: "Normal", CreatedBy: "mahmad.rafi@jktech.com", Priority: "Critical", DeviceType: "network", CreatedDate: "1/21/2023", ApproverName: "Sandeep.Kapoor@jktech.com",
-  //   Status: "manager approved", TicketStatus: "open"
-  // }, {
-  //   TicketID: "CR-505819", ChangeType: "Normal", CreatedBy: "mallikarjun@jktech.com", Priority: "High", DeviceType: "network", CreatedDate: "1/23/2023", ApproverName: "Sandeep.Kapoor@jktech.com",
-  //   Status: "CAB Approved", TicketStatus: "Close"} ,
-  //   {TicketID: "CR-605819", ChangeType: "Normal", CreatedBy: "vishwas@jktech.com", Priority: "low", DeviceType: "network", CreatedDate: "1/24/2023", ApproverName: "Sandeep.Kapoor@jktech.com",
-  //   Status: "CAB Approved", TicketStatus: "Closed"
-  // }, {
-  //   TicketID: "CR-705819", ChangeType: "Normal", CreatedBy: "abhishek@jktech.com", Priority: "low", DeviceType: "network", CreatedDate: "1/25/2023", ApproverName: "Sandeep.Kapoor@jktech.com",
-  //   Status: "CAB Approved", TicketStatus: "Closed"
-  // }, {
-  //   TicketID: "CR-805819", ChangeType: "Emergency", CreatedBy: "guru@jktech.com", Priority: "High", DeviceType: "server", CreatedDate: "1/26/2023", ApproverName: "Sandeep.Kapoor@jktech.com",
-  //   Status: "manager approved", TicketStatus: "Closed"
-  // }, {
-  //   TicketID: "CR-905819", ChangeType: "Emergency", CreatedBy: "anand@jktech.com", Priority: "medium", DeviceType: "server", CreatedDate: "1/27/2023", ApproverName: "Sandeep.Kapoor@jktech.com",
-  //   Status: "manager approved", TicketStatus: "Closed"
-  // }, {
-  //   TicketID: "CR-205819", ChangeType: "Emergency", CreatedBy: "babu@jktech.com", Priority: "High", DeviceType: "server", CreatedDate: "1/28/2023", ApproverName: "Sandeep.Kapoor@jktech.com",
-  //   Status: "manager rejected", TicketStatus: "Closed"
-  // }, {
-  //   TicketID: "CR-105819", ChangeType: "Emergency", CreatedBy: "Sivamurthy@jktech.com", Priority: "medium", DeviceType: "Hardware", CreatedDate: "1/30/2023", ApproverName: "Sandeep.Kapoor@jktech.com",
-  //   Status: "manager rejected", TicketStatus:"open"}
-  // ]
 
 
   
 
   ngOnInit(): void {
     
-   //if (this.ticketService.loggedIn === true) {
    
-  //  this.log = true;
   debugger;
  
   this.UserName = this.msalService.instance.getActiveAccount();
@@ -100,22 +66,14 @@ export class DashboardComponent implements OnInit {
 
     this.common.getEmpDetails(this.UserName.username);
 
-    // console.log(this.UserName.username);
     
-  // this.empDetails();
-   
-  //  if (this.id == "" || this.id.length <1) {
     this.some = setTimeout(() => {
       this.getAllRequest();
-    }, 300)
-//  }
-//  else{
- 
-//   this.getTicketById(this.id);
-//  }
+    }, 1000)
+
 
 if (this.id != "") {
-  console.log(this.id,typeof(this.id));
+  
   
   this.getTicketById(this.id);
 }
@@ -127,21 +85,7 @@ if (this.id != "") {
 
 
 
-  // getAllRequest(): void {
-  //   this.http.get<any>('http://localhost:3000/RequestManager/allrequests'
-  //   ).subscribe(
-  //     response => {
-  //       this.tickets = response.result;
-        
-        
-  //       if (this.ticketService.filtered === true) {
-  //         this.getFlteredRecords();
-  //       }
-        
-
-  //     }
-  //   );
-  // }
+ 
 
   getAllRequest () {
     
@@ -157,53 +101,21 @@ if (this.id != "") {
   }
 
   getRequestDropdown () {
-
-
-
-
-    this.common.getRequestStatuses().then((http)=>{
+       this.common.getRequestStatuses().then((http)=>{
       http.subscribe(
     
         response => {
           this.reqStatusList = response;
       this.reqStatusList = this.reqStatusList.result;
-         
-         
-         
-          }
+             }
          
       );
     })
     
      }
-  // empDetails () { not required
-    
-  //   this.common.getEmpDetails().subscribe(
-  //     response => {
-  //       this.empResponse = response.result;
-        
+ 
 
-  //    if (this.empResponse[0].emplevel === "Manager") {
-  //     this.manager = true;
-      
-  //  }
-  //     }
-  //   );
-  // }
-
-  // getTypeDropdown(): void {
-  //   let listmstid = 5;
-  //   this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID', { listmstid }
-  //   ).subscribe(
-  //     response => {
-  //       this.typeList = response.result;
-        
-
-
-
-  //     }
-  //   );
-  // }
+  
 
   getTypeDropdown () {
 
@@ -220,17 +132,7 @@ if (this.id != "") {
   }
 
 
-  // getPriorityDropdown(): void {
-  //   let listmstid = 1;
-  //   this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID', { listmstid }
-  //   ).subscribe(
-  //     response => {
-  //       this.priorityList = response.result;
-        
-
-  //     }
-  //   );
-  // }
+ 
 
   getPriorityDropdown () {
     this.common.getPriority().then((http)=>{
@@ -244,17 +146,7 @@ if (this.id != "") {
    
   }
 
-  // getDeviceTypeDropdown(): void {
-  //   let listmstid = 2;
-  //   this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID', { listmstid }
-  //   ).subscribe(
-  //     response => {
-  //       this.deviceTypeList = response.result;
-        
-
-  //     }
-  //   );
-  // }
+  
 
   getDeviceTypeDropdown () {
     this.common.getDeviceType().then((http)=>{
@@ -275,7 +167,7 @@ if (this.id != "") {
     (createdName === this.common.empDetails[0].empemailid && reqStatus === "Manager Rejected")) {
       this.edit = true;
       this.common.view = false;
-      console.log("draft or reject");
+      
      
       
 
@@ -284,7 +176,7 @@ if (this.id != "") {
       this.edit = true;
       this.common.view = true;
       console.log("createdName" , createdName ,this.common.empDetails[0].empemailid )
-      console.log("reqStatus" , reqStatus);
+      
      
     }
     else if ((createdName === this.common.empDetails[0].empemailid && reqStatus === "CAB Approved") && ticketStatus === "open") {
@@ -314,38 +206,12 @@ if (this.id != "") {
   searchResults(): void {
 
 
-    //let searchValue1 = document.getElementById("SearchBar").text();
-    //let searchValue1 = (<HTMLInputElement>document.getElementById("SearchBar")).value; 
+    
     this.searchValue = (<HTMLInputElement>document.getElementById("SearchBar")).value;
     
   }
 
-  // filterRecords(): void {
-  //   this.common.filtered = true ;
-  //   this.common.filterChangeType = this.searchFormGroup.controls['changeType'].value;
-  //   this.common.filterPriority = this.searchFormGroup.controls['priority'].value;
-  //   this.common.filterDeviceType = this.searchFormGroup.controls['deviceType'].value;
-  //   this.common.filterstatus = this.searchFormGroup.controls['status'].value;
-
-  //   let filterPayLoad = {
-  //     type: this.common.filterChangeType,
-  //     priority: this.common.filterPriority,
-  //     reqstatus: this.common.filterDeviceType,
-  //     devicetype: this.common.filterstatus
-  //   };
-    
-
-  //   this.http.post<any>('http://localhost:3000/RequestManager/filter', filterPayLoad
-  //   ).subscribe(
-  //     response => {
-  //       this.tickets = response.result;
-        
-
-  //     }
-  //   );
-
-
-  // }
+ 
 
   filterRecords () {
 
@@ -367,7 +233,7 @@ if (this.id != "") {
           response => {
             this.tickets = response;
             this.tickets = this.tickets.result;
-            console.log("filtered tickets :"  ,this.tickets )
+           
           }
         );
       })
@@ -375,27 +241,7 @@ if (this.id != "") {
 
   }
 
-  // getFlteredRecords(): void {
-    
-  //   let filterPayLoad = {
-  //     type: this.common.filterChangeType,
-  //     priority: this.common.filterPriority,
-  //     reqstatus: this.common.filterDeviceType,
-  //     devicetype: this.common.filterstatus
-  //   };
-    
-
-  //   this.http.post<any>('http://localhost:3000/RequestManager/filter', filterPayLoad
-  //   ).subscribe(
-  //     response => {
-  //       this.tickets = response.result;
-        
-
-  //     }
-  //   );
-
-
-  // }
+ 
 
   getFlteredRecords () {
 
@@ -436,7 +282,7 @@ if (this.id != "") {
   sendTicketIdToService(ticketNo: any): void {
 
     this.common.ticketId = ticketNo;
-    //this.common.view = false;
+   
   }
 
   viewTicket(ticketNo: any): void {
@@ -451,20 +297,7 @@ if (this.id != "") {
     this.searchFormGroup.controls['status'].setValue(this.common.filterstatus);
   }
 
-  // getTicketById (ticketId : any) : void {
-    
-  //   let ticket = {requestid : ticketId}
-  //   this.http.post<any>('http://localhost:3000/RequestManager/requestbyid' , ticket
-  //   ).subscribe(
-  //     response => {
-  //       this.tickets = response.result;
-        
-        
-       
-  
-  //     }
-  //   );
-  // }
+ 
 
   getTicketById (ticketId : any) {
     let ticket = {requestid : ticketId}

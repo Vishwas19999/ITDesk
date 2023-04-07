@@ -27,20 +27,13 @@ export class CommonService {
    constructor(private http:HttpClient,private msalService:MsalService) { }
 
   getEmpDetails (username:string)  {
-   // this.user = "vishwas26@gmail.com";
-  //  console.log('common service');
-    // console.log(username.username);
-   
-   
-  //  let empemailid={ empemailid: "mahamad.rafi@jktech.com"};
-//  let employee =empemailid ;
+  
    let employee = {empemailid : username};
 
 
    console.log("employee",employee);
    
-  //let employee = {empemailid : "thummana.pavani@jktech.com"};
-  // empemailid:mahamad.rafi@jktech.com
+ 
    
    this.http.post<any>('https://10.10.20.44:3000/EmpManager/empfilter' , employee
     ).subscribe(response => {
@@ -90,7 +83,7 @@ deleteEmployee(empid:any){
       'Authorization':`Bearer ${response.idToken}`
     }})
   })
-  // return this.http.post('http://localhost:3000/EmpManager/deleteemployeebyId',empid)
+  
 }
 
 filterEmployee(empfilter:any){
@@ -101,7 +94,7 @@ filterEmployee(empfilter:any){
       'Authorization':`Bearer ${response.idToken}`
     }})
   })
-  // return this.http.post('http://localhost:3000/EmpManager/empfilter',empfilter)
+  
 }
 
 addLocation(data:any){
@@ -112,7 +105,7 @@ addLocation(data:any){
       'Authorization':`Bearer ${response.idToken}`
     }})
   })
-  // return this.http.post('http://localhost:3000/LocationManager/add',data)
+  
 }
 
 filterLocation(data:any){
@@ -123,7 +116,7 @@ filterLocation(data:any){
       'Authorization':`Bearer ${response.idToken}`
     }})
   })
-  // return this.http.post('http://localhost:3000/LocationManager/locationfilter',data)
+  
 }
 
 deleteLocation(locid:any){
@@ -138,7 +131,7 @@ editLocation(edit:any){
       'Authorization':`Bearer ${response.idToken}`
     }})
   })
-// return this.http.post('http://localhost:3000/LocationManager/updatelocation',edit)
+
 }
 
 
@@ -155,7 +148,7 @@ getType () {
       'Authorization':`Bearer ${response.idToken}`
     }})
   })
-  // return this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID', { listmstid })
+ 
 }
 
 getPriority () {
@@ -167,7 +160,7 @@ getPriority () {
       'Authorization':`Bearer ${response.idToken}`
     }})
   })
-  // return this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID', { listmstid })
+  
 }
 
 getDeviceType () {
@@ -179,7 +172,7 @@ getDeviceType () {
       'Authorization':`Bearer ${response.idToken}`
     }})
   })
-  // return  this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID', { listmstid })
+ 
 }
 
 filterTickets (filterPayLoad : any) {
@@ -190,7 +183,7 @@ filterTickets (filterPayLoad : any) {
       'Authorization':`Bearer ${response.idToken}`
     }})
   })
-  // return this.http.post<any>('http://localhost:3000/RequestManager/filter', filterPayLoad)
+ 
 
 }
 
@@ -202,7 +195,7 @@ filteredTickets (filterPayLoad : any) {
       'Authorization':`Bearer ${response.idToken}`
     }})
   })
-  // return this.http.post<any>('http://localhost:3000/RequestManager/filter', filterPayLoad)
+  
 }
 
 getRequestByID (ticket : any) {
@@ -213,7 +206,7 @@ getRequestByID (ticket : any) {
       'Authorization':`Bearer ${response.idToken}`
     }})
   })
-  // return this.http.post<any>('http://localhost:3000/RequestManager/requestbyid' , ticket)
+ 
 }
 
 getDevices (data : any) {
@@ -225,7 +218,7 @@ getDevices (data : any) {
       'Authorization':`Bearer ${response.idToken}`
     }})
   })
-  // return this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID' , {listmstid} )
+  
 }
 
 getAllLocations () {
@@ -241,7 +234,7 @@ getRequestStatuses () {
       'Authorization':`Bearer ${response.idToken}`
     }})
   })
-//  return this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID' , {listmstid})
+
 }
 
 createRequest (addDraftRequestPayLoad : any) {
@@ -252,7 +245,7 @@ createRequest (addDraftRequestPayLoad : any) {
       'Authorization':`Bearer ${response.idToken}`
     }})
   })
-  // return this.http.post<any>('http://localhost:3000/RequestManager/createrequest' , addDraftRequestPayLoad)
+ 
 }
 
 updateRequest (updatePayLoad : any) {
@@ -263,7 +256,7 @@ updateRequest (updatePayLoad : any) {
       'Authorization':`Bearer ${response.idToken}`
     }})
   })
-// return  this.http.post<any>('http://localhost:3000/RequestManager/updaterequest' , updatePayLoad)
+
 
 }
 
@@ -275,7 +268,7 @@ mgrResponse (managerResponse : any) {
       'Authorization':`Bearer ${response.idToken}`
     }})
   })
-  // return this.http.post<any>('http://localhost:3000/RequestManager/updaterequest' , managerResponse)
+  
 }
 
 CABresponse (CABresponse : any) {
@@ -286,7 +279,7 @@ CABresponse (CABresponse : any) {
       'Authorization':`Bearer ${response.idToken}`
     }})
   })
-  // return this.http.post<any>('http://localhost:3000/RequestManager/updaterequest' , CABresponse)
+
 }
 
 closeTicketById (closeTicketPayLoad : any) {
@@ -297,7 +290,7 @@ closeTicketById (closeTicketPayLoad : any) {
       'Authorization':`Bearer ${response.idToken}`
     }})
   })
-//  return this.http.post<any>('http://localhost:3000/RequestManager/updaterequest' , closeTicketPayLoad)
+
 
 }
 
@@ -310,7 +303,7 @@ ticketSequence () {
       'Authorization':`Bearer ${response.idToken}`
     }})
   })
-  // return this.http.get<any>('https://10.10.20.44:3000/RequestManager/ticketid')
+  
 }
 
 }

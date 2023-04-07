@@ -31,7 +31,7 @@ export class EmailComponent implements OnInit {
     console.log(this.ticketId , "from route");
     this.view = true;
    this.getTicketById(this.ticketId);
-    // return this.http.post('http://localhost:3000/EmpManager/empfilter',empfilter)
+    
   }
 
   tickets:any;

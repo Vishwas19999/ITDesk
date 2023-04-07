@@ -4,7 +4,7 @@ export const msalConfig: Configuration = {
      auth: {
          clientId: '2e27ce62-b349-437c-8835-b9918948ba36',
          authority: "https://login.microsoftonline.com/a7bae7fa-0df1-4562-a554-16a95f54c8ce",
-         redirectUri: "https://10.10.20.44:4200/dashboard", 
+         redirectUri: "https://itapps.jktech.com/dashboard", 
          
      },
      cache: {

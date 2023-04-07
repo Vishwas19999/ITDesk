@@ -19,8 +19,7 @@ export class NewRequestComponent implements OnInit{
   }
 
   ngOnInit(): void {
-  //  this.getEmpDetails();
-   // this.getDevicesDropdown(3);
+ 
     this.getDate();
     this.getTicketNumber();
     this.getTypeDropdown();
@@ -53,7 +52,7 @@ export class NewRequestComponent implements OnInit{
   devices : any ;
   location : any ;
   implementTime : any ;
- // scheduledDate : any ;
+
  scheduleDate : any;
   RequestStatus : any ;
   businessJustification : any ;
@@ -73,7 +72,7 @@ export class NewRequestComponent implements OnInit{
   siteNameList : any ;
   deviceList : any ;
   locationList : any ;
- // RequestStatusList: any = [ "Manager Rejected" , "Manager Approved" , "CAB Approved"];
+
   postTicketResponse : any ;
   backup : any = 0;
   downTime : any = 0;
@@ -129,82 +128,13 @@ export class NewRequestComponent implements OnInit{
     
   });
 
-  // get scheduledDate() {
-  //   return this.addTicketFormGroup.get('scheduledDate');
-  // }
  
- // now = new Date();
-  //SystemDate : any = this.datepipe.transformconsole(this.now, 'dd/MM/YYYY');
-//  SystemDate : any = this.datepipe.transform(this.now, 'MM/dd/YYYY');
 
   getDate () {
-   
-   
-  //  this.SystemDate = this.datepipe.transform(now, 'd/m/yyyy, h:mm a');
-  //  console.log("date" , this.SystemDate);
-    //this.systemtime = this.datepipe.transform(now, 'h:mm a');
-  //  console.log("date" , this.SystemDate);
-   // console.log("time" , this.systemtime);
-   this.SystemDate = new Date().toISOString().slice(0, 10)
-   console.log("this.SystemDate" ,this.SystemDate); // in ui (mm/dd/yyyy) in console (yyyy-mm-dd)
-   // this.addTicketFormGroup.controls['createdOn'].setValue(this.SystemDate);
-
-
-    
-  }
+  this.SystemDate = new Date().toISOString().slice(0, 10)
+}
 
   
-
-  // getEmpDetails () : void {
-  //   this.SME_Assigned = "vishwas26@gmail.com";
-  //   let employee = {empemailid : this.SME_Assigned} ;
-    
-  //   this.http.post<any>('http://localhost:3000/EmpManager/empfilter' , employee
-  //   ).subscribe(
-  //     response => {
-  //       this.empResponse = response.result;
-  //       console.log("empRespom", this.empResponse);
-  //       this.empDevices = this.empResponse[0].device ;
-        
-        
-  //       this.getDate();
-
-       
-  //     }
-  //   );
-  // }
-
-  // getEmployeeDetails() {
-  //   this.common.getEmpDetails().subscribe(
-  //     response => {
-  //       this.empResponse = response.result;
-  //       console.log("empRespom", this.empResponse);
-
-  //    if (this.empResponse[0].emplevel === "Manager") {
-  //     this.manager = true;
-      
-  //  }
-  //     }
-  //   );
-  // }
-
-
-
-
-
-
-
-  // getTypeDropdown () : void {
-  //   let listmstid = 5 ;
-  //   this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID' , {listmstid}
-  //   ).subscribe(
-  //     response => {
-  //       this.typeList = response.result;
-        
-     
-  //     }
-  //   );
-  // }
 
   getTicketNumber () {
 
@@ -226,8 +156,7 @@ export class NewRequestComponent implements OnInit{
 
     this.setCreatedDate = this.SystemDate;
     
-   // this.addTicketFormGroup.controls.implementTime.setValue(this.systemtime);
-  // this.ticketNumberWithPrefix = "CMR-" + this.ticketNumber;
+  
     this.addTicketFormGroup.controls['ticketNumber'].setValue("CMR-" + this.ticketNumber);
     this.addTicketFormGroup.controls['empID'].setValue(this.common.empDetails[0].empid);
     this.addTicketFormGroup.controls['SME_Assigned'].setValue(this.common.empDetails[0].empemailid);
@@ -235,8 +164,7 @@ export class NewRequestComponent implements OnInit{
     this.addTicketFormGroup.controls['approverName'].setValue(this.common.empDetails[0].mgremailid);
     this.addTicketFormGroup.controls['type'].setValue("Normal");
     this.addTicketFormGroup.controls['priority'].setValue("Low");
-   // 
-   // this.addTicketFormGroup.controls['scheduledDate'].setValue(this.SystemDate);
+ 
    this.setScheduletDate = this.SystemDate;
     this.addTicketFormGroup.controls['selectDevice'].setValue(this.common.empDetails[0].device);
     this.addTicketFormGroup.controls['requestStatus'].setValue("New Request");
@@ -273,18 +201,7 @@ export class NewRequestComponent implements OnInit{
     
   }
 
-  // getDeviceTypeDropdown () : void {
-    
-  //   let listmstid = 2 ;
-  //   this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID' , {listmstid}
-  //   ).subscribe(
-  //     response => {
-  //       this.deviceTypeList = response.result;
-      
-       
-  //     }
-  //   );
-  // }
+  
 
 
   getDeviceTypeDropdown () {
@@ -299,28 +216,8 @@ export class NewRequestComponent implements OnInit{
     
   }
 
-  // getSiteNameDropdown () : void {
-  //   let listmstid = 5 ;
-  //   this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID' , {listmstid}
-  //   ).subscribe(
-  //     response => {
-  //       this.siteNameList = response.result;
-       
-  //     }
-  //   );
-  // }
+ 
 
-  // getDevicesDropdown (data : any) : void {
-  //   let listmstid = data ;
-    
-  //   this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID' , {listmstid}
-  //   ).subscribe(
-  //     response => {
-  //       this.deviceList = response.result;
-       
-  //     }
-  //   );
-  // }
 
   getDevicesDropdown (data : any) {
     this.common.getDevices(data).then((http)=>{
@@ -335,17 +232,7 @@ export class NewRequestComponent implements OnInit{
   }
 
 
-  // getLocationDropdown() : void {
-    
-  //   this.http.get<any>('http://localhost:3000/LocationManager'
-  //   ).subscribe(
-  //     response => {
-  //       this.locationList = response.result;
-  //       this.siteNameList = this.locationList;
-       
-  //     }
-  //   );
-  // }
+
 
   getLocationDropdown() {
     this.common.getAllLocations().subscribe(
@@ -358,19 +245,7 @@ export class NewRequestComponent implements OnInit{
 
   
 
-  // getRequestDropdown () : void {
-    
-  //   let listmstid = 6 ;
-  //   this.http.post<any>('http://localhost:3000/ListDataDetail/getCodeByMasterID' , {listmstid}
-  //   ).subscribe(
-  //     response => {
-  //       this.reqDropdown = response.result;
-      
-        
-     
-  //     }
-  //   );
-  // }
+ 
 
   getRequestDropdown () {
 
@@ -396,11 +271,10 @@ export class NewRequestComponent implements OnInit{
   makePostTicketPayLoad ( ) : void {
     
 
-    //this.ticketNumber = this.addTicketFormGroup.controls['ticketNumber'].value;
+  
     this.empID = this.addTicketFormGroup.controls['empID'].value;
     this.createdBy = this.addTicketFormGroup.controls['createdBy'].value;
-    //this.createdOn = this.addTicketFormGroup.controls['createdOn'].value?.split('/');
-    //this.CreatedDate = this.createdOn[0] + "/" + this.createdOn[1] + "/" + this.createdOn[2];
+  
     this.CreatedDate = this.addTicketFormGroup.controls['createdOn'].value
     
     this.SME_Assigned = this.addTicketFormGroup.controls['SME_Assigned'].value;
@@ -413,8 +287,8 @@ export class NewRequestComponent implements OnInit{
     this.location = this.addTicketFormGroup.controls['location'].value;
     this.implementTime = this.addTicketFormGroup.controls['implementTime'].value;
     this.scheduleDate = this.addTicketFormGroup.controls['scheduledDate'].value ;
-    console.log("this.scheduleDate" , this.scheduleDate); // without transform in console and sending to backend (yyyy-mm-dd)
-  // this.scheduledDate = "03/30/2023";
+    console.log("this.scheduleDate" , this.scheduleDate); 
+   
     this.businessJustification = this.addTicketFormGroup.controls['businessJustification'].value;
     this.CMRdescre = this.addTicketFormGroup.controls['CMRdescre'].value;
     this.riskImpact = this.addTicketFormGroup.controls['riskImpact'].value;
@@ -422,49 +296,17 @@ export class NewRequestComponent implements OnInit{
     this.rollbackPlan = this.addTicketFormGroup.controls['rollbackPlan'].value;
     this.note = this.addTicketFormGroup.controls['note'].value;
     this.backupDate = this.addTicketFormGroup.controls['backupDate'].value;
- // this.backupDate = "03/30/2023";
+
  
     this.notifyEndUser = this.addTicketFormGroup.controls['notifyEndUser'].value;
     
     this.verbalApproval = this.addTicketFormGroup.controls['verbalApproval'].value;
     this.email = this.addTicketFormGroup.controls['email'].value;
   
-    // this.addTicketData = {ticketNumber:this.ticketNumber , empid:this.empID , createdby:this.createdBy ,
-    //   createddate:this.CreatedDate ,smeemailid:this.SME_Assigned , approveremail:this.approverName ,
-    //   type:this.type,priority:this.priority,devicetype:this.selectDevice,sitename:this.siteName,
-    //   device:this.devices,location:this.location,implemettime:this.implementTime,
-    //   scheduleddate:this.scheduledDate,reqstatus:this.RequestStatus,justification:this.businessJustification,
-    //   cmrdesc:this.CMRdescre,risk:this.riskImpact,actionplan:this.actionPlan,rollbackplan:this.rollbackPlan,
-    //   relincident:this.note,backup:this.backup,backupdate:this.backupDate,downtime:this.downTime,downtimenotifydate:this.notifyEndUser}
-       //let checkbox = document.getElementById("flexSwitchCheckDefault");
+  
        
   }
 
-  // sendDraftRequest () : void {
-    
-
-  //   this.makePostTicketPayLoad();
-
-  //   this.RequestStatus = "Draft";
-
-  //   this.addTicketData = {ticketNumber:this.ticketNumber , empid:this.empID , createdby:this.createdBy ,
-  //     createddate:this.CreatedDate ,smeemailid:this.SME_Assigned , approveremail:this.approverName ,
-  //     type:this.type,priority:this.priority,devicetype:this.selectDevice,sitename:this.siteName,
-  //     device:this.devices,location:this.location,implemettime:this.implementTime,
-  //     scheduleddate:this.scheduleDate,reqstatus:this.RequestStatus,justification:this.businessJustification,
-  //     cmrdesc:this.CMRdescre,risk:this.riskImpact,actionplan:this.actionPlan,rollbackplan:this.rollbackPlan,
-  //     relincident:this.note,backup:this.backup,backupdate:this.backupDate,downtime:this.downTime,downtimenotifydate:this.notifyEndUser}
-  //     console.log("this.adddraftTicketData" , this.addTicketData);
-
-  //     this.http.post<any>('http://localhost:3000/RequestManager/createrequest' , this.addTicketData
-  //   ).subscribe(
-  //     response => {
-  //       this.postTicketResponse = response;
-        
-        
-  //     }
-  //   );
-  // }
 
   sendDraftRequest () {
 
@@ -494,33 +336,6 @@ export class NewRequestComponent implements OnInit{
 
   }
 
-
-  // sendNewRequest () : void {
-    
-
-  //   this.makePostTicketPayLoad();
-
-  //   this.RequestStatus = "New Request" ;
-
-  //   this.addTicketData = {ticketNumber:this.ticketNumber , empid:this.empID , createdby:this.createdBy ,
-  //     createddate:this.CreatedDate ,smeemailid:this.SME_Assigned , approveremail:this.approverName ,
-  //     type:this.type,priority:this.priority,devicetype:this.selectDevice,sitename:this.siteName,
-  //     device:this.devices,location:this.location,implemettime:this.implementTime,
-  //     scheduleddate:this.scheduleDate,reqstatus:this.RequestStatus,justification:this.businessJustification,
-  //     cmrdesc:this.CMRdescre,risk:this.riskImpact,actionplan:this.actionPlan,rollbackplan:this.rollbackPlan,
-  //     relincident:this.note,backup:this.backup,backupdate:this.backupDate,downtime:this.downTime,downtimenotifydate:this.notifyEndUser}
-  //     console.log("sendnewRequestPayload" ,this.addTicketData );
-  //   this.http.post<any>('http://localhost:3000/RequestManager/createrequest' , this.addTicketData
-  //   ).subscribe(
-  //     response => {
-  //       this.postTicketResponse = response;
-        
-        
-  //     }
-  //   );
-       
-
-  // }
 
 
   sendNewRequest () {
@@ -555,15 +370,15 @@ export class NewRequestComponent implements OnInit{
      { 
       this.backupDate = true;
       this.backup = 1 ;
-     // this.addTicketFormGroup.controls['backupDate'].setValue(this.SystemDate);
+    
     this.setBackupDate = this.SystemDate;
-    // this.addTicketFormGroup.controls['backupDate'].setValidators([Validators.required]);
+    
      
     }
     else {
       this.backupDate = false;
       this.backup = 0 ;
-     // this.addTicketFormGroup.controls['backupDate'].setValue("");
+    
      this.setBackupDate = "";
     }
   }
@@ -574,16 +389,16 @@ export class NewRequestComponent implements OnInit{
      { 
       this.notifyEndUser = true;
       this.downTime = 1;
-     // this.addTicketFormGroup.controls['notifyEndUser'].setValue(this.SystemDate);
+    
      this.setNotifyDate = this.SystemDate;
      
     }
     else {
       this.notifyEndUser = false;
       this.downTime = 0;
-     // this.addTicketFormGroup.controls['notifyEndUser'].setValue("");
+    
      this.setNotifyDate = "";
-    // this.addTicketFormGroup.controls['backupDate'].setValidators([Validators.required])
+   
     }
   }
    
@@ -603,7 +418,7 @@ export class NewRequestComponent implements OnInit{
     else {
       this.emergenc = false ;
       this.addTicketFormGroup.controls['priority'].setValue("Low");
-      //this.priorityList = [{listdtlcode : "High" }, {listdtlcode : "Medium" },{listdtlcode : "Low" }]
+     
       this.addTicketFormGroup.controls['priority'].enable();
       this.setVerbalDate = "";
     this.addTicketFormGroup.controls['email'].setValidators([]);
@@ -613,28 +428,6 @@ export class NewRequestComponent implements OnInit{
   }
 
 
-  // managerResponse (value:any) : void {
-  //   this.managerRespon = value
-  //   if (value === "Approve"){
-  //     this.managerReject = false;
-  //   }
-  //   else {
-  //     this.managerReject = true;
-  //   }
-    
-  // }
-
- 
-
-  // CABresponse(value:any) : void {
-  //   this.CABrespon = value
-  //   if (value === "Approve"){
-  //     this.CABrejected = false;
-  //   }
-  //   else {
-  //     this.CABrejected = true;
-  //   }
-  // }
 
   selectedDeviceType(value : any) : void{
     

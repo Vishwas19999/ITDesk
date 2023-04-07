@@ -57,30 +57,14 @@ export class CardComponent implements OnInit {
    })
 
   
-//  ticketInf9o:any[] = this.ticketService.ticketInfo;
+
 
 ngOnInit(): void {
   this.getLocationDropdown();
  }
 
 
-//  addLoc() : void{
-//   this.location1 = this.addLocation.controls['country'].value;
-//   this.location2 = this.addLocation.controls['locname'].value;
-//   this.location3 = this.addLocation.controls['state'].value;
-//   this.location4 = this.addLocation.controls['zipcode'].value;
-//   let addLocationData = {locname:this.location2 , state:this.location3 , zipcode:this.location4, country:this.location1}
 
-//   this.http.post<any>('http://localhost:3000/LocationManager/add' , addLocationData )
-//   .subscribe( response => 
-//    {
-//     this.addResponse = response; 
-//    this.ticketInfo =this.locationList;
-//     console.log(this.locationList);
-//      console.log("addData", addLocationData);
-     
-//    } );
-//    }
  
  
 addLoc(data:any){
@@ -88,10 +72,9 @@ addLoc(data:any){
     add.subscribe((res)=>{
       console.log(res);
     })
+    this.getLocationDropdown();
   })
-  // subscribe((res)=>{
-  //   console.log(res);
-  // })
+
 }
 
 filterloc(flocation:any){
@@ -102,12 +85,9 @@ filterloc(flocation:any){
     this.locationList = this.locationList.result; 
     console.log(data);
     })
+    
   })
-  // subscribe((data)=>{
-  //   this.locationList = data;
-  //   this.locationList = this.locationList.result; 
-  //   console.log(data);
-  // })
+  
 }
 
 locationid:any;
@@ -124,6 +104,7 @@ deleteLoc(){
   {
     console.log(result);
   })
+  this.getLocationDropdown();
 }
 
 edit(editform:any){
@@ -132,10 +113,9 @@ edit(editform:any){
     edit.subscribe((val)=>{
       console.log(val);
     })
+    this.getLocationDropdown();
    })
-  //  subscribe((val)=>{
-  //   console.log(val);
-  // })
+ 
 }
 
 setloc(data:any){
@@ -155,8 +135,7 @@ setloc(data:any){
       .subscribe( response => 
        {
         this.locationList = response.result; 
-      //  this.ticketInfo =this.locationList;
-        //console.log(this.locationList);
+      
          console.log( this.locationList);
        } );
        }
