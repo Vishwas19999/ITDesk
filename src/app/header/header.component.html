@@ -3,18 +3,15 @@
          
 
           
-          <div class="sidebar-nav" >
+          <div class="sidebar-nav">
             <nav class="navbar navbar-dark bg-secondary fixed-top">
               
               
-                <div class="container-fluid" >
+                <div class="container-fluid">
                   
-                  <button class="navbar-toggler" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" >
-                    <span class="navbar-toggler-icon"></span>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"  *ngIf="isLoggedIn() && showHead" >
+                    <span class="navbar-toggler-icon" ></span>
                   </button>
-  
-  
-                
   
                     <div class="image">
                       <img src="assets/image/image002.png" style="width: auto; height: 60px;"> 
@@ -53,7 +50,7 @@
                     </div>
                    
                    
-                    <div class="offcanvas offcanvas-start" tabindex="1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" aria-label="Close" sidebar-backdrop="false">
+                    <div class="offcanvas offcanvas-start" tabindex="1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" aria-label="Close" sidebar-backdrop="false" data-bs-dismiss="offcanvas" >
                       <div class="offcanvas-body">
                             <ul class="navbar-nav"  data-bs-dismiss="container-fluid" >
                                 <li><a routerLink="dashboard"><i class="bi bi-calendar3"></i> <span class="item-text">Dashboard</span></a></li>

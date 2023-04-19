@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { CommonService } from '../common.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MsalService } from '@azure/msal-angular';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -45,16 +46,16 @@ export class DashboardComponent implements OnInit {
   reqStatusList:any;
 
 
-  id : any = this.activatedRoute.snapshot.params['id'];
-
-
-
   
+
+
+
+  id:any;
+  IsLoggedIn:boolean=false;
 
   ngOnInit(): void {
     
-   
-  debugger;
+    this.id = this.activatedRoute.snapshot.params['id'];
  
   this.UserName = this.msalService.instance.getActiveAccount();
  
@@ -67,17 +68,18 @@ export class DashboardComponent implements OnInit {
     this.common.getEmpDetails(this.UserName.username);
 
     
-    this.some = setTimeout(() => {
-      this.getAllRequest();
-    }, 1000)
+   
 
 
-if (this.id != "") {
-  
-  
-  this.getTicketById(this.id);
+if (this.id) {
+ this.getTicketById(this.id);
 }
 
+else{
+  this.some = setTimeout(() => {
+    this.getAllRequest();
+  }, 1000)
+}
 
 
 }

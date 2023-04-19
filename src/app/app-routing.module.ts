@@ -10,7 +10,8 @@ import { EmployeeComponent } from './employee/employee.component';
 
 import { MaslGuard } from './masl.guard';
 import { NewRequestComponent } from './new-request/new-request.component';
-
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [
 
@@ -24,7 +25,9 @@ const routes: Routes = [
   {path:'edit_request' , component:EditRequestComponent},
   {path:'something/:id' , component:DashboardComponent},
   {path:'dashboard' , component:DashboardComponent,canActivate:[MaslGuard]},
-  {path:'request/:id' , component:EmailComponent,canActivate:[MaslGuard]}
+  {path:'dashboard/:id' , component:EmailComponent,canActivate:[MaslGuard]},
+  {path:'notauth', component:AuthenticationComponent},
+  {path:'header/:id', component:HeaderComponent}
 ];
 
 @NgModule({

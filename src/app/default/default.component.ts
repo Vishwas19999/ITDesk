@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from '../common.service';
+import { NavigationStart,Router } from '@angular/router';
 
 @Component({
   selector: 'app-default',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DefaultComponent implements OnInit {
 
-  constructor() { }
+  constructor(private common:CommonService,private router:Router) {
+
+   }
 
   ngOnInit(): void {
+    
   }
 
 }

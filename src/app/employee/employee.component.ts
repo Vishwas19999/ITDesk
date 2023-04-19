@@ -7,6 +7,8 @@ import { getLocaleExtraDayPeriodRules } from '@angular/common';
 import {userIdToken} from '../../app/header/header.component';
 import { IfStmt } from '@angular/compiler';
 import { MsalService } from '@azure/msal-angular';
+import { node_url } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-employee',
@@ -49,6 +51,7 @@ levelname:any;
    
       common.getEmployee().then((http)=>{
         http.subscribe((data:any)=>{
+          debugger;
           this.employees=data.result;
           
           console.log(this.employees);
@@ -116,7 +119,7 @@ else{
 
 getTypeDropdown () : void {
   let listmstid = 2 ;
-  this.http.post<any>('https://10.10.20.44:3000/ListDataDetail/getCodeByMasterID' , {listmstid},{headers:this.headers})
+  this.http.post<any>(`${node_url}/ListDataDetail/getCodeByMasterID` , {listmstid},{headers:this.headers})
   .subscribe(
     response => {
       this.typeList = response.result;
@@ -127,7 +130,7 @@ getTypeDropdown () : void {
 
 getemplevels () : void {
   let listmstid = 7 ;
-  this.http.post<any>('https://10.10.20.44:3000/ListDataDetail/getCodeByMasterID' , {listmstid},{headers:this.headers})
+  this.http.post<any>(`${node_url}/ListDataDetail/getCodeByMasterID` , {listmstid},{headers:this.headers})
   .subscribe(
     response => {
       this.emplevel = response.result;
@@ -138,7 +141,7 @@ getemplevels () : void {
 
 getidbydevice(device:any){
 
- this.http.post<any>('https://10.10.20.44:3000/EmpManager/getidbydevice' ,{device})
+ this.http.post<any>(`${node_url}/EmpManager/getidbydevice` ,{device})
   .subscribe(
     response => {
      
@@ -152,7 +155,7 @@ getidbydevice(device:any){
 getnamebyid(empid:any){
   debugger;
 
-  this.http.post<any>('https://10.10.20.44:3000/EmpManager/getnamebyid',{empid})
+  this.http.post<any>(`${node_url}/EmpManager/getnamebyid`,{empid})
   .subscribe(
     response => {
       debugger;
@@ -176,7 +179,7 @@ getnamebyid(empid:any){
 getemailbyid(empid:any){
   debugger;
  
-  this.http.post<any>('https://10.10.20.44:3000/EmpManager/getnamebyid',{empid})
+  this.http.post<any>(`${node_url}/EmpManager/getnamebyid`,{empid})
   .subscribe(
     response => {
       debugger;

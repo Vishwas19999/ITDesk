@@ -3,7 +3,7 @@ import { CommonService } from '../common.service';
 import { HttpClient,HttpHeaders} from '@angular/common/http';
 import {userIdToken} from '../../app/header/header.component';
 import { FormGroup, FormControl ,FormBuilder} from '@angular/forms';
-
+import { node_url } from 'src/environments/environment';
 
 
 @Component({
@@ -24,6 +24,7 @@ export class CardComponent implements OnInit {
  location3:any =[]
  location4:any =[]
  addResponse:any
+  some:any;
 
   constructor( private common:CommonService ,  private http:HttpClient, private fb:FormBuilder)
    {
@@ -72,7 +73,9 @@ addLoc(data:any){
     add.subscribe((res)=>{
       console.log(res);
     })
+    this.some = setTimeout(() => {
     this.getLocationDropdown();
+  }, 1000)
   })
 
 }
@@ -104,7 +107,9 @@ deleteLoc(){
   {
     console.log(result);
   })
-  this.getLocationDropdown();
+  this.some = setTimeout(() => {
+    this.getLocationDropdown();
+  }, 1000)
 }
 
 edit(editform:any){
@@ -113,8 +118,10 @@ edit(editform:any){
     edit.subscribe((val)=>{
       console.log(val);
     })
+    this.some = setTimeout(() => {
     this.getLocationDropdown();
-   })
+  }, 1000)
+  })
  
 }
 
@@ -131,7 +138,7 @@ setloc(data:any){
   
  getLocationDropdown() : void {
  
-    this.http.get<any>('https://10.10.20.44:3000/LocationManager')
+    this.http.get<any>(`${node_url}/LocationManager`)
       .subscribe( response => 
        {
         this.locationList = response.result; 

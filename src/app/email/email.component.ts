@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder,FormControl } from '@angular/forms';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { CommonService } from '../common.service';
+import { node_url } from 'src/environments/environment';
 
 @Component({
   selector: 'app-email',
@@ -22,10 +23,11 @@ export class EmailComponent implements OnInit {
   constructor( private http:HttpClient, private route: ActivatedRoute,  private router: Router,private common: CommonService) { }
 
   ngOnInit(): void {
+    
    this.getviewpage();
   }
   
-  view = true;
+  view = false;
  
   getviewpage() {
     console.log(this.ticketId , "from route");
@@ -41,7 +43,7 @@ export class EmailComponent implements OnInit {
     console.log('repsonse ---', response);
     ticketId = parseInt(ticketId);
     let ticket = {requestid : ticketId}
-    this.http.post<any>('https://10.10.20.44:3000/RequestManager/requestbyid' , ticket
+    this.http.post<any>(`${node_url}/RequestManager/requestbyid` , ticket
     ,{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }}

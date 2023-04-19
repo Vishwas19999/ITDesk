@@ -24,6 +24,7 @@ import { CardComponent } from './card/card.component';
 import { NewRequestComponent } from './new-request/new-request.component';
 import { EditRequestComponent } from './edit-request/edit-request.component';
 import { EmailComponent } from './email/email.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
 
 
 
@@ -31,7 +32,7 @@ import { EmailComponent } from './email/email.component';
 export function MSALInstanceFactory():IPublicClientApplication{
   return new PublicClientApplication({
     auth:{
-      clientId:' 2e27ce62-b349-437c-8835-b9918948ba36',
+      clientId:'2e27ce62-b349-437c-8835-b9918948ba36',
       authority: "https://login.microsoftonline.com/a7bae7fa-0df1-4562-a554-16a95f54c8ce",
       redirectUri:'https://itapps.jktech.com/dashboard'
     }
@@ -50,6 +51,7 @@ export function MSALInstanceFactory():IPublicClientApplication{
     NewRequestComponent,
     EditRequestComponent,
     EmailComponent,
+    AuthenticationComponent,
    
  
   ],
@@ -68,7 +70,8 @@ export function MSALInstanceFactory():IPublicClientApplication{
     {
     provide: MSAL_INSTANCE,
     useFactory: MSALInstanceFactory
-},MsalService
+},MsalService,
+EmailComponent
 ],
   bootstrap: [AppComponent]
 })
