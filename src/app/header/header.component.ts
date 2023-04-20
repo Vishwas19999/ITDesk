@@ -55,8 +55,7 @@ id:any;
 
 
   ngOnInit(): void {
-    // this.id = this.activatedRoute.snapshot.params['id'];
-    // console.log(this.id);
+   
    
 
     this.msalService.instance.handleRedirectPromise().then(
@@ -80,10 +79,10 @@ id:any;
            else{
             this.router.navigate(['/notauth'])
            }
-          // console.log(this.id);
+        
           
           })
-          // if(res.account.username){
+         
             
           }
         }
@@ -115,8 +114,6 @@ id:any;
 
   isLoggedIn():boolean{
     this.profile=this.msalService.instance.getActiveAccount()
-    console.log(this.profile);
-   
     return this.msalService.instance.getActiveAccount()!=null;
 }
 
@@ -134,12 +131,9 @@ id:any;
       }
     }
 )
-  console.log(this.msalService);
+}
 
 
-
-   
-  }
   logout(){
    
     this.msalService.logoutRedirect({
@@ -152,11 +146,8 @@ id:any;
    empDetails () {
    
     this.empResponse=this.common.empResponse;
-    console.log(this.empResponse);
     
-    
-        
-        if (this.empResponse[0].emplevel === "Manager") {
+    if (this.empResponse[0].emplevel === "Manager") {
           this.manager = true;
       }
         

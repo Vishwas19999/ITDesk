@@ -40,7 +40,7 @@ export class EmailComponent implements OnInit {
  async  getTicketById (ticketId : any){
     const acc = msal.instance.getAllAccounts()[0];
     const response = await msal.instance.acquireTokenSilent({ account: acc, scopes: [] });
-    console.log('repsonse ---', response);
+   
     ticketId = parseInt(ticketId);
     let ticket = {requestid : ticketId}
     this.http.post<any>(`${node_url}/RequestManager/requestbyid` , ticket
@@ -50,7 +50,7 @@ export class EmailComponent implements OnInit {
     ).subscribe(
       response => {
         this.tickets = response.result;
-        console.log("TicketDetails", this.tickets);
+        // console.log("TicketDetails", this.tickets);
         
        
   

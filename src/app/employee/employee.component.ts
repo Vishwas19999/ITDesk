@@ -54,7 +54,7 @@ levelname:any;
           debugger;
           this.employees=data.result;
           
-          console.log(this.employees);
+          
         })
       })
   
@@ -123,7 +123,7 @@ getTypeDropdown () : void {
   .subscribe(
     response => {
       this.typeList = response.result;
-      console.log("addMstResponse", this.typeList);
+     
     }
   );
 }
@@ -134,7 +134,7 @@ getemplevels () : void {
   .subscribe(
     response => {
       this.emplevel = response.result;
-      console.log("addMstResponse", this.emplevel);
+      
     }
   );
 }
@@ -146,7 +146,7 @@ getidbydevice(device:any){
     response => {
      
       this.mid = response.result;
-      console.log("mid", this.mid);
+     
     }
   );
 }
@@ -163,13 +163,6 @@ getnamebyid(empid:any){
       this.mgremail = response.result[0].empemailid;
       console.log(response.result[0]);
       
-
-
-      console.log(this.mname,"name");
-      console.log(this.mgremail,"mail");
-      
-      
-      console.log("mname=", this.mname);
       this.addEmployee.controls['mgrname'].setValue(this.mname);
       this.addEmployee.controls['mgremailid'].setValue(this.mgremail);
     }
@@ -184,9 +177,7 @@ getemailbyid(empid:any){
     response => {
       debugger;
       this.mname = response.result[0].empname;
-      console.log(this.mname,"name");
       
-      console.log("mname=", this.mname);
       this.addEmployee.controls['mgrname'].setValue(this.mname);
 
     }
@@ -225,7 +216,7 @@ filterRecords = this.fb.group({
           http.subscribe((data:any)=>{
             this.employees=data.result;
             
-            console.log(this.employees);
+           
           })
         })
       }, 1000)
@@ -262,7 +253,7 @@ filterRecords = this.fb.group({
  
 
   edit(editform:any){
-    console.log(editform.value);
+   
     
       this.common.editEmployee(editform.value).then((edit)=>{
         edit.subscribe((val)=>{
@@ -297,7 +288,7 @@ filterRecords = this.fb.group({
   employeeid:any;
   getEmployeeid(employee:any){
     this.employeeid=employee;
-    console.log(this.employeeid);
+    
   }
 
   deleteemployee(){

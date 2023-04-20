@@ -31,12 +31,6 @@ export class NewRequestComponent implements OnInit{
   }
 
  
-  
-
-
-  
-  
-  
   systemtime : any ;
   ticketNumber : any ;
   ticketNumberWithPrefix : any ;
@@ -217,8 +211,6 @@ export class NewRequestComponent implements OnInit{
   }
 
  
-
-
   getDevicesDropdown (data : any) {
     this.common.getDevices(data).then((http)=>{
       http.subscribe(
@@ -232,9 +224,7 @@ export class NewRequestComponent implements OnInit{
   }
 
 
-
-
-  getLocationDropdown() {
+ getLocationDropdown() {
     this.common.getAllLocations().subscribe(
       response => {
         this.locationList = response.result;
@@ -244,9 +234,6 @@ export class NewRequestComponent implements OnInit{
   }
 
   
-
- 
-
   getRequestDropdown () {
 
     this.common.getRequestStatuses().then((http)=>{
@@ -270,8 +257,6 @@ export class NewRequestComponent implements OnInit{
 
   makePostTicketPayLoad ( ) : void {
     
-
-  
     this.empID = this.addTicketFormGroup.controls['empID'].value;
     this.createdBy = this.addTicketFormGroup.controls['createdBy'].value;
   
@@ -304,7 +289,6 @@ export class NewRequestComponent implements OnInit{
     this.email = this.addTicketFormGroup.controls['email'].value;
   
   
-       
   }
 
 

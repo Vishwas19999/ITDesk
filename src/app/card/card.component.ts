@@ -27,8 +27,7 @@ export class CardComponent implements OnInit {
   some:any;
 
   constructor( private common:CommonService ,  private http:HttpClient, private fb:FormBuilder)
-   {
-   }
+   {}
 
    
   
@@ -113,7 +112,6 @@ deleteLoc(){
 }
 
 edit(editform:any){
-  console.log(editform.value);
    this.common.editLocation(editform.value).then((edit)=>{
     edit.subscribe((val)=>{
       console.log(val);
@@ -132,6 +130,9 @@ setloc(data:any){
     this.editLocation.controls['state'].setValue(data.state);
     this.editLocation.controls['locname'].setValue(data.locname);
     this.editLocation.controls['zipcode'].setValue(data.zipcode);
+    this.some = setTimeout(() => {
+      this.getLocationDropdown();
+    }, 1000)
 }
 
 
@@ -144,7 +145,7 @@ setloc(data:any){
         this.locationList = response.result; 
       
          console.log( this.locationList);
-       } );
+         } );
        }
 }
 
