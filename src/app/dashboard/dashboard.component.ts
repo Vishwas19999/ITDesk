@@ -55,7 +55,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.id = this.activatedRoute.snapshot.params['id'];
+  this.id = this.activatedRoute.snapshot.params['id'];
  
   this.UserName = this.msalService.instance.getActiveAccount();
  
@@ -84,12 +84,7 @@ else{
 
 }
 
-
-
-
- 
-
-  getAllRequest () {
+getAllRequest () {
     
     this.common.getAllTickets().subscribe(
       response => {
@@ -184,7 +179,7 @@ else{
     else if ((createdName === this.common.empDetails[0].empemailid && reqStatus === "CAB Approved") && ticketStatus === "open") {
       this.edit = true;
       this.common.view = true;
-      console.log("draft or reject");
+     
     }
   else if ( this.common.empDetails[0].empemailid === approver ) {
       this.edit = true;

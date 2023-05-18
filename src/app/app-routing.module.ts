@@ -16,9 +16,6 @@ import { HeaderComponent } from './header/header.component';
 const routes: Routes = [
 
   {path:'', component:DefaultComponent },
-  // {path:'' , component:DashboardComponent},
-  // {path:'' , redirectTo:'/dashboard',pathMatch:"full"},
-  // {path:'def', component:DefaultComponent },
   {path:'employee',component:EmployeeComponent,canActivate:[MaslGuard]},
   {path:'card',component:CardComponent,canActivate:[MaslGuard]},
   {path:'new_request' , component:NewRequestComponent},
@@ -27,7 +24,7 @@ const routes: Routes = [
   {path:'dashboard' , component:DashboardComponent,canActivate:[MaslGuard]},
   {path:'dashboard/:id' , component:EmailComponent,canActivate:[MaslGuard]},
   {path:'notauth', component:AuthenticationComponent},
-  {path:'header/:id', component:HeaderComponent}
+ 
 ];
 
 @NgModule({

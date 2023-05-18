@@ -1,5 +1,6 @@
 
 <div class="card container mt-3 p-3 overflow-auto" style="background-color: #eee;">
+  
   <div class="searchany">
       <input class="form-control" type="text" name="firstname" placeholder="search " [(ngModel)]="searchText">
 
@@ -17,7 +18,16 @@
   
 
  <!-- Tabular structure -->
+ 
    <div>
+    
+    <nav aria-label="breadcrumb" class="mt-2">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/dashboard">dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">employee<li>
+      </ol>
+    </nav>
+
       <table class="table table-hover table-responsive mt-3 p-3 overflow-auto">
           <thead>
               <tr>
@@ -125,7 +135,7 @@
           </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="clearForm()">Close</button>
         <button type="button" class="btn btn-primary" (click)="callAPI(employee)" [disabled]="!employee.valid">Submit</button>
       </div>
     </div>

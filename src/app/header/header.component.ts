@@ -61,18 +61,19 @@ id:any;
     this.msalService.instance.handleRedirectPromise().then(
       async res=>{
         if(res != null && res.account != null){
-          // let test = "https://itapps.jktech.com/dashboard/176"
+         
         
           this.msalService.instance.setActiveAccount(res.account)
           debugger
-          console.log(res.account.username);
-          console.log(res.account.name);
+          // console.log(res.account.username);
+          // console.log(res.account.name);
            if(res.account.username){
           
           let body={"email":res.account.username}
           this.common.userExists(body).subscribe((res:any)=>{
            
-            console.log(res);
+          
+         
            if(res.result.length!=0){
             this.router.navigate(['/dashboard'])
            }
@@ -82,9 +83,7 @@ id:any;
         
           
           })
-         
-            
-          }
+         }
         }
      
        
@@ -121,7 +120,7 @@ id:any;
 
   login(){
   this.msalService.loginRedirect()
-  debugger
+ 
   this.msalService.instance.handleRedirectPromise().then(
     async res=>{
       if(res != null && res.account != null){

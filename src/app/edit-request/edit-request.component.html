@@ -386,13 +386,13 @@
                             </div>
                             <div class="submitBtn">
                                
-                                <button class="btn btn-primary" style="margin: 10px;" data-bs-toggle="modal" data-bs-target="#closeTicketPop"
-                                    >Close Ticket</button>
+                                <button class="btn btn-primary" style="margin: 10px;" data-bs-toggle="modal" data-bs-target="#closeTicketPop" 
+                                    >Close Ticket  </button>
                             </div>
                         </div>
                         <div *ngIf="mgrRejBtns" style="float: right;" class="">
                             <div class="cancelBtn ">
-                                <button type="button" class="btn btn-danger "  data-bs-toggle="modal" data-bs-target="#closeTicketPop">Close Ticket</button>
+                                <button type="button" class="btn btn-danger "  data-bs-toggle="modal" data-bs-target="#closeTicketPop">Close Ticket </button>
                             </div>
                             <div class="saveBtn ">
                                 <button type="button"  class="btn btn-success" style="margin-left: 10px;" routerLink="/dashboard"
@@ -426,17 +426,24 @@
     <div class="modal fade" id="closeTicketPop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
+            <form [formGroup]="CABFormGroup">
             <div class="modal-header">
+                
               <h1 class="modal-title fs-5" id="exampleModalLabel">Close Ticket</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               Are you sure , you want to close ticket CMR-{{ticketDetails[0].requestid}} ?
             </div>
+            <label class="text">Mention issue has been resolved or not</label>
+            <textarea class="cabapprove" name="note" rows="3" cols="50"
+            formControlName="cabapprove"></textarea>
+            
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal" routerLink="" (click)="closeTicket()">Close Ticket</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal" routerLink="/dashboard" [disabled]="!CABFormGroup.valid" (click)="closeTicket()">Close Ticket</button>
             </div>
+        </form>
           </div>
         </div>
       </div>

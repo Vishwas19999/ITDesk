@@ -272,7 +272,7 @@ export class NewRequestComponent implements OnInit{
     this.location = this.addTicketFormGroup.controls['location'].value;
     this.implementTime = this.addTicketFormGroup.controls['implementTime'].value;
     this.scheduleDate = this.addTicketFormGroup.controls['scheduledDate'].value ;
-    console.log("this.scheduleDate" , this.scheduleDate); 
+   
    
     this.businessJustification = this.addTicketFormGroup.controls['businessJustification'].value;
     this.CMRdescre = this.addTicketFormGroup.controls['CMRdescre'].value;

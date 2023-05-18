@@ -33,7 +33,7 @@ export class CommonService {
    let employee = {empemailid : username};
 
 
-   console.log("employee",employee);
+   
    
  
    
@@ -41,7 +41,7 @@ export class CommonService {
     ).subscribe(response => {
       this.empResponse = response.result;
        this.empDetails = this.empResponse;
-       console.log("var",this.empResponse);
+       
   })
 }
 
@@ -50,7 +50,7 @@ export class CommonService {
  getEmployee(){
   const acc = msal.instance.getAllAccounts()[0]
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
-    console.log('repsonse ---',response)
+   
     return this.http.get(`${node_url}/EmpManager/`,{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }})
@@ -60,7 +60,7 @@ export class CommonService {
 addEmployee(data:any){
   const acc = msal.instance.getAllAccounts()[0]
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
-    console.log('repsonse ---',response)
+    
     return this.http.post(`${node_url}/EmpManager/add`,data,{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }})
@@ -70,7 +70,7 @@ addEmployee(data:any){
 editEmployee(edit:any){
   const acc = msal.instance.getAllAccounts()[0]
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
-    console.log('repsonse ---',response)
+    
     return this.http.post(`${node_url}/EmpManager/updateemp`,edit,{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }})
@@ -80,7 +80,7 @@ editEmployee(edit:any){
 deleteEmployee(empid:any){
   const acc = msal.instance.getAllAccounts()[0]
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
-    console.log('repsonse ---',response)
+   
     return this.http.post(`${node_url}/EmpManager/deleteemployeebyId`,empid,{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }})
@@ -91,7 +91,7 @@ deleteEmployee(empid:any){
 filterEmployee(empfilter:any){
   const acc = msal.instance.getAllAccounts()[0]
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
-    console.log('repsonse ---',response)
+   
     return this.http.post(`${node_url}/EmpManager/empfilter`,empfilter,{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }})
@@ -102,7 +102,7 @@ filterEmployee(empfilter:any){
 addLocation(data:any){
   const acc = msal.instance.getAllAccounts()[0]
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
-    console.log('repsonse ---',response)
+    
     return this.http.post(`${node_url}/LocationManager/add`,data,{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }})
@@ -113,7 +113,7 @@ addLocation(data:any){
 filterLocation(data:any){
   const acc = msal.instance.getAllAccounts()[0]
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
-    console.log('repsonse ---',response)
+   
     return this.http.post(`${node_url}/LocationManager/locationfilter`,data,{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }})
@@ -128,7 +128,7 @@ return this.http.post(`${node_url}/LocationManager/deletelocationbyId`,locid)
 editLocation(edit:any){
   const acc = msal.instance.getAllAccounts()[0]
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
-    console.log('repsonse ---',response)
+    
     return this.http.post(`${node_url}/LocationManager/updatelocation`,edit,{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }})
@@ -145,7 +145,7 @@ getType () {
   let listmstid = 5;
   const acc = msal.instance.getAllAccounts()[0]
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
-    console.log('repsonse ---',response)
+    
     return this.http.post(`${node_url}/ListDataDetail/getCodeByMasterID`,{ listmstid },{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }})
@@ -157,7 +157,7 @@ getPriority () {
   let listmstid = 1;
   const acc = msal.instance.getAllAccounts()[0]
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
-    console.log('repsonse ---',response)
+   
     return this.http.post(`${node_url}/ListDataDetail/getCodeByMasterID`,{ listmstid },{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }})
@@ -169,7 +169,7 @@ getDeviceType () {
   let listmstid = 2;
   const acc = msal.instance.getAllAccounts()[0]
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
-    console.log('repsonse ---',response)
+   
     return this.http.post(`${node_url}/ListDataDetail/getCodeByMasterID`,{ listmstid },{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }})
@@ -180,7 +180,7 @@ getDeviceType () {
 filterTickets (filterPayLoad : any) {
    const acc = msal.instance.getAllAccounts()[0]
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
-    console.log('repsonse ---',response)
+    
     return this.http.post(`${node_url}/RequestManager/filter`,filterPayLoad,{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }})
@@ -192,7 +192,7 @@ filterTickets (filterPayLoad : any) {
 filteredTickets (filterPayLoad : any) {
   const acc = msal.instance.getAllAccounts()[0] 
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
-    console.log('repsonse ---',response)
+  
     return this.http.post(`${node_url}/RequestManager/filter`,filterPayLoad,{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }})
@@ -203,7 +203,7 @@ filteredTickets (filterPayLoad : any) {
 getRequestByID (ticket : any) {
   const acc = msal.instance.getAllAccounts()[0]
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
-    console.log('repsonse ---',response)
+    
     return this.http.post(`${node_url}/RequestManager/requestbyid`, ticket,{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }})
@@ -215,7 +215,7 @@ getDevices (data : any) {
   let listmstid = data ;
   const acc = msal.instance.getAllAccounts()[0]
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
-    console.log('repsonse ---',response)
+   
     return this.http.post(`${node_url}/ListDataDetail/getCodeByMasterID`, {listmstid},{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }})
@@ -231,7 +231,7 @@ getRequestStatuses () {
   let listmstid = 6 ;
   const acc = msal.instance.getAllAccounts()[0]
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
-    console.log('repsonse ---',response)
+    
     return this.http.post(`${node_url}/ListDataDetail/getCodeByMasterID`, {listmstid},{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }})
@@ -242,7 +242,7 @@ getRequestStatuses () {
 createRequest (addDraftRequestPayLoad : any) {
   const acc = msal.instance.getAllAccounts()[0]
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
-    console.log('repsonse ---',response)
+   
     return this.http.post(`${node_url}/RequestManager/createrequest`, addDraftRequestPayLoad,{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }})
@@ -253,7 +253,7 @@ createRequest (addDraftRequestPayLoad : any) {
 updateRequest (updatePayLoad : any) {
   const acc = msal.instance.getAllAccounts()[0]
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
-    console.log('repsonse ---',response)
+   
     return this.http.post(`${node_url}/RequestManager/updaterequest`, updatePayLoad,{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }})
@@ -265,12 +265,11 @@ updateRequest (updatePayLoad : any) {
 mgrResponse (managerResponse : any) {
   const acc = msal.instance.getAllAccounts()[0]
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
-    console.log('repsonse ---',response)
+   
     return this.http.post(`${node_url}/RequestManager/updaterequest`, managerResponse,{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }})
   })
-  
 }
 
 CABresponse (CABresponse : any) {
@@ -300,7 +299,7 @@ ticketSequence () {
  
   const acc = msal.instance.getAllAccounts()[0]
   return msal.instance.acquireTokenSilent({account:acc,scopes:[]}).then((response)=>{
-    console.log('repsonse ---',response)
+   
     return this.http.get(`${node_url}/RequestManager/ticketid`,{headers:{
       'Authorization':`Bearer ${response.idToken}`
     }})

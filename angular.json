@@ -76,8 +76,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
            "options": {
-            "sslKey": "src/cert/key.pem",
-            "sslCert": "src/cert/cert.pem"
+            "sslKey": "C:\\Users\\jkserver\\Downloads\\jktech.key",
+            "sslCert": "C:\\Users\\jkserver\\Downloads\\jktech.com\\db06354f6758b3ef.pem"
           },
           "configurations": {
             "production": {

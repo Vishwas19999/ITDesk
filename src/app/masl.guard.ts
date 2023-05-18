@@ -36,7 +36,7 @@ export class MaslGuard implements CanActivate {
      } else {
      
    this.router.navigate(['/notauth']);
-     
+  // this.router.navigate(['/notauth'], { queryParams: { returnUrl: state.url }});
       res(false);
      
     }

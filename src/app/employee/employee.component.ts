@@ -58,19 +58,9 @@ levelname:any;
         })
       })
   
+}
 
-
-
-   
- 
-    
- }
-
-
-
-
- 
-  addEmployee =  this.fb.group({
+ addEmployee =  this.fb.group({
     empemailid: ['',Validators.required],
     empid: ['',Validators.required],
     empname: ['',Validators.required],
@@ -96,14 +86,14 @@ levelname:any;
 
 
 getdata(data:any){
-  debugger
+ 
 if(data=='Manager'){
   this.addEmployee.controls['mgrempid'].disable()
   this.addEmployee.controls['mgrname'].disable()
   this.addEmployee.controls['mgremailid'].disable()
  }
 else if(data=='CAB Manager'){
-  this.addEmployee.controls['device'].disable()
+ this.addEmployee.controls['device'].disable()
   this.addEmployee.controls['mgrempid'].disable()
   this.addEmployee.controls['mgrname'].disable()
   this.addEmployee.controls['mgremailid'].disable()
@@ -153,9 +143,7 @@ getidbydevice(device:any){
 
 
 getnamebyid(empid:any){
-  debugger;
-
-  this.http.post<any>(`${node_url}/EmpManager/getnamebyid`,{empid})
+   this.http.post<any>(`${node_url}/EmpManager/getnamebyid`,{empid})
   .subscribe(
     response => {
       debugger;
@@ -170,9 +158,7 @@ getnamebyid(empid:any){
 }
 
 getemailbyid(empid:any){
-  debugger;
- 
-  this.http.post<any>(`${node_url}/EmpManager/getnamebyid`,{empid})
+   this.http.post<any>(`${node_url}/EmpManager/getnamebyid`,{empid})
   .subscribe(
     response => {
       debugger;
@@ -205,8 +191,7 @@ filterRecords = this.fb.group({
 
 
   callAPI(employee:any){
-    console.log(employee.value);
-    this.common.addEmployee(employee.value).then((add)=>{
+     this.common.addEmployee(employee.value).then((add)=>{
       add.subscribe((data)=>{
         console.log(data)
         
@@ -229,22 +214,44 @@ filterRecords = this.fb.group({
 
   
   filterdata(emp:any){
-    console.log(emp.value);
-    this.common.filterEmployee(emp.value).then((http)=>{
+   this.common.filterEmployee(emp.value).then((http)=>{
       http.subscribe((data)=>{
         this.employees = data;
         this.employees = this.employees.result;
-        console.log(data)
+        
       })
+      // this.some = setTimeout(() => {
+      //   this.common.getEmployee().then((http)=>{
+      //     http.subscribe((data:any)=>{
+      //       this.employees=data.result;
+      //     })
+      //   })
+      // }, 1000)
     })
   }
 
    clearForm() {
-    this.filterRecords.reset();
+    this.filterRecords.reset({
+      
+    });
+    this.common.getEmployee().then((http)=>{
+      http.subscribe((data:any)=>{
+        this.employees=data.result;
+        
+       
+      })
+    })
   }
 
     clearform() {
       this.addEmployee.reset();
+      this.common.getEmployee().then((http)=>{
+        http.subscribe((data:any)=>{
+          this.employees=data.result;
+          
+         
+        })
+      })
     }
 
     // clearform() {
@@ -264,7 +271,7 @@ filterRecords = this.fb.group({
             http.subscribe((data:any)=>{
               this.employees=data.result;
               
-              console.log(this.employees);
+             
             })
           })
         }, 1000)
@@ -273,8 +280,7 @@ filterRecords = this.fb.group({
  
 
   setemp(data:any){
-    debugger;
-    this.editEmployee.controls['empemailid'].setValue(data.empemailid);
+   this.editEmployee.controls['empemailid'].setValue(data.empemailid);
     this.editEmployee.controls['empid'].setValue(data.empid);
     this.editEmployee.controls['empname'].setValue(data.empname);
     this.editEmployee.controls['mgrempid'].setValue(data.mgrempid);
@@ -292,7 +298,6 @@ filterRecords = this.fb.group({
   }
 
   deleteemployee(){
-    debugger;
    let empid={"empid":this.employeeid }
    
     this.common.deleteEmployee(empid).then((http)=>{

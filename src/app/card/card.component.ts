@@ -79,22 +79,33 @@ addLoc(data:any){
 
 }
 
+
+clearform() {
+  this.addLocation.reset();
+  this.getLocationDropdown();
+}
+
+clearForm(){
+  this.filterLocation.reset();
+  this.getLocationDropdown();
+}
+
 filterloc(flocation:any){
   console.log(flocation.value);
   this.common.filterLocation(flocation.value).then((filter)=>{
     filter.subscribe((data)=>{
       this.locationList = data;
     this.locationList = this.locationList.result; 
-    console.log(data);
+   
     })
     
   })
-  
+ 
 }
 
 locationid:any;
 getLocationid(x:any){
-  debugger;
+
    this.locationid=x;
     console.log(this.locationid); 
   }
@@ -124,7 +135,7 @@ edit(editform:any){
 }
 
 setloc(data:any){
-   debugger; 
+ 
     this.editLocation.controls['country'].setValue(data.country);
     this.editLocation.controls['locationid'].setValue(data.locationid);
     this.editLocation.controls['state'].setValue(data.state);
@@ -144,7 +155,7 @@ setloc(data:any){
        {
         this.locationList = response.result; 
       
-         console.log( this.locationList);
+         
          } );
        }
 }

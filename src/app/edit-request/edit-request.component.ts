@@ -70,7 +70,11 @@ export class EditRequestComponent implements OnInit {
     
   });
   
-  
+  CABFormGroup= this.formBuilder.group({
+    cabapprove : ['',Validators.required]
+  })
+
+
   systemtime : any ;
   ticketNumber : any ;
   ticketNumberWithPrefix : any ;
@@ -138,6 +142,7 @@ export class EditRequestComponent implements OnInit {
   attachedEmail : any;
   setApprovalDate : any ;
   rejectionReason : any ;
+  closeticket: any;
 
 
    
@@ -148,8 +153,8 @@ export class EditRequestComponent implements OnInit {
         response => {
           this.ticketDetails = response;
           this.ticketDetails = this.ticketDetails.result;
-          console.log("TicketDetailsbyId", this.ticketDetails);
-          console.log("id", this.ticketDetails[0].requestid);
+         
+         
           this.ticketNumber = this.ticketDetails[0].requestid;
         
         this.SystemDate = new Date().toISOString().slice(0, 10)
@@ -629,12 +634,11 @@ sendmgrResponse () {
 }
 
 
-
-
 SendCabManagerResponse() {
   let cabRejReason = this.editTicketFormGroup.controls['cabReje'].value;
   let mgr = {requestid:this.ticketDetails[0].requestid , reqstatus : this.CABrespon , rejreason : cabRejReason , status : this.ticketDetails[0].status}
-  this.common.CABresponse(mgr).then((http)=>{
+ 
+   this.common.CABresponse(mgr).then((http)=>{
     http.subscribe(
       response => {
         let updStatus = response;
@@ -647,16 +651,25 @@ SendCabManagerResponse() {
 
 
 closeTicket () {
-  // 
-  let closeTicketPayLoad = {requestid:this.ticketDetails[0].requestid , reqstatus :this.ticketDetails[0].reqstatus , empid:this.common.empDetails[0].empid , status:"closed"}
+  this.closeticket = this.CABFormGroup.controls['cabapprove'].value;
+ 
+  
+  
+  let closeTicketPayLoad = {requestid:this.ticketDetails[0].requestid , reqstatus :this.ticketDetails[0].reqstatus , empid:this.common.empDetails[0].empid , closenote:this.closeticket, status:"closed"}
+ console.log(this.closeticket);
+ 
   this.common.closeTicketById(closeTicketPayLoad).then((http)=>{
     http.subscribe(
       response => {
+
         let updStatus = response;
       }
     );
   })
   
+  
 }
+
+
 
 }
